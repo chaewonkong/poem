@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Header, PoemList, Footer } from "./";
-
-const CreatePoem = () => {
-  return (
-    <div>
-      <h2>Let's Create Poem</h2>
-    </div>
-  );
-};
+import { Header, PoemList, Footer, CreatePoem } from "./";
+import styles from "../css/App.module.css";
 
 class App extends Component {
   render() {
@@ -16,8 +9,10 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          <Route exact path="/" component={PoemList} />
-          <Route path="/poems/new" component={CreatePoem} />
+          <div className={styles.main}>
+            <Route exact path="/" component={PoemList} />
+            <Route path="/poems/new" component={CreatePoem} />
+          </div>
           <Footer />
         </div>
       </BrowserRouter>

@@ -7,23 +7,17 @@ class Header extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="#!" className="brand-logo">
-              Logo
+              하루시作
             </a>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a>
             <ul className="right hide-on-med-and-down">
               <li>
-                <a href="sass.html">Sass</a>
+                <a href="sass.html">어제의 베스트</a>
               </li>
               <li>
-                <a href="badges.html">Components</a>
-              </li>
-              <li>
-                <a href="collapsible.html">Javascript</a>
-              </li>
-              <li>
-                <a href="mobile.html">Mobile</a>
+                <a href="badges.html">내 정보</a>
               </li>
             </ul>
           </div>

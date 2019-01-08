@@ -1,10 +1,5 @@
 .mainContainer {
-    color: red;
-    font-size: 20
-}
-
-.react-scrollable-list-item {
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    width: 90%
+    display: flex;
+    font-size: 20;
+    
 }
