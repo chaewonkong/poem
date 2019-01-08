@@ -1,3 +1,7 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9"
+  }
 }
