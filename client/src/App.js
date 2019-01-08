@@ -2,16 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header, PoemList, Footer } from "./components";
 
-const Landing = () => {
-  return (
-    <div>
-      <Header />
-      <PoemList />
-      <Footer />
-    </div>
-  );
-};
-
 const CreatePoem = () => {
   return (
     <div>
@@ -25,8 +15,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route path="/" component={Landing} />
-          <Route path="/new" component={CreatePoem} />
+          <Header />
+          <Route exact path="/" component={PoemList} />
+          <Route path="/poems/new" component={CreatePoem} />
+          <Footer />
         </div>
       </BrowserRouter>
     );
