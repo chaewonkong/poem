@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Header, PoemList, Footer } from "./components";
+import { Header, PoemList, Footer } from "./";
 
 const CreatePoem = () => {
   return (
