@@ -1,16 +1,34 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Header, PoemList, Footer } from "./components";
+
+const Landing = () => {
+  return (
+    <div>
+      <Header />
+      <PoemList />
+      <Footer />
+    </div>
+  );
+};
+
+const CreatePoem = () => {
+  return (
+    <div>
+      <h2>Let's Create Poem</h2>
+    </div>
+  );
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <PoemList />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route path="/" component={Landing} />
+          <Route path="/new" component={CreatePoem} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
