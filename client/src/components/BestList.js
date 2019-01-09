@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class BestList extends Component {
   render() {
@@ -14,7 +15,7 @@ class BestList extends Component {
               </p>
             </div>
             <div className="card-action">
-              <a href="#">This is a link</a>
+              <Link to="#">This is a link</Link>
             </div>
           </div>
         </div>

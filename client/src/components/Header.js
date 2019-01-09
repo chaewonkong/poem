@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
@@ -6,18 +7,18 @@ class Header extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">
+            <Link to="/" className="brand-logo">
               하루시作
-            </a>
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+            </Link>
+            <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
-            </a>
+            </Link>
             <ul className="right hide-on-med-and-down">
               <li>
-                <a href="sass.html">어제의 베스트</a>
+                <Link to="sass.html">어제의 베스트</Link>
               </li>
               <li>
-                <a href="badges.html">내 정보</a>
+                <Link to="badges.html">내 정보</Link>
               </li>
             </ul>
           </div>
@@ -25,16 +26,10 @@ class Header extends Component {
 
         <ul className="sidenav" id="mobile-demo">
           <li>
-            <a href="sass.html">Sass</a>
+            <Link to="sass.html">어제의 베스트</Link>
           </li>
           <li>
-            <a href="badges.html">Components</a>
-          </li>
-          <li>
-            <a href="collapsible.html">Javascript</a>
-          </li>
-          <li>
-            <a href="mobile.html">Mobile</a>
+            <Link to="badges.html">내 정보</Link>
           </li>
         </ul>
       </div>

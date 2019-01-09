@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "../css/PoemList.css";
+import { Link } from "react-router-dom";
 import { BestList, TodayList, Poem } from "./";
 
 class PoemList extends Component {
@@ -34,12 +35,12 @@ class PoemList extends Component {
     return (
       <div className={styles.mainContainer}>
         {this.renderPoems()}
-        <a
-          href="/poems/new"
+        <Link
+          to="/poems/new"
           className="btn-floating btn-large waves-effect waves-light red"
         >
           <i className="material-icons">add</i>
-        </a>
+        </Link>
       </div>
     );
   }
