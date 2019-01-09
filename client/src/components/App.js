@@ -6,16 +6,18 @@ import styles from "../css/App.module.css";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Header />
-          <div className={styles.main}>
-            <Route exact path="/" component={PoemList} />
-            <Route path="/poems/new" component={CreatePoem} />
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Header />
+            <div className={styles.main}>
+              <Route exact path="/" component={PoemList} />
+              <Route path="/poems/new" component={CreatePoem} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     );
   }
 }
