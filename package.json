@@ -11,6 +11,7 @@
   "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "dev": "concurrently \"yarn run server\" \"yarn run client\""
 },
   "dependencies": {
