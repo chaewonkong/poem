@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header, PoemList, Footer, CreatePoem } from "./";
 import styles from "../css/App.module.css";
+import "../favicon.ico";
 
 class App extends Component {
   render() {
