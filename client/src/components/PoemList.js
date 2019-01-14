@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../css/PoemList.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { BestList, TodayList, Poem } from "./";
 
 class PoemList extends Component {
@@ -11,7 +12,7 @@ class PoemList extends Component {
   }
 
   getPoems = async () => {
-    const data = await fetch("/api/poems");
+    const data = await axios.get("/api/poems");
     const json = await data.json();
     const poems = [];
     for (let user in json.today)

@@ -1,23 +1,42 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 
 class CreatePoem extends Component {
+  state = { user: "", title: "", content: "" };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      user: e.target.user || "chaewonkong"
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    // action needed
+  };
   render() {
+    console.log(this.state);
     return (
       <div>
         <form>
           <TextField
             id="title"
+            name="title"
             fullWidth
             label="시 제목"
             multiline
             margin="normal"
             variant="outlined"
             placeholder="서시"
+            onChange={this.handleChange}
+            value={this.state.title}
           />
           <TextField
             id="content"
+            name="content"
             className="asdf"
             fullWidth
             label="시 내용"
@@ -25,6 +44,8 @@ class CreatePoem extends Component {
             margin="normal"
             variant="outlined"
             rows="10"
+            onChange={this.handleChange}
+            value={this.state.content}
             placeholder={`
           죽는 날까지 하늘을 우러러
           한점 부끄럼이 없기를
@@ -38,11 +59,13 @@ class CreatePoem extends Component {
           오늘 밤에도 별이 바람에 스치운다.`}
           />
         </form>
-        <Link to="/">
-          <button className="right waves-effect waves-light btn">
-            작성완료
-          </button>
-        </Link>
+        <button
+          type="submit"
+          onSubmit={this.handleSubmit}
+          className="right waves-effect waves-light btn"
+        >
+          작성완료
+        </button>
         <Link to="/">
           <button className="right waves-effect waves-light btn">
             작성취소
