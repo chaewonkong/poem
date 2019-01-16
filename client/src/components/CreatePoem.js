@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-import axios from "axios";
+import * as actions from "../actions";
+import { connect } from "react-redux";
 
 class CreatePoem extends Component {
   state = { user: "", title: "", content: "" };
@@ -13,12 +14,13 @@ class CreatePoem extends Component {
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    // action needed
+  handleSubmit = () => {
+    this.props.postPoem({
+      title: this.state.title,
+      content: this.state.content
+    });
   };
   render() {
-    console.log(this.state);
     return (
       <div>
         <form>
@@ -61,7 +63,7 @@ class CreatePoem extends Component {
         </form>
         <button
           type="submit"
-          onSubmit={this.handleSubmit}
+          onClick={this.handleSubmit}
           className="right waves-effect waves-light btn"
         >
           작성완료
@@ -76,4 +78,7 @@ class CreatePoem extends Component {
   }
 }
 
-export { CreatePoem };
+export default connect(
+  null,
+  actions
+)(CreatePoem);
