@@ -4,5 +4,5 @@ import poemReducer from "./poemReducer";
 
 export default combineReducers({
   auth: authReducer,
-  poem: poemReducer
+  poems: poemReducer
 });
