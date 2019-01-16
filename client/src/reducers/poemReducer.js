@@ -1,9 +1,5 @@
 import { FETCH_POEMS } from "../actions/types";
-export default function(
-  state = { poems: [{ title: "", id: "", content: "" }] },
-  action
-) {
-  console.log(action);
+export default function(state = { poems: [] }, action) {
   switch (action.type) {
     case FETCH_POEMS:
       return action.payload;
