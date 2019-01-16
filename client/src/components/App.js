@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { Header, PoemList, Footer, CreatePoem } from "./";
+import { Header, Footer, CreatePoem } from "./";
+import PoemList from "./PoemList";
 import styles from "../css/App.module.css";
 import "../favicon.ico";
 

@@ -1,22 +1,14 @@
 import React, { Component } from "react";
 import styles from "../css/PoemList.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
 import { BestList, TodayList, Poem } from "./";
 
 class PoemList extends Component {
-  renderPoems() {
-    const poems = this.state.poems;
-    return poems.map(poem => {
-      const { title, id, content } = poem;
-      return <Poem title={title} id={id} content={content} />;
-    });
-  }
-
   render() {
+    console.log(this.props);
     return (
       <div className={styles.mainContainer}>
-        {this.renderPoems()}
         <Link
           to="/poems/new"
           className="btn-floating btn-large waves-effect waves-light red"
@@ -28,4 +20,8 @@ class PoemList extends Component {
   }
 }
 
-export { PoemList };
+const mapStateToProps = ({ poems }) => {
+  return { poems };
+};
+
+export default connect(mapStateToProps)(PoemList);
