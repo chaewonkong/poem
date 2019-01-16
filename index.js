@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 app.post("/api/poems/new", (req, res) => {
   // req.params
   console.log(req.params);
+  res.redirect("/");
 });
 const PORT = process.env.PORT || 5000;
 
