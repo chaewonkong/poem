@@ -14,7 +14,7 @@ class PoemList extends Component {
       default:
         return poems.map(poem => {
           return (
-            <li id={poem.id}>
+            <li key={poem.id}>
               <h1>{poem.title}</h1>
               <p>{poem.content}</p>
             </li>

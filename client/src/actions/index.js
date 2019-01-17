@@ -1,6 +1,6 @@
 import axios from "axios";
 import uuidv1 from "uuid/v1";
-import { FETCH_POEMS, POST_POEM } from "./types";
+import { FETCH_POEMS } from "./types";
 
 export const fetchPoems = () => async dispatch => {
   const res = await axios.get("/api/poems");
@@ -9,9 +9,7 @@ export const fetchPoems = () => async dispatch => {
 
 export const postPoem = ({ title, content }) => {
   const id = uuidv1();
-  return function() {
-    axios
-      .post("/api/poems/new", { title, content, id })
-      .then(req => console.log(req));
+  return function(dispatch) {
+    axios.post("/api/poems/new", { title, content, id });
   };
 };
