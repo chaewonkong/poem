@@ -4,10 +4,7 @@ import { FETCH_POEMS, POST_POEM_SUCCESS } from "./types";
 
 export const fetchPoems = () => async dispatch => {
   const res = await axios.get("/api/poems");
-  dispatch({
-    type: FETCH_POEMS,
-    payload: res.data
-  });
+  dispatch({ type: FETCH_POEMS, payload: res.data });
 };
 
 export const postPoem = ({ title, content }) => {
