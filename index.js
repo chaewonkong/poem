@@ -16,10 +16,9 @@ if (process.env.NODE_ENV === "production") {
 app.post("/api/poems/new", (req, res) => {
   const { title, content, id } = req.body;
   const newPoems = [...poems.poems, { title, content, id }];
-  console.log(JSON.stringify({ poems: newPoems }));
   fs.writeFile("./data/db.json", JSON.stringify({ poems: newPoems }), err => {
     if (err) throw err;
-    res.redirect("/");
+    res.send(200, "complete");
   });
 });
 

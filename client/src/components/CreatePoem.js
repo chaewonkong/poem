@@ -25,10 +25,11 @@ class CreatePoem extends Component {
     });
   };
   render() {
+    console.log(this.props);
     return (
       <div>
         {this.props.post_success ? (
-          <Redirect to="/" />
+          <Redirect push to="/" />
         ) : (
           <div>
             <form>
