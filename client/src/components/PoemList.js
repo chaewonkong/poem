@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import styles from "../css/PoemList.css";
-import { Link } from "react-router-dom";
-import * as actions from "../actions";
 import { connect } from "react-redux";
+import * as actions from "../actions";
+import { Link } from "react-router-dom";
 
 class PoemList extends Component {
-  state = { poems: [] };
-  componentDidMount() {
-    this.props
-      .fetchPoems()
-      .then(() => this.setState({ poems: this.props.poems }));
-  }
   renderPoems() {
     const poems = this.props.poems;
     if (this.props.poems) {
@@ -32,7 +26,6 @@ class PoemList extends Component {
     }
   }
   render() {
-    console.log(this.state);
     return (
       <div className={styles.mainContainer}>
         <ul>{this.renderPoems()}</ul>

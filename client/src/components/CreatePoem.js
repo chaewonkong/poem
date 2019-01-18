@@ -19,10 +19,13 @@ class CreatePoem extends Component {
   };
 
   handleSubmit = () => {
-    this.props.postPoem({
-      title: this.state.title,
-      content: this.state.content
-    });
+    this.props.postPoem(
+      {
+        title: this.state.title,
+        content: this.state.content
+      },
+      this.props.poems
+    );
   };
   render() {
     return (

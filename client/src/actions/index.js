@@ -7,13 +7,17 @@ export const fetchPoems = () => async dispatch => {
   dispatch({ type: FETCH_POEMS, payload: res.data });
 };
 
-export const postPoem = ({ title, content }) => {
+export const postPoem = ({ title, content }, prevState) => {
   const id = uuidv1();
   return function(dispatch) {
-    axios
-      .post("/api/poems/new", { title, content, id })
-      .then(
-        dispatch({ type: POST_POEM_SUCCESS, payload: { post_success: true } })
-      );
+    axios.post("/api/poems/new", { title, content, id }).then(res =>
+      dispatch({
+        type: POST_POEM_SUCCESS,
+        payload: {
+          poems: [...prevState, { title, content, id }],
+          post_success: true
+        }
+      })
+    );
   };
 };

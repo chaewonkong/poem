@@ -18,7 +18,7 @@ app.post("/api/poems/new", (req, res) => {
   const newPoems = [...poems.poems, { title, content, id }];
   fs.writeFile("./data/db.json", JSON.stringify({ poems: newPoems }), err => {
     if (err) throw err;
-    res.send(200, "complete");
+    res.status(200).send({ title, content, id });
   });
 });
 
