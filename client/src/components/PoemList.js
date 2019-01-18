@@ -16,10 +16,24 @@ class PoemList extends Component {
         default:
           return poems.map(poem => {
             return (
-              <li key={poem.id}>
-                <h1>{poem.title}</h1>
-                <p>{poem.content}</p>
-              </li>
+              // <li key={poem.id}>
+              //   <h1>{poem.title}</h1>
+              //   <p>{poem.content}</p>
+              // </li>
+              <div className="col s12 m7" key={poem.id}>
+                <div className="card horizontal">
+                  <div className="card-stacked">
+                    <div className="card-content">
+                      <span className="card-title">{poem.title}</span>
+                      <p>{poem.content}</p>
+                    </div>
+                    <div className="card-action right-align">
+                      <a href="#">좋아요</a>
+                      <a href="#">신고하기</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             );
           });
       }
@@ -28,10 +42,10 @@ class PoemList extends Component {
   render() {
     return (
       <div className={styles.mainContainer}>
-        <ul>{this.renderPoems()}</ul>
+        {this.renderPoems()}
         <Link
           to="/poems/new"
-          className="btn-floating btn-large waves-effect waves-light red"
+          className="btn-floating btn-large waves-effect waves-light red right"
         >
           <i className="material-icons">add</i>
         </Link>

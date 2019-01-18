@@ -1,5 +1,8 @@
 .mainContainer {
     display: flex;
     font-size: 20;
-    
+}
+
+.btn-floating {
+    margin-bottom: 100px;
 }
