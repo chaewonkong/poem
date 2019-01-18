@@ -5,8 +5,11 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 
 class PoemList extends Component {
-  componentWillMount() {
-    this.props.fetchPoems();
+  state = { poems: [] };
+  componentDidMount() {
+    this.props
+      .fetchPoems()
+      .then(() => this.setState({ poems: this.props.poems }));
   }
   renderPoems() {
     const poems = this.props.poems;
@@ -29,6 +32,7 @@ class PoemList extends Component {
     }
   }
   render() {
+    console.log(this.state);
     return (
       <div className={styles.mainContainer}>
         <ul>{this.renderPoems()}</ul>
