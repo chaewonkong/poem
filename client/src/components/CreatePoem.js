@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 
@@ -72,17 +73,18 @@ class CreatePoem extends Component {
           오늘 밤에도 별이 바람에 스치운다.`}
               />
             </form>
-            <button
+            <Button
               type="submit"
               onClick={this.handleSubmit}
-              className="right waves-effect waves-light btn"
+              color="primary"
+              variant="outlined"
             >
               작성완료
-            </button>
-            <Link to="/">
-              <button className="right waves-effect waves-light btn">
+            </Button>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Button color="secondary" variant="outlined">
                 작성취소
-              </button>
+              </Button>
             </Link>
           </div>
         )}
