@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import styles from "../css/PoemList.css";
 import PoemCard from "./PoemCard";
+import { Z_FIXED } from "zlib";
 
 class PoemList extends Component {
   renderPoems() {
@@ -25,12 +26,9 @@ class PoemList extends Component {
   }
   render() {
     return (
-      <div className={styles.mainContainer}>
+      <div className="mainContainer">
         {this.renderPoems()}
-        <Link
-          to="/poems/new"
-          className="btn-floating btn-large waves-effect waves-light red right"
-        >
+        <Link to="/poems/new" className="btn-floating">
           <Fab color="secondary" aria-label="Edit">
             <Icon>edit_icon</Icon>
           </Fab>
