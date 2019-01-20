@@ -18,7 +18,13 @@ class PoemList extends Component {
           return <li>undefined</li>;
         default:
           return poems.map(poem => {
-            return <PoemCard title={poem.title} content={poem.content} />;
+            return (
+              <PoemCard
+                title={poem.title}
+                content={poem.content}
+                key={poem.title}
+              />
+            );
           });
       }
     }
