@@ -1,6 +1,12 @@
 .main {
     padding-top: 10vh;
     padding-bottom: 10vh;
-    width: 90%;
+    width: 30vw;
     margin: 0 auto;
+}
+
+@media(orientation: portrait) {
+    .main{
+        width:100%;
+    }
 }

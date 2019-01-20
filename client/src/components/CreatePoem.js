@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import styles from "../css/CreatePoem.module.css";
 
 class CreatePoem extends Component {
   state = {
@@ -73,19 +74,21 @@ class CreatePoem extends Component {
           오늘 밤에도 별이 바람에 스치운다.`}
               />
             </form>
-            <Button
-              type="submit"
-              onClick={this.handleSubmit}
-              color="primary"
-              variant="outlined"
-            >
-              작성완료
-            </Button>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Button color="secondary" variant="outlined">
-                작성취소
+            <div className={styles.btnCreate}>
+              <Button
+                type="submit"
+                onClick={this.handleSubmit}
+                color="primary"
+                variant="outlined"
+              >
+                작성완료
               </Button>
-            </Link>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Button color="secondary" variant="outlined">
+                  작성취소
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>
