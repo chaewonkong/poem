@@ -25,7 +25,11 @@ class PoemList extends Component {
                   <div className="card-stacked">
                     <div className="card-content">
                       <span className="card-title">{poem.title}</span>
-                      <p>{poem.content}</p>
+                      <div>
+                        {poem.content.map(line => (
+                          <p key={line}>{line}</p>
+                        ))}
+                      </div>
                     </div>
                     <div className="card-action right-align">
                       <a href="#">좋아요</a>

@@ -22,7 +22,7 @@ class CreatePoem extends Component {
     this.props.postPoem(
       {
         title: this.state.title,
-        content: this.state.content
+        content: this.state.content.split("\n")
       },
       this.props.poems
     );
