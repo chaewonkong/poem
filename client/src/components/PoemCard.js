@@ -9,7 +9,7 @@ const PoemCard = props => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5" color="textSecondary" gutterBottom>
+        <Typography variant="h5" color="textPrimary" gutterBottom>
           {props.title}
         </Typography>
         <Typography component="p">
@@ -18,9 +18,11 @@ const PoemCard = props => {
           ))}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <div>
+        <Button size="small" variant="flat">
+          Learn More
+        </Button>
+      </div>
     </Card>
   );
 };

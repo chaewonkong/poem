@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import "../css/Header.css";
 
 class Header extends Component {
   render() {
@@ -13,7 +14,7 @@ class Header extends Component {
               className="brand-logo"
               style={{ textDecoration: "none" }}
             >
-              <Typography color="primary" variant="h4">
+              <Typography color="secondary" variant="h5">
                 하루시作
               </Typography>
             </Link>

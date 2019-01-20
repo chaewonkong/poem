@@ -4,9 +4,8 @@ import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import styles from "../css/PoemList.css";
+import "../css/PoemList.css";
 import PoemCard from "./PoemCard";
-import { Z_FIXED } from "zlib";
 
 class PoemList extends Component {
   renderPoems() {
