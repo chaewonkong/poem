@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
-import styles from "../css/PoemList.css";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { Link } from "react-router-dom";
+import styles from "../css/PoemList.css";
+import PoemCard from "./PoemCard";
 
 class PoemList extends Component {
   renderPoems() {
@@ -22,23 +18,7 @@ class PoemList extends Component {
           return <li>undefined</li>;
         default:
           return poems.map(poem => {
-            return (
-              <Card>
-                <CardContent>
-                  <Typography variant="h5" color="textSecondary" gutterBottom>
-                    {poem.title}
-                  </Typography>
-                  <Typography component="p">
-                    {poem.content.map(line => (
-                      <p key={line}>{line}</p>
-                    ))}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
-            );
+            return <PoemCard title={poem.title} content={poem.content} />;
           });
       }
     }
