@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Fab from "@material-ui/core/Fab";
+import Icon from "@material-ui/core/Icon";
 import styles from "../css/PoemList.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
@@ -16,28 +23,21 @@ class PoemList extends Component {
         default:
           return poems.map(poem => {
             return (
-              // <li key={poem.id}>
-              //   <h1>{poem.title}</h1>
-              //   <p>{poem.content}</p>
-              // </li>
-              <div className="col s12 m7" key={poem.id}>
-                <div className="card horizontal">
-                  <div className="card-stacked">
-                    <div className="card-content">
-                      <span className="card-title">{poem.title}</span>
-                      <div>
-                        {poem.content.map(line => (
-                          <p key={line}>{line}</p>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="card-action right-align">
-                      <a href="#">좋아요</a>
-                      <a href="#">신고하기</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Card>
+                <CardContent>
+                  <Typography variant="h5" color="textSecondary" gutterBottom>
+                    {poem.title}
+                  </Typography>
+                  <Typography component="p">
+                    {poem.content.map(line => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </Card>
             );
           });
       }
@@ -51,7 +51,9 @@ class PoemList extends Component {
           to="/poems/new"
           className="btn-floating btn-large waves-effect waves-light red right"
         >
-          <i className="material-icons">add</i>
+          <Fab color="secondary" aria-label="Edit">
+            <Icon>edit_icon</Icon>
+          </Fab>
         </Link>
       </div>
     );
