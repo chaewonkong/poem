@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import styles from "../css/Footer.module.css";
 
 class Footer extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <Button>시</Button>
-        <Button>내 정보</Button>
-        <Button>더 보기</Button>
+        <BottomNavigation showLabels>
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        </BottomNavigation>
       </div>
     );
   }
