@@ -8,3 +8,9 @@
     right: 10vw;
     bottom: 10vh;
 }
+
+@media(orientation: landscape) {
+    .btn-floating {
+        right: 38vw;
+    }
+}
