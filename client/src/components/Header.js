@@ -18,7 +18,7 @@ class Header extends Component {
             justifyContent: "center"
           }}
         >
-          <Toolbar>
+          <Toolbar className="toolbar">
             <IconButton color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>

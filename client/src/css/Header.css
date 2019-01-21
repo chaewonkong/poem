@@ -12,14 +12,14 @@
     justify-content: center;
 }
 
-.MuiToolbar-root-37 {
+.toolbar {
     display: flex;
     justify-content: space-between;
     width: 100%
 }
 
 @media(orientation: landscape) {
-    .MuiToolbar-root-37 {
+    .toolbar {
         width: 30vw;
         display: flex;
         justify-content: space-between
