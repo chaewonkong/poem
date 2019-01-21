@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import * as actions from "../actions";
 import { connect } from "react-redux";
+import * as actions from "../actions";
 import styles from "../css/CreatePoem.module.css";
+import PoemSubject from "./PoemSubject";
 
 class CreatePoem extends Component {
   state = {
@@ -36,6 +37,7 @@ class CreatePoem extends Component {
           <Redirect push to="/" />
         ) : (
           <div>
+            <PoemSubject title="꽃" />
             <form>
               <TextField
                 id="title"
