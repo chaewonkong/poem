@@ -11,3 +11,17 @@
     align-items: center;
     justify-content: center;
 }
+
+.MuiToolbar-root-37 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+
+@media(orientation: landscape) {
+    .MuiToolbar-root-37 {
+        width: 30vw;
+        display: flex;
+        justify-content: space-between
+    }
+}
