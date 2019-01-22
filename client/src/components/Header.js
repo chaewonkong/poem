@@ -11,7 +11,7 @@ import "../css/Header.css";
 class Header extends Component {
   render() {
     return (
-      <AppBar position="fixed" color="#fff">
+      <AppBar position="fixed" color="inherit">
         <div
           style={{
             display: "flex",
