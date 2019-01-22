@@ -1,7 +1,27 @@
 import axios from "axios";
 import uuidv1 from "uuid/v1";
-import { FETCH_POEMS, POST_POEM_SUCCESS, CREATE_USER } from "./types";
+import {
+  FETCH_POEMS,
+  POST_POEM_SUCCESS,
+  CREATE_USER,
+  LOGIN_SUCCESS
+} from "./types";
 
+export const loginUser = ({ identifier, password }) => {
+  return function(dispatch) {
+    axios
+      .post("https://mighty-chamber-86168.herokuapp.com/auth/login/", {
+        identifier,
+        password
+      })
+      .then(res =>
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: { ...res.data, redirect: "/" }
+        })
+      );
+  };
+};
 export const createUser = ({ identifier, nickname, password }) => {
   return function(dispatch) {
     axios
@@ -11,7 +31,10 @@ export const createUser = ({ identifier, nickname, password }) => {
         password,
         password_conf: password
       })
-      .then(dispatch({ type: CREATE_USER }));
+      .catch(err => console.log(err))
+      .then(res =>
+        dispatch({ type: CREATE_USER, payload: { ...res.data, redirect: "/" } })
+      );
   };
 };
 

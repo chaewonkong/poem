@@ -39,10 +39,11 @@ class CreateUserForm extends Component {
           />
           <TextField
             name="password"
+            pattern="[0-9a-z]"
             required
             type="password"
             label="비밀번호"
-            placeholder="password"
+            placeholder="알파벳 소문자/숫자"
             onChange={this.handleChange}
           />
           <TextField
@@ -50,7 +51,7 @@ class CreateUserForm extends Component {
             required
             type="password"
             label="비밀번호 확인"
-            placeholder="password"
+            placeholder="알파벳 소문자/숫자"
             onChange={this.handleChange}
           />
         </div>
