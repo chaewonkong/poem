@@ -1,6 +1,8 @@
 import { FETCH_POEMS, POST_POEM_SUCCESS } from "../actions/types";
 
-export default function(state = { poems: null }, action) {
+const INITIAL_STATE = { poems: [] };
+
+export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_POEMS:
       return action.payload || false;

@@ -29,9 +29,9 @@ const PoemCard = props => {
           {props.title}
         </Typography>
 
-        {Array.from(props.content).map(line => (
+        {props.content.split("\n").map(line => (
           <Typography component="p" key={uuidv1()}>
-            {line}
+            {line ? line : <br />}
           </Typography>
         ))}
       </CardContent>

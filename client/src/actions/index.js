@@ -44,19 +44,19 @@ export const fetchPoems = () => async dispatch => {
   dispatch({ type: FETCH_POEMS, payload: res.data.results });
 };
 
-export const postPoem = ({ title, content, token }, prevState) => {
+export const postPoem = ({ title, content, token }) => {
   return function(dispatch) {
     axios
       .post(
         "https://mighty-chamber-86168.herokuapp.com/poems/",
         { title, content },
-        { headers: { Authentication: token } }
+        { headers: { Authorization: "Token " + token } }
       )
-      .then(() =>
+      .then(res =>
         dispatch({
           type: POST_POEM_SUCCESS,
           payload: {
-            poems: [...prevState, { title, content }],
+            ...res.data,
             post_success: true
           }
         })

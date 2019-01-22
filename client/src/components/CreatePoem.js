@@ -26,7 +26,7 @@ class CreatePoem extends Component {
       {
         token: this.props.auth.token,
         title: this.state.title,
-        content: this.state.content
+        content: this.state.content.replace(/\n/g, "\n")
       },
       this.props.poems
     );
@@ -34,7 +34,7 @@ class CreatePoem extends Component {
   render() {
     return (
       <div>
-        {this.props.post_success ? (
+        {this.props.poems.post_success ? (
           <Redirect push to="/" />
         ) : (
           <div>
