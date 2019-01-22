@@ -9,27 +9,22 @@ import PoemCard from "./PoemCard";
 
 class PoemList extends Component {
   renderPoems() {
-    const poems = this.props.poems.poems;
-    if (this.props.poems) {
-      switch (poems) {
-        case null:
-          return;
-        case false:
-          return <li>undefined</li>;
-        default:
-          return poems.map(poem => {
-            return (
-              <PoemCard
-                title={poem.title}
-                content={poem.content}
-                key={poem.title}
-              />
-            );
-          });
-      }
+    const poems = Array.from(this.props.poems);
+    if (poems !== null) {
+      return poems.map(poem => {
+        return (
+          <PoemCard
+            title={poem.title}
+            content={poem.content}
+            key={poem.id}
+            writer={poem.writer.nickname}
+          />
+        );
+      });
     }
   }
   render() {
+    console.log(this.props.poems);
     return (
       <div className="mainContainer">
         {this.renderPoems()}
@@ -44,7 +39,7 @@ class PoemList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { poems: state.poems, auth: state.auth };
+  return state;
 };
 
 export default connect(

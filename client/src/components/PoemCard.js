@@ -15,13 +15,13 @@ const PoemCard = props => {
   return (
     <Card style={{ marginBottom: "2vh" }}>
       <CardHeader
-        avatar={<Avatar aria-label="Recipe">L</Avatar>}
+        avatar={<Avatar aria-label="Recipe">{props.writer[0]}</Avatar>}
         action={
           <IconButton>
             <MoreVertIcon />
           </IconButton>
         }
-        title="Leon Kong"
+        title={props.writer}
         subheader="2019년 1월 3일"
       />
       <CardContent style={{ textAlign: "center" }}>
@@ -29,7 +29,7 @@ const PoemCard = props => {
           {props.title}
         </Typography>
 
-        {props.content.map(line => (
+        {Array.from(props.content).map(line => (
           <Typography component="p" key={uuidv1()}>
             {line}
           </Typography>
