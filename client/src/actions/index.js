@@ -3,15 +3,15 @@ import {
   FETCH_POEMS,
   POST_POEM_SUCCESS,
   CREATE_USER,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS
 } from "./types";
 
-// export const getUser = () => {
-//   return function(dispatch) {
-//     const token = localStorage.getItem("token")
-//     if (token)
-//   }
-// }
+export const logoutUser = () => {
+  return function(dispatch) {
+    dispatch({ type: LOGOUT_SUCCESS });
+  };
+};
 
 export const loginUser = ({ identifier, password }) => {
   return function(dispatch) {
