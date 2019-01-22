@@ -24,7 +24,6 @@ class PoemList extends Component {
     }
   }
   render() {
-    console.log(this.props.poems);
     return (
       <div className="mainContainer">
         {this.renderPoems()}

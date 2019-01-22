@@ -24,6 +24,7 @@ class CreatePoem extends Component {
   handleSubmit = () => {
     this.props.postPoem(
       {
+        token: this.props.auth.token,
         title: this.state.title,
         content: this.state.content
       },
@@ -97,8 +98,8 @@ class CreatePoem extends Component {
     );
   }
 }
-const mapStateToProps = ({ poems }) => {
-  return poems;
+const mapStateToProps = state => {
+  return { poems: state.poems, auth: state.auth };
 };
 
 export default connect(

@@ -1,5 +1,4 @@
 import axios from "axios";
-import uuidv1 from "uuid/v1";
 import {
   FETCH_POEMS,
   POST_POEM_SUCCESS,
@@ -45,17 +44,22 @@ export const fetchPoems = () => async dispatch => {
   dispatch({ type: FETCH_POEMS, payload: res.data.results });
 };
 
-export const postPoem = ({ title, content }, prevState) => {
-  const id = uuidv1();
+export const postPoem = ({ title, content, token }, prevState) => {
   return function(dispatch) {
-    axios.post("/api/poems/new", { title, content, id }).then(() =>
-      dispatch({
-        type: POST_POEM_SUCCESS,
-        payload: {
-          poems: [...prevState, { title, content, id }],
-          post_success: true
-        }
-      })
-    );
+    axios
+      .post(
+        "https://mighty-chamber-86168.herokuapp.com/poems/",
+        { title, content },
+        { headers: { Authentication: token } }
+      )
+      .then(() =>
+        dispatch({
+          type: POST_POEM_SUCCESS,
+          payload: {
+            poems: [...prevState, { title, content }],
+            post_success: true
+          }
+        })
+      );
   };
 };
