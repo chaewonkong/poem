@@ -6,6 +6,13 @@ import {
   LOGIN_SUCCESS
 } from "./types";
 
+// export const getUser = () => {
+//   return function(dispatch) {
+//     const token = localStorage.getItem("token")
+//     if (token)
+//   }
+// }
+
 export const loginUser = ({ identifier, password }) => {
   return function(dispatch) {
     axios
