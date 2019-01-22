@@ -8,6 +8,9 @@ import "../css/PoemList.css";
 import PoemCard from "./PoemCard";
 
 class PoemList extends Component {
+  componentDidMount() {
+    this.props.fetchPoems();
+  }
   renderPoems() {
     const poems = Array.from(this.props.poems);
     if (poems !== null) {
