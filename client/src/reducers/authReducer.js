@@ -3,7 +3,7 @@ import { CREATE_USER, LOGIN_SUCCESS } from "../actions/types";
 const INITIAL_STATE = {
   nickname: "",
   password: "",
-  identifier: null
+  identifier: ""
   // error: "",
   // loading: false
 };

@@ -20,7 +20,6 @@ class LoginForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         {/* {this.props.redirect ? (<Redirect push to="/" />) : ( */}

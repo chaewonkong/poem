@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { Header, Footer } from "./";
+import { Footer } from "./";
+import Header from "./Header";
 import LoginForm from "./LoginForm";
 import CreatePoem from "./CreatePoem";
 import CreateUserForm from "./CreateUserForm";
@@ -33,8 +34,8 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = ({ poems }) => {
-  return poems;
+const mapStateToProps = state => {
+  return state.auth;
 };
 export default connect(
   mapStateToProps,

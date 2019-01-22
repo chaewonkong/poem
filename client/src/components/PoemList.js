@@ -9,7 +9,7 @@ import PoemCard from "./PoemCard";
 
 class PoemList extends Component {
   renderPoems() {
-    const poems = this.props.poems;
+    const poems = this.props.poems.poems;
     if (this.props.poems) {
       switch (poems) {
         case null:
@@ -43,8 +43,8 @@ class PoemList extends Component {
   }
 }
 
-const mapStateToProps = ({ poems }) => {
-  return poems;
+const mapStateToProps = state => {
+  return { poems: state.poems, auth: state.auth };
 };
 
 export default connect(

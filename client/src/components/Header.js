@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -31,12 +32,16 @@ class Header extends Component {
                 하루시作
               </Typography>
             </Link>
-            <Link
-              to="/login"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <Button color="inherit">Login</Button>
-            </Link>
+            {this.props.nickname ? (
+              <div>{this.props.nickname}</div>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <Button color="inherit">Login</Button>
+              </Link>
+            )}
           </Toolbar>
         </div>
       </AppBar>
@@ -44,4 +49,6 @@ class Header extends Component {
   }
 }
 
-export { Header };
+const mapStateToProps = state => state.auth;
+
+export default connect(mapStateToProps)(Header);
