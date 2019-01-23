@@ -22,8 +22,8 @@ class CreateUserForm extends Component {
   render() {
     return (
       <div>
-        {this.props.redirect ? (
-          <Redirect push to={this.props.redirect} />
+        {this.props.auth.redirect ? (
+          <Redirect push to={this.props.auth.redirect} />
         ) : (
           <div>
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -79,8 +79,8 @@ class CreateUserForm extends Component {
     );
   }
 }
-
+const mapStateToProps = state => state;
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(CreateUserForm);
