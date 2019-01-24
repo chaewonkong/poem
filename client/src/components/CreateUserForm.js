@@ -2,21 +2,48 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
-import * as actions from "../actions";
+import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import * as actions from "../actions";
+import Avatar from "./Avatar";
 
 class CreateUserForm extends Component {
-  state = { identifier: "", nickname: "", password: "", passwordConf: "" };
+  state = {
+    identifier: "",
+    nickname: "",
+    password: "",
+    passwordConf: "",
+    selectedFile: null
+  };
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  handleUpload = e => {
+    this.setState({ selectedFile: e.target.files[0] });
+  };
+
   handleCreateUser = () => {
-    const { identifier, nickname, password, passwordConf } = this.state;
+    const {
+      identifier,
+      nickname,
+      password,
+      passwordConf,
+      selectedFile
+    } = this.state;
     if (password === passwordConf) {
-      this.props.createUser({ identifier, nickname, password });
+      let data = new FormData();
+      data.append("file", selectedFile, selectedFile.name);
+
+      this.props.createUser({
+        ...data,
+        identifier,
+        nickname,
+        password,
+        passwordConf
+      });
     } else alert("비밀번호를 확인하세요");
   };
   render() {
@@ -58,6 +85,13 @@ class CreateUserForm extends Component {
                 placeholder="알파벳 소문자/숫자"
                 onChange={this.handleChange}
               />
+              <div>
+                <Typography color="textSecondary" variant="h6">
+                  프로필 사진
+                </Typography>
+                {/* <Avatar /> */}
+                <input type="file" onChange={this.handleUpload} />
+              </div>
             </div>
             <div>
               <Button

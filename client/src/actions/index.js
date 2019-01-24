@@ -4,12 +4,19 @@ import {
   POST_POEM_SUCCESS,
   CREATE_USER,
   LOGIN_SUCCESS,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  UPLOAD_PROFILE
 } from "./types";
 
 export const logoutUser = () => {
   return function(dispatch) {
     dispatch({ type: LOGOUT_SUCCESS });
+  };
+};
+
+export const uploadProfile = ({ imageUrl, image }) => {
+  return function(dispatch) {
+    dispatch({ type: UPLOAD_PROFILE, payload: { imageUrl, image } });
   };
 };
 
@@ -28,14 +35,12 @@ export const loginUser = ({ identifier, password }) => {
       );
   };
 };
-export const createUser = ({ identifier, nickname, password }) => {
+
+export const createUser = data => {
   return function(dispatch) {
     axios
-      .post("https://mighty-chamber-86168.herokuapp.com/poets/", {
-        identifier,
-        nickname,
-        password,
-        password_conf: password
+      .post("https://mighty-chamber-86168.herokuapp.com/poets/", data, {
+        headers: { "Content-Type": "multipart/form-data" }
       })
       .catch(err => console.log(err))
       .then(res =>

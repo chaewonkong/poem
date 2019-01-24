@@ -1,4 +1,9 @@
-import { CREATE_USER, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "../actions/types";
+import {
+  CREATE_USER,
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
+  UPLOAD_PROFILE
+} from "../actions/types";
 
 const INITIAL_STATE = {
   nickname: "",
@@ -11,6 +16,8 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CREATE_USER:
+      return action.payload;
+    case UPLOAD_PROFILE:
       return action.payload;
     case LOGIN_SUCCESS:
       return action.payload;

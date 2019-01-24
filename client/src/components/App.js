@@ -8,7 +8,7 @@ import LoginForm from "./LoginForm";
 import CreatePoem from "./CreatePoem";
 import CreateUserForm from "./CreateUserForm";
 import PoemList from "./PoemList";
-import styles from "../css/App.module.css";
+import "../css/App.css";
 import "../favicon.ico";
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <div className={styles.main}>
+            <div className="main">
               <Route exact path="/" component={PoemList} />
               <Route path="/poems/new" component={CreatePoem} />
               <Route path="/login" component={LoginForm} />
