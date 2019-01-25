@@ -15,7 +15,7 @@ const PoemCard = props => {
   return (
     <Card style={{ marginBottom: "2vh" }}>
       <CardHeader
-        avatar={<Avatar aria-label="Recipe">{props.writer[0]}</Avatar>}
+        avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
           <IconButton>
             <MoreVertIcon />

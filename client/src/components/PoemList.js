@@ -17,6 +17,7 @@ class PoemList extends Component {
       return poems.map(poem => {
         return (
           <PoemCard
+            image={poem.writer.image}
             title={poem.title}
             content={poem.content}
             key={poem.id}
