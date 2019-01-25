@@ -36,15 +36,27 @@ export const loginUser = ({ identifier, password }) => {
   };
 };
 
+// export const createUser = ({
+//   identifier,
+//   password,
+//   nickname,
+//   image,
+//   passwordConf
+// }) => {
 export const createUser = data => {
   return function(dispatch) {
-    axios
-      .post("https://mighty-chamber-86168.herokuapp.com/poets/", data, {
-        headers: { "Content-Type": "multipart/form-data" }
-      })
+    axios({
+      url: "https://mighty-chamber-86168.herokuapp.com/poets/",
+      method: "post",
+      // data: { identifier, password, passwordConf, nickname, image }
+      data
+    })
       .catch(err => console.log(err))
       .then(res =>
-        dispatch({ type: CREATE_USER, payload: { ...res.data, redirect: "/" } })
+        dispatch({
+          type: CREATE_USER,
+          payload: { ...res, redirect: "/" }
+        })
       );
   };
 };

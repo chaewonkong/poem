@@ -22,28 +22,26 @@ class CreateUserForm extends Component {
   };
 
   handleUpload = e => {
-    this.setState({ selectedFile: e.target.files[0] });
+    this.setState({ image: e.target.files[0] });
   };
 
   handleCreateUser = () => {
-    const {
-      identifier,
-      nickname,
-      password,
-      passwordConf,
-      selectedFile
-    } = this.state;
+    const { identifier, nickname, password, passwordConf, image } = this.state;
     if (password === passwordConf) {
-      let data = new FormData();
-      data.append("file", selectedFile, selectedFile.name);
-
-      this.props.createUser({
-        ...data,
-        identifier,
-        nickname,
-        password,
-        passwordConf
-      });
+      const data = new FormData();
+      data.append("identifier", identifier);
+      data.append("nickname", nickname);
+      data.append("password", password);
+      data.append("password_conf", passwordConf);
+      data.append("image", image);
+      // this.props.createUser({
+      //   identifier,
+      //   nickname,
+      //   password,
+      //   passwordConf,
+      //   image
+      // });
+      this.props.createUser(data);
     } else alert("비밀번호를 확인하세요");
   };
   render() {
