@@ -8,12 +8,6 @@ import {
   UPLOAD_PROFILE
 } from "./types";
 
-export const logoutUser = () => {
-  return function(dispatch) {
-    dispatch({ type: LOGOUT_SUCCESS });
-  };
-};
-
 export const uploadProfile = ({ imageUrl, image }) => {
   return function(dispatch) {
     dispatch({ type: UPLOAD_PROFILE, payload: { imageUrl, image } });
@@ -36,13 +30,14 @@ export const loginUser = ({ identifier, password }) => {
   };
 };
 
-// export const createUser = ({
-//   identifier,
-//   password,
-//   nickname,
-//   image,
-//   passwordConf
-// }) => {
+export const logoutUser = () => {
+  return function(dispatch) {
+    dispatch({
+      type: LOGOUT_SUCCESS
+    });
+  };
+};
+
 export const createUser = data => {
   return function(dispatch) {
     axios({

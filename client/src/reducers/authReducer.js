@@ -22,7 +22,7 @@ export default function(state = INITIAL_STATE, action) {
     case LOGIN_SUCCESS:
       return action.payload;
     case LOGOUT_SUCCESS:
-      return state;
+      return INITIAL_STATE;
     default:
       return state;
   }

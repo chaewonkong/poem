@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
+import * as actions from "../actions";
 import "../css/Header.css";
 
 class Header extends Component {
@@ -25,7 +26,9 @@ class Header extends Component {
     this.setState({ anchorEl: null });
   };
 
-  handleLogout = () => {};
+  handleLogout = () => {
+    this.props.logoutUser();
+  };
 
   render() {
     const { anchorEl } = this.state;
@@ -89,4 +92,7 @@ class Header extends Component {
 
 const mapStateToProps = state => state.auth;
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  actions
+)(Header);
