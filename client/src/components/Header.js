@@ -33,7 +33,15 @@ class Header extends Component {
               </Typography>
             </Link>
             {this.props.nickname ? (
-              <div>{this.props.nickname}</div>
+              // <div>{this.props.nickname}</div>
+              <div>
+                <img
+                  src={this.props.image}
+                  width="20px"
+                  height="20px"
+                  alt={this.props.nickname}
+                />
+              </div>
             ) : (
               <Link
                 to="/login"
