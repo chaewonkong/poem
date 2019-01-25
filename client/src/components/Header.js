@@ -4,13 +4,31 @@ import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import "../css/Header.css";
 
 class Header extends Component {
+  state = {
+    anchorEl: null
+  };
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  handleLogout = () => {};
+
   render() {
+    const { anchorEl } = this.state;
     return (
       <AppBar position="fixed" color="inherit">
         <div
@@ -35,12 +53,24 @@ class Header extends Component {
             {this.props.nickname ? (
               // <div>{this.props.nickname}</div>
               <div>
-                <img
-                  src={this.props.image}
-                  width="20px"
-                  height="20px"
-                  alt={this.props.nickname}
-                />
+                <div>
+                  <Button
+                    aria-owns={anchorEl ? "simple-menu" : undefined}
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                  >
+                    <Avatar src={this.props.image} alt={this.props.nickname} />
+                  </Button>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={this.handleClose}
+                  >
+                    <MenuItem onClick={this.handleClose}>내 정보</MenuItem>
+                    <MenuItem onClick={this.handleLogout}>로그아웃</MenuItem>
+                  </Menu>
+                </div>
               </div>
             ) : (
               <Link
