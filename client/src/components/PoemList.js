@@ -22,6 +22,7 @@ class PoemList extends Component {
             content={poem.content}
             key={poem.id}
             writer={poem.writer.nickname}
+            date={poem.written_date}
           />
         );
       });

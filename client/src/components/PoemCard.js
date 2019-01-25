@@ -22,7 +22,7 @@ const PoemCard = props => {
           </IconButton>
         }
         title={props.writer}
-        subheader="2019년 1월 3일"
+        subheader={props.date}
       />
       <CardContent style={{ textAlign: "center" }}>
         <Typography variant="h5" color="textPrimary" gutterBottom>
