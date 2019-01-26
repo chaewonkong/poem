@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   UPLOAD_PROFILE,
-  POEM_DELETE_SUCCESS
+  POEM_DELETE_SUCCESS,
+  FETCH_USER_SUCCES
 } from "./types";
 
 export const uploadProfile = ({ imageUrl, image }) => {
@@ -22,12 +23,13 @@ export const loginUser = ({ identifier, password }) => {
         identifier,
         password
       })
-      .then(res =>
+      .then(res => {
+        localStorage.setItem("TOKEN", res.data.token);
         dispatch({
           type: LOGIN_SUCCESS,
           payload: { ...res.data, redirect: "/" }
-        })
-      );
+        });
+      });
   };
 };
 
@@ -44,7 +46,6 @@ export const createUser = data => {
     axios({
       url: "https://mighty-chamber-86168.herokuapp.com/poets/",
       method: "post",
-      // data: { identifier, password, passwordConf, nickname, image }
       data
     })
       .catch(err => console.log(err))
@@ -54,6 +55,17 @@ export const createUser = data => {
           payload: { ...res, redirect: "/" }
         })
       );
+  };
+};
+
+export const fetchUser = () => {
+  const token = localStorage.getItem("TOKEN");
+  return function(dispatch) {
+    axios
+      .get("https://mighty-chamber-86168.herokuapp.com/api/current_user/", {
+        headers: { Authorization: "Token " + token }
+      })
+      .then(res => dispatch({ type: FETCH_USER_SUCCES, payload: res.data }));
   };
 };
 

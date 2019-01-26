@@ -54,7 +54,6 @@ class Header extends Component {
               </Typography>
             </Link>
             {this.props.nickname ? (
-              // <div>{this.props.nickname}</div>
               <div>
                 <div>
                   <Button
@@ -80,7 +79,7 @@ class Header extends Component {
                 to="/login"
                 style={{ color: "black", textDecoration: "none" }}
               >
-                <Button color="inherit">Login</Button>
+                <Button color="inherit">로그인</Button>
               </Link>
             )}
           </Toolbar>
