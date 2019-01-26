@@ -35,6 +35,7 @@ export const loginUser = ({ identifier, password }) => {
 
 export const logoutUser = () => {
   return function(dispatch) {
+    localStorage.setItem("TOKEN", "");
     dispatch({
       type: LOGOUT_SUCCESS
     });
