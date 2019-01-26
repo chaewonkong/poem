@@ -5,13 +5,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import PoemMenu from "./PoemMenu";
+
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import uuidv1 from "uuid/v1";
 
-const handleDelete = props => {
+const handleMenu = props => {
   // return props.deletePoem({ token: props.token, id: props.id });
   console.log(props);
 };
@@ -22,8 +23,8 @@ const PoemCard = props => {
       <CardHeader
         avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
-          <IconButton onClick={handleDelete}>
-            <MoreVertIcon />
+          <IconButton onClick={handleMenu}>
+            <PoemMenu />
           </IconButton>
         }
         title={props.writer}
