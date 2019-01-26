@@ -59,8 +59,7 @@ export const createUser = data => {
   };
 };
 
-export const fetchUser = () => {
-  const token = localStorage.getItem("TOKEN");
+export const fetchUser = (token) => {
   return function(dispatch) {
     axios
       .get("https://mighty-chamber-86168.herokuapp.com/users/current-user/", {
