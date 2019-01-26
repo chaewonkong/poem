@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "../css/PoemList.css";
-import PoemCard from "./PoemCard";
+import { PoemCard } from "./";
 
 class PoemList extends Component {
   componentDidMount() {
@@ -23,6 +23,8 @@ class PoemList extends Component {
             key={poem.id}
             writer={poem.writer.nickname}
             date={poem.written_date}
+            id={poem.id}
+            poemDelete={this.props.deletePoem}
           />
         );
       });

@@ -11,13 +11,18 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import uuidv1 from "uuid/v1";
 
+const handleDelete = props => {
+  // return props.deletePoem({ token: props.token, id: props.id });
+  console.log(props);
+};
+
 const PoemCard = props => {
   return (
     <Card style={{ marginBottom: "2vh" }}>
       <CardHeader
         avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
-          <IconButton>
+          <IconButton onClick={handleDelete}>
             <MoreVertIcon />
           </IconButton>
         }
@@ -47,4 +52,4 @@ const PoemCard = props => {
   );
 };
 
-export default PoemCard;
+export { PoemCard };

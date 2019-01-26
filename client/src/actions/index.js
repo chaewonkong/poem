@@ -82,3 +82,7 @@ export const postPoem = ({ title, content, token }) => {
       );
   };
 };
+
+export const deletePoem = ({ id, token }) => {
+  return { type: "" };
+};
