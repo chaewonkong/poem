@@ -5,7 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import * as actions from "../actions";
-import Avatar from "./Avatar";
 
 class CreateUserForm extends Component {
   state = {
@@ -34,13 +33,6 @@ class CreateUserForm extends Component {
       data.append("password", password);
       data.append("password_conf", passwordConf);
       data.append("image", image);
-      // this.props.createUser({
-      //   identifier,
-      //   nickname,
-      //   password,
-      //   passwordConf,
-      //   image
-      // });
       this.props.createUser(data);
     } else alert("비밀번호를 확인하세요");
   };

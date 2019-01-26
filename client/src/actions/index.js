@@ -5,7 +5,8 @@ import {
   CREATE_USER,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  UPLOAD_PROFILE
+  UPLOAD_PROFILE,
+  POEM_DELETE_SUCCESS
 } from "./types";
 
 export const uploadProfile = ({ imageUrl, image }) => {
@@ -84,5 +85,17 @@ export const postPoem = ({ title, content, token }) => {
 };
 
 export const deletePoem = ({ id, token }) => {
-  return { type: "" };
+  return function(dispatch) {
+    axios
+      .delete(`https://mighty-chamber-86168.herokuapp.com/poems/${id}/`, {
+        headers: { Authorization: "Token " + token }
+      })
+      .then(
+        axios
+          .get("https://mighty-chamber-86168.herokuapp.com/poems/")
+          .then(res =>
+            dispatch({ type: POEM_DELETE_SUCCESS, payload: res.data.results })
+          )
+      );
+  };
 };

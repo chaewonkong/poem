@@ -36,8 +36,8 @@ class LoginForm extends Component {
                 onChange={this.handleChange}
                 required
                 label="id"
-                placeholder="user@user.com"
-                type="email"
+                placeholder="user"
+                type="text"
               />
               <TextField
                 name="password"

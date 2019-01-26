@@ -12,19 +12,14 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import uuidv1 from "uuid/v1";
 
-const handleMenu = props => {
-  // return props.deletePoem({ token: props.token, id: props.id });
-  console.log(props);
-};
-
 const PoemCard = props => {
   return (
     <Card style={{ marginBottom: "2vh" }}>
       <CardHeader
         avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
-          <IconButton onClick={handleMenu}>
-            <PoemMenu />
+          <IconButton>
+            <PoemMenu id={props.id} />
           </IconButton>
         }
         title={props.writer}
