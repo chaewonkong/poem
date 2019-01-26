@@ -63,7 +63,7 @@ export const fetchUser = () => {
   const token = localStorage.getItem("TOKEN");
   return function(dispatch) {
     axios
-      .get("https://mighty-chamber-86168.herokuapp.com/api/current_user/", {
+      .get("https://mighty-chamber-86168.herokuapp.com/users/current-user/", {
         headers: { Authorization: "Token " + token }
       })
       .then(res => dispatch({ type: FETCH_USER_SUCCES, payload: res.data }));
