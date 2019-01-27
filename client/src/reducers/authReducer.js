@@ -25,7 +25,6 @@ export default function(state = INITIAL_STATE, action) {
     case LOGOUT_SUCCESS:
       return INITIAL_STATE;
     case FETCH_USER_SUCCES:
-      console.log(action.payload);
       return action.payload;
     default:
       return state;
