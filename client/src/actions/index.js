@@ -45,7 +45,7 @@ export const logoutUser = () => {
 export const createUser = data => {
   return function(dispatch) {
     axios({
-      url: "https://mighty-chamber-86168.herokuapp.com/poets/",
+      url: "https://mighty-chamber-86168.herokuapp.com/users/",
       method: "post",
       data
     })
@@ -59,7 +59,7 @@ export const createUser = data => {
   };
 };
 
-export const fetchUser = (token) => {
+export const fetchUser = token => {
   return function(dispatch) {
     axios
       .get("https://mighty-chamber-86168.herokuapp.com/users/current-user/", {
