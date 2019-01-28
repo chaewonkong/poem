@@ -33,58 +33,65 @@ class Header extends Component {
   render() {
     const { anchorEl } = this.state;
     return (
-      <AppBar position="fixed" color="inherit">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center"
-          }}
-        >
-          <Toolbar className="toolbar">
-            <IconButton color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Link
-              to="/"
-              className="brand-logo"
-              style={{ textDecoration: "none" }}
-            >
-              <Typography variant="h6" color="secondary">
-                하루시作
-              </Typography>
-            </Link>
-            {this.props.nickname ? (
-              <div>
-                <div>
-                  <Button
-                    aria-owns={anchorEl ? "simple-menu" : undefined}
-                    aria-haspopup="true"
-                    onClick={this.handleClick}
-                  >
-                    <Avatar src={this.props.image} alt={this.props.nickname} />
-                  </Button>
-                  <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={this.handleClose}
-                  >
-                    <MenuItem onClick={this.handleClose}>내 정보</MenuItem>
-                    <MenuItem onClick={this.handleLogout}>로그아웃</MenuItem>
-                  </Menu>
-                </div>
-              </div>
-            ) : (
+      <div className="nav-wrapper">
+        <AppBar position="fixed" style={{ background: "#E7E7E7" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            <Toolbar className="toolbar">
+              <IconButton color="inherit" aria-label="Menu">
+                <MenuIcon style={{ color: "#707070" }} />
+              </IconButton>
               <Link
-                to="/login"
-                style={{ color: "black", textDecoration: "none" }}
+                to="/"
+                className="brand-logo"
+                style={{ textDecoration: "none" }}
               >
-                <Button color="inherit">로그인</Button>
+                <Typography variant="h6" style={{ color: "#707070" }}>
+                  하루시作
+                </Typography>
               </Link>
-            )}
-          </Toolbar>
-        </div>
-      </AppBar>
+              {this.props.nickname ? (
+                <div>
+                  <div>
+                    <Button
+                      aria-owns={anchorEl ? "simple-menu" : undefined}
+                      aria-haspopup="true"
+                      onClick={this.handleClick}
+                    >
+                      <Avatar
+                        src={this.props.image}
+                        alt={this.props.nickname}
+                      />
+                    </Button>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={this.handleClose}
+                    >
+                      <MenuItem onClick={this.handleClose}>내 정보</MenuItem>
+                      <MenuItem onClick={this.handleLogout}>로그아웃</MenuItem>
+                    </Menu>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <Button color="inherit" style={{ color: "#707070" }}>
+                    로그인
+                  </Button>
+                </Link>
+              )}
+            </Toolbar>
+          </div>
+        </AppBar>
+      </div>
     );
   }
 }

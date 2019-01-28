@@ -10,8 +10,6 @@ const INITIAL_STATE = {
   nickname: "",
   password: "",
   identifier: ""
-  // error: "",
-  // loading: false
 };
 
 export default function(state = INITIAL_STATE, action) {

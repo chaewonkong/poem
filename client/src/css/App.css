@@ -1,4 +1,7 @@
 @import '~antd/dist/antd.css';
+html, body {
+    background: #F7F7F7;
+}
 .main {
     padding-top: 10vh;
     padding-bottom: 10vh;
