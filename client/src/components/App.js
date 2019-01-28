@@ -14,8 +14,6 @@ import "../favicon.ico";
 class App extends Component {
   componentDidMount() {
     this.props.fetchPoems();
-    const token = localStorage.getItem("TOKEN");
-    if (token) this.props.fetchUser(token);
   }
   render() {
     return (

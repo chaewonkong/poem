@@ -10,6 +10,8 @@ import { PoemCard } from "./";
 class PoemList extends Component {
   componentDidMount() {
     this.props.fetchPoems();
+    const token = localStorage.getItem("TOKEN");
+    if (token) this.props.fetchUser(token);
   }
   renderPoems() {
     const poems = Array.from(this.props.poems);

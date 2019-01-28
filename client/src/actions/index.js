@@ -50,12 +50,13 @@ export const createUser = data => {
       data
     })
       .catch(err => console.log(err))
-      .then(res =>
-        dispatch({
+      .then(res => {
+        localStorage.setItem("TOKEN", res.data.token);
+        return dispatch({
           type: CREATE_USER,
           payload: { ...res, redirect: "/" }
-        })
-      );
+        });
+      });
   };
 };
 
