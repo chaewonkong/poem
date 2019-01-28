@@ -34,7 +34,13 @@ class Header extends Component {
     const { anchorEl } = this.state;
     return (
       <div className="nav-wrapper">
-        <AppBar position="fixed" style={{ background: "#E7E7E7" }}>
+        <AppBar
+          position="fixed"
+          style={{
+            background: "#E7E7E7",
+            boxShadow: "none"
+          }}
+        >
           <div
             style={{
               display: "flex",

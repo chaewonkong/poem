@@ -13,7 +13,9 @@ import uuidv1 from "uuid/v1";
 
 const PoemCard = props => {
   return (
-    <Card style={{ marginBottom: "2vh" }}>
+    <Card
+      style={{ marginBottom: "2vh", background: "#E7E7E7", boxShadow: "none" }}
+    >
       <CardHeader
         avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
