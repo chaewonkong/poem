@@ -65,7 +65,9 @@ export const fetchUser = token => {
       .get("https://mighty-chamber-86168.herokuapp.com/users/current-user/", {
         headers: { Authorization: "Token " + token }
       })
-      .then(res => dispatch({ type: FETCH_USER_SUCCES, payload: res.data }));
+      .then(res =>
+        dispatch({ type: FETCH_USER_SUCCES, payload: { ...res.data, token } })
+      );
   };
 };
 
@@ -106,7 +108,10 @@ export const deletePoem = ({ id, token }) => {
         axios
           .get("https://mighty-chamber-86168.herokuapp.com/poems/")
           .then(res =>
-            dispatch({ type: POEM_DELETE_SUCCESS, payload: res.data.results })
+            dispatch({
+              type: POEM_DELETE_SUCCESS,
+              payload: res.data.results.slice(1)
+            })
           )
       );
   };
