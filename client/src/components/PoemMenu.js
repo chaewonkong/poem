@@ -17,6 +17,8 @@ class PoemMenu extends Component {
     });
   };
 
+  handleUpdate = () => {};
+
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -35,7 +37,7 @@ class PoemMenu extends Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClick}>수정</MenuItem>
+          <MenuItem onClick={this.handleUpdate}>수정</MenuItem>
           <MenuItem onClick={this.handleDelete}>삭제</MenuItem>
         </Menu>
       </div>
