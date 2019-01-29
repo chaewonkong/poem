@@ -57,7 +57,7 @@ class Header extends Component {
                 style={{ textDecoration: "none" }}
               >
                 <Typography variant="h6" style={{ color: "#707070" }}>
-                  하루시作
+                  하루시작
                 </Typography>
               </Link>
               {this.props.nickname ? (
