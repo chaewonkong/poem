@@ -37,8 +37,11 @@ class PoemList extends Component {
       <div className="mainContainer">
         {this.renderPoems()}
         <Link to="/poems/new" className="btn-floating">
-          <Fab color="secondary" aria-label="Edit">
-            <Icon>edit_icon</Icon>
+          <Fab
+            style={{ color: "#ABABAB", boxShadow: "none" }}
+            aria-label="Edit"
+          >
+            <Icon style={{ color: "white" }}>edit_icon</Icon>
           </Fab>
         </Link>
       </div>
