@@ -14,7 +14,12 @@ import uuidv1 from "uuid/v1";
 const PoemCard = props => {
   return (
     <Card
-      style={{ marginBottom: "2vh", background: "#E7E7E7", boxShadow: "none" }}
+      style={{
+        marginBottom: "2vh",
+        background: "#E7E7E7",
+        boxShadow: "none",
+        width: "73.6%"
+      }}
     >
       <CardHeader
         avatar={<Avatar src={props.image} alt={props.nickname} />}
@@ -27,11 +32,11 @@ const PoemCard = props => {
         subheader={props.date}
       />
       <CardContent style={{ textAlign: "center" }}>
-        <Typography variant="h5" color="textPrimary" gutterBottom>
+        <Typography variant="h5" style={{ color: "#707070" }} gutterBottom>
           {props.title}
         </Typography>
         {props.content.split("\n").map(line => (
-          <Typography component="p" key={uuidv1()}>
+          <Typography style={{ color: "#ABABAB" }} component="p" key={uuidv1()}>
             {line ? line : <br />}
           </Typography>
         ))}
