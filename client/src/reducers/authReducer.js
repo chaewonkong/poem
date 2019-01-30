@@ -2,7 +2,6 @@ import {
   CREATE_USER,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  UPLOAD_PROFILE,
   FETCH_USER_SUCCES
 } from "../actions/types";
 
@@ -15,8 +14,6 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CREATE_USER:
-      return action.payload;
-    case UPLOAD_PROFILE:
       return action.payload;
     case LOGIN_SUCCESS:
       return action.payload;

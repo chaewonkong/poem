@@ -5,16 +5,9 @@ import {
   CREATE_USER,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  UPLOAD_PROFILE,
   POEM_DELETE_SUCCESS,
   FETCH_USER_SUCCES
 } from "./types";
-
-export const uploadProfile = ({ imageUrl, image }) => {
-  return function(dispatch) {
-    dispatch({ type: UPLOAD_PROFILE, payload: { imageUrl, image } });
-  };
-};
 
 export const loginUser = ({ identifier, password }) => {
   return function(dispatch) {
