@@ -1,5 +1,4 @@
 const express = require("express");
-const poems = require("./data/db.json");
 const path = require("path");
 const _ = require("lodash");
 var bodyParser = require("body-parser");
