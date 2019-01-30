@@ -1,7 +1,8 @@
 import {
   FETCH_POEMS,
   POST_POEM_SUCCESS,
-  POEM_DELETE_SUCCESS
+  POEM_DELETE_SUCCESS,
+  POEM_UPDATE
 } from "../actions/types";
 
 const INITIAL_STATE = { poems: [] };
@@ -13,6 +14,8 @@ export default function(state = INITIAL_STATE, action) {
     case POST_POEM_SUCCESS:
       return action.payload;
     case POEM_DELETE_SUCCESS:
+      return action.payload;
+    case POEM_UPDATE:
       return action.payload;
     default:
       return state;

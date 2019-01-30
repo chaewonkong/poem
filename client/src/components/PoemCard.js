@@ -25,10 +25,10 @@ const PoemCard = props => {
         avatar={<Avatar src={props.image} alt={props.nickname} />}
         action={
           <IconButton>
-            <PoemMenu id={props.id} />
+            <PoemMenu id={props.id} userId={props.userId} />
           </IconButton>
         }
-        title={props.writer}
+        title={props.nickname}
         subheader={props.date}
       />
       <CardContent style={{ textAlign: "center" }}>

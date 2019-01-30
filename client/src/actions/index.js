@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   POEM_DELETE_SUCCESS,
-  FETCH_USER_SUCCES
+  FETCH_USER_SUCCES,
+  POEM_UPDATE
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => {
@@ -75,43 +76,59 @@ export const fetchPoems = () => async dispatch => {
   dispatch({ type: FETCH_POEMS, payload: res.data.results });
 };
 
-export const postPoem = ({ title, content, token }) => {
+export const postPoem = ({ id, title, content, token }) => {
+  return function(dispatch) {
+    if (id) {
+      axios
+        .put(
+          `https://mighty-chamber-86168.herokuapp.com
+      /poems/${id}/`,
+          { title, content },
+          { headers: { Authorization: "Token " + token } }
+        )
+        .then(res =>
+          dispatch({
+            type: POST_POEM_SUCCESS,
+            payload: { ...res.dada, post_success: true }
+          })
+        );
+    } else {
+      axios
+        .post(
+          "https://mighty-chamber-86168.herokuapp.com/poems/",
+          { title, content },
+          { headers: { Authorization: "Token " + token } }
+        )
+        .then(res =>
+          dispatch({
+            type: POST_POEM_SUCCESS,
+            payload: {
+              ...res.data,
+              post_success: true
+            }
+          })
+        );
+    }
+  };
+};
+
+export const updatePoem = ({ id, token }) => {
   return function(dispatch) {
     axios
-      .post(
-        "https://mighty-chamber-86168.herokuapp.com/poems/",
-        { title, content },
-        { headers: { Authorization: "Token " + token } }
-      )
+      .get(`https://mighty-chamber-86168.herokuapp.com/poems/${id}/`)
       .then(res =>
         dispatch({
-          type: POST_POEM_SUCCESS,
+          type: POEM_UPDATE,
           payload: {
-            ...res.data,
-            post_success: true
+            title: res.data.title,
+            content: res.data.content,
+            id,
+            token
           }
         })
       );
   };
 };
-
-export const updatePoem = ({ id, token, content, title }) => {
-  return function(dispatch) {
-    axios
-      .put(
-        `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
-        { title, content },
-        { headers: { Authorization: "Token " + token } }
-      )
-      .then(res =>
-        dispatch({
-          type: POST_POEM_SUCCESS,
-          payload: { ...res.data, post_success: true }
-        })
-      );
-  };
-};
-
 export const deletePoem = ({ id, token }) => {
   return function(dispatch) {
     axios

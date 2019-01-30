@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -17,7 +18,9 @@ class PoemMenu extends Component {
     });
   };
 
-  handleUpdate = () => {};
+  handleUpdate = () => {
+    this.props.updatePoem({ id: this.props.id, token: this.props.auth.token });
+  };
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -26,22 +29,30 @@ class PoemMenu extends Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  renderMenu = () => {
+    if (this.props.userId === this.props.auth.pk) {
+      return (
+        <div>
+          <MoreVertIcon onClick={this.handleClick} />
+          <Menu
+            id="simple-menu"
+            anchorEl={this.state.anchorEl}
+            open={Boolean(this.state.anchorEl)}
+            onClose={this.handleClose}
+          >
+            <Link to="/poems/new">
+              <MenuItem onClick={this.handleUpdate}>수정</MenuItem>
+            </Link>
+            <MenuItem onClick={this.handleDelete}>삭제</MenuItem>
+          </Menu>
+        </div>
+      );
+    }
+  };
+
   render() {
-    const { anchorEl } = this.state;
-    return (
-      <div>
-        <MoreVertIcon onClick={this.handleClick} />
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleUpdate}>수정</MenuItem>
-          <MenuItem onClick={this.handleDelete}>삭제</MenuItem>
-        </Menu>
-      </div>
-    );
+    return <div>{this.renderMenu()}</div>;
   }
 }
 

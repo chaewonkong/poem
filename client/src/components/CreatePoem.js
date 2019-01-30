@@ -16,8 +16,7 @@ class CreatePoem extends Component {
 
   renderForm = () => {
     if (this.props.auth.token === undefined) {
-      // return <Redirect push to="/login" />;
-      console.log(this.props);
+      return <Redirect push to="/login" />;
     } else if (this.props.poems.post_success) {
       return <Redirect push to="/" />;
     } else {
@@ -35,7 +34,11 @@ class CreatePoem extends Component {
               variant="outlined"
               placeholder="서시"
               onChange={this.handleChange}
-              value={this.state.title}
+              value={
+                this.props.poems.title
+                  ? this.props.poems.title
+                  : this.state.title
+              }
             />
             <TextField
               id="content"
@@ -48,7 +51,11 @@ class CreatePoem extends Component {
               variant="outlined"
               rows="10"
               onChange={this.handleChange}
-              value={this.state.content}
+              value={
+                this.props.poems.content
+                  ? this.props.poems.content
+                  : this.state.content
+              }
               placeholder={`
           죽는 날까지 하늘을 우러러
           한점 부끄럼이 없기를
@@ -92,6 +99,7 @@ class CreatePoem extends Component {
   handleSubmit = () => {
     this.props.postPoem(
       {
+        id: this.props.poems.id || undefined,
         token: this.props.auth.token,
         title: this.state.title,
         content: this.state.content.replace(/\n/g, "\n")
@@ -100,7 +108,7 @@ class CreatePoem extends Component {
     );
   };
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return <div>{this.renderForm()}</div>;
   }
 }

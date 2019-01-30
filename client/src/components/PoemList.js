@@ -23,7 +23,8 @@ class PoemList extends Component {
             title={poem.title}
             content={poem.content}
             key={poem.id}
-            writer={poem.writer.nickname}
+            nickname={poem.writer.nickname}
+            userId={poem.writer.id}
             date={poem.written_date}
             id={poem.id}
             poemDelete={this.props.deletePoem}
