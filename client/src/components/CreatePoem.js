@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import styles from "../css/CreatePoem.module.css";
 import PoemSubject from "./PoemSubject";
+import axios from "axios";
 
 class CreatePoem extends Component {
   state = {
@@ -34,11 +35,7 @@ class CreatePoem extends Component {
               variant="outlined"
               placeholder="서시"
               onChange={this.handleChange}
-              value={
-                this.props.poems.title
-                  ? this.props.poems.title
-                  : this.state.title
-              }
+              value={this.state.title}
             />
             <TextField
               id="content"
@@ -51,11 +48,7 @@ class CreatePoem extends Component {
               variant="outlined"
               rows="10"
               onChange={this.handleChange}
-              value={
-                this.props.poems.content
-                  ? this.props.poems.content
-                  : this.state.content
-              }
+              value={this.state.content}
               placeholder={`
           죽는 날까지 하늘을 우러러
           한점 부끄럼이 없기를
@@ -97,18 +90,15 @@ class CreatePoem extends Component {
   };
 
   handleSubmit = () => {
-    this.props.postPoem(
-      {
-        id: this.props.poems.id || undefined,
-        token: this.props.auth.token,
-        title: this.state.title,
-        content: this.state.content.replace(/\n/g, "\n")
-      },
-      this.props.poems
-    );
+    this.props.postPoem({
+      id: this.props.poems.id || undefined,
+      token: this.props.auth.token,
+      title: this.state.title,
+      content: this.state.content.replace(/\n/g, "\n")
+    });
   };
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return <div>{this.renderForm()}</div>;
   }
 }

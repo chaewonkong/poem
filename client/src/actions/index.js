@@ -141,7 +141,7 @@ export const deletePoem = ({ id, token }) => {
           .then(res =>
             dispatch({
               type: POEM_DELETE_SUCCESS,
-              payload: res.data.results.slice(1)
+              payload: res.data.results
             })
           )
       );

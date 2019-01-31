@@ -13,7 +13,8 @@ import "../favicon.ico";
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchPoems();
+    const token = localStorage.getItem("TOKEN");
+    if (token) this.props.fetchUser(token);
   }
   render() {
     return (
@@ -35,7 +36,7 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => {
-  return state.auth;
+  return state;
 };
 export default connect(
   mapStateToProps,

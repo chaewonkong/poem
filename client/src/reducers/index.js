@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import poemReducer from "./poemReducer";
+import poemsReducer from "./poemsReducer";
 
 export default combineReducers({
   auth: authReducer,
-  poems: poemReducer
+  poems: poemsReducer
 });

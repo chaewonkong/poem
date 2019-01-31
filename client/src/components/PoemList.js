@@ -10,8 +10,6 @@ import { PoemCard } from "./";
 class PoemList extends Component {
   componentDidMount() {
     this.props.fetchPoems();
-    const token = localStorage.getItem("TOKEN");
-    if (token) this.props.fetchUser(token);
   }
   renderPoems() {
     const poems = Array.from(this.props.poems);
@@ -34,6 +32,7 @@ class PoemList extends Component {
     }
   }
   render() {
+    console.log(this.props);
     return (
       <div className="mainContainer">
         {this.renderPoems()}
