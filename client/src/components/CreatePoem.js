@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import styles from "../css/CreatePoem.module.css";
 import PoemSubject from "./PoemSubject";
-import axios from "axios";
 
 class CreatePoem extends Component {
   state = {
