@@ -1,11 +1,30 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import * as actions from "../actions";
+import styles from "../css/CreatePoem.module.css";
+import PoemSubject from "./PoemSubject";
 
 class PoemForm extends Component {
   state = {
-    user: "",
-    title: "",
-    content: ""
+    id: this.props.id,
+    user: this.props.user,
+    title: this.props.title,
+    content: this.props.content
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      const { id, title, content } = this.props.poems;
+      this.setState({
+        id,
+        title,
+        content,
+        token: this.props.auth.token
+      });
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -16,7 +35,7 @@ class PoemForm extends Component {
 
   handleSubmit = () => {
     this.props.postPoem({
-      id: this.props.poems.id || undefined,
+      id: this.props.id || undefined,
       token: this.props.auth.token,
       title: this.state.title,
       content: this.state.content.replace(/\n/g, "\n")
@@ -32,7 +51,7 @@ class PoemForm extends Component {
             id="title"
             name="title"
             fullWidth
-            label="시 제목"
+            label={this.props.poems.id ? "" : "시 제목"}
             multiline
             margin="normal"
             variant="outlined"
@@ -45,7 +64,7 @@ class PoemForm extends Component {
             name="content"
             className="asdf"
             fullWidth
-            label="시 내용"
+            label={this.props.poems.id ? "" : "시 내용"}
             multiline
             margin="normal"
             variant="outlined"
@@ -85,4 +104,9 @@ class PoemForm extends Component {
   }
 }
 
-export default PoemForm;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  actions
+)(PoemForm);

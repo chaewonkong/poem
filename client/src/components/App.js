@@ -6,6 +6,7 @@ import { Footer } from "./";
 import Header from "./Header";
 import LoginForm from "./LoginForm";
 import CreatePoem from "./CreatePoem";
+import UpdatePoem from "./UpdatePoem";
 import CreateUserForm from "./CreateUserForm";
 import PoemList from "./PoemList";
 import "../css/App.css";
@@ -25,6 +26,7 @@ class App extends Component {
             <div className="main">
               <Route exact path="/" component={PoemList} />
               <Route path="/poems/new" component={CreatePoem} />
+              <Route path="/poems/update" component={UpdatePoem} />
               <Route path="/login" component={LoginForm} />
               <Route path="/create_user" component={CreateUserForm} />
             </div>
