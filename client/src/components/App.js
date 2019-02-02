@@ -7,7 +7,7 @@ import Header from "./Header";
 import LoginForm from "./LoginForm";
 import CreatePoem from "./CreatePoem";
 import UpdatePoem from "./UpdatePoem";
-import CreateUserForm from "./CreateUserForm";
+import CreateUser from "./CreateUser";
 import PoemList from "./PoemList";
 import "../css/App.css";
 import "../favicon.ico";
@@ -28,7 +28,7 @@ class App extends Component {
               <Route path="/poems/new" component={CreatePoem} />
               <Route path="/poems/update" component={UpdatePoem} />
               <Route path="/login" component={LoginForm} />
-              <Route path="/create_user" component={CreateUserForm} />
+              <Route path="/create_user" component={CreateUser} />
             </div>
             <Footer />
           </div>
