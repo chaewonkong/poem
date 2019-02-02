@@ -5,13 +5,32 @@ import * as actions from "../actions";
 import UserForm from "./UserForm";
 
 class UpdateUser extends Component {
+  state = {};
+  componentDidMount() {
+    const { nickname, image, pk, identifier } = this.props.auth;
+    if (this.props.auth) {
+      this.setState({
+        nickname,
+        image,
+        pk,
+        identifier
+      });
+    }
+  }
   render() {
+    const { pk, nickname, image, identifier } = this.state;
     return (
       <div>
         {this.props.auth.redirect ? (
           <Redirect push to={this.props.auth.redirect} />
         ) : (
-          <UserForm />
+          <UserForm
+            userId={pk}
+            nickname={nickname}
+            image={image}
+            identifier={identifier}
+            update={true}
+          />
         )}
       </div>
     );

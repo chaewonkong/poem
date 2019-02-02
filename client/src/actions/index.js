@@ -7,7 +7,8 @@ import {
   LOGOUT_SUCCESS,
   POEM_DELETE_SUCCESS,
   FETCH_USER_SUCCES,
-  POEM_UPDATE
+  POEM_UPDATE,
+  UPDATE_USER
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => {
@@ -66,7 +67,37 @@ export const fetchUser = token => {
   };
 };
 
-export const updateUser = () => {};
+export const updateUser = ({
+  userId,
+  image,
+  nickname,
+  password,
+  identifier,
+  token
+}) => {
+  return function(dispatch) {
+    console.log({ userId, image, nickname, password, identifier, token });
+    axios
+      .put(
+        `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
+        {
+          image,
+          nickname,
+          password,
+          identifier
+        },
+        {
+          headers: { Authorization: "Token " + token }
+        }
+      )
+      .then(res =>
+        dispatch({
+          type: UPDATE_USER,
+          payload: { ...res.data, userId }
+        })
+      );
+  };
+};
 export const deleteUser = () => {};
 
 export const fetchPoems = () => async dispatch => {

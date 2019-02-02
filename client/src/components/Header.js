@@ -80,6 +80,11 @@ class Header extends Component {
                       onClose={this.handleClose}
                     >
                       <MenuItem onClick={this.handleClose}>내 정보</MenuItem>
+                      <Link to="/update_user">
+                        <MenuItem onClick={this.handleClose}>
+                          회원정보 수정
+                        </MenuItem>
+                      </Link>
                       <MenuItem onClick={this.handleLogout}>로그아웃</MenuItem>
                     </Menu>
                   </div>

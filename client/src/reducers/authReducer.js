@@ -2,7 +2,8 @@ import {
   CREATE_USER,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  FETCH_USER_SUCCES
+  FETCH_USER_SUCCES,
+  UPDATE_USER
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -20,6 +21,8 @@ export default function(state = INITIAL_STATE, action) {
     case LOGOUT_SUCCESS:
       return INITIAL_STATE;
     case FETCH_USER_SUCCES:
+      return action.payload;
+    case UPDATE_USER:
       return action.payload;
     default:
       return state;

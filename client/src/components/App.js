@@ -8,6 +8,7 @@ import LoginForm from "./LoginForm";
 import CreatePoem from "./CreatePoem";
 import UpdatePoem from "./UpdatePoem";
 import CreateUser from "./CreateUser";
+import UpdateUser from "./UpdateUser";
 import PoemList from "./PoemList";
 import "../css/App.css";
 import "../favicon.ico";
@@ -29,6 +30,7 @@ class App extends Component {
               <Route path="/poems/update" component={UpdatePoem} />
               <Route path="/login" component={LoginForm} />
               <Route path="/create_user" component={CreateUser} />
+              <Route path="/update_user" component={UpdateUser} />
             </div>
             <Footer />
           </div>

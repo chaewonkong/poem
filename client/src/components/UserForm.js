@@ -12,8 +12,24 @@ class UserForm extends Component {
     nickname: "",
     password: "",
     passwordConf: "",
-    selectedFile: null
+    selectedFile: null,
+    update: false
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      const { identifier, nickname, image, userId, update } = this.props;
+      this.setState({
+        ...this.state,
+        identifier,
+        userId,
+        nickname,
+        image,
+        update
+      });
+    }
+  }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -36,6 +52,17 @@ class UserForm extends Component {
       this.props.createUser(data);
     } else alert("비밀번호를 확인하세요");
   };
+  handleUpdateUser = () => {
+    const { userId, image, nickname, password, identifier } = this.state;
+    this.props.updateUser({
+      userId,
+      nickname,
+      password,
+      image,
+      identifier,
+      token: this.props.auth.token
+    });
+  };
   render() {
     return (
       <div>
@@ -46,6 +73,7 @@ class UserForm extends Component {
             label="id"
             placeholder="k0000"
             onChange={this.handleChange}
+            value={this.state.identifier}
           />
           <TextField
             name="nickname"
@@ -53,6 +81,7 @@ class UserForm extends Component {
             label="별명"
             placeholder="숭어다랑어"
             onChange={this.handleChange}
+            value={this.state.nickname}
           />
           <TextField
             name="password"
@@ -82,7 +111,9 @@ class UserForm extends Component {
         <div>
           <Button
             color="primary"
-            onClick={this.handleCreateUser}
+            onClick={
+              this.state.update ? this.handleUpdateUser : this.handleCreateUser
+            }
             variant="outlined"
           >
             회원가입하기
