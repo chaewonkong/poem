@@ -8,8 +8,14 @@ import "../css/PoemList.css";
 import { PoemCard } from "./";
 
 class PoemList extends Component {
+  state = {};
   componentDidMount() {
     this.props.fetchPoems();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      this.props.fetchPoems();
+    }
   }
   renderPoems() {
     const poems = Array.from(this.props.poems);
@@ -32,7 +38,6 @@ class PoemList extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="mainContainer">
         {this.renderPoems()}

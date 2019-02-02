@@ -136,14 +136,10 @@ export const deletePoem = ({ id, token }) => {
         headers: { Authorization: "Token " + token }
       })
       .then(
-        axios
-          .get("https://mighty-chamber-86168.herokuapp.com/poems/")
-          .then(res =>
-            dispatch({
-              type: POEM_DELETE_SUCCESS,
-              payload: res.data.results
-            })
-          )
+        dispatch({
+          type: POEM_DELETE_SUCCESS,
+          payload: { delete_success: true }
+        })
       );
   };
 };
