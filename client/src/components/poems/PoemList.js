@@ -3,9 +3,9 @@ import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../actions";
-import "../css/PoemList.css";
-import { PoemCard } from "./";
+import * as actions from "../../actions";
+import "../../css/PoemList.css";
+import { PoemCard } from "../";
 
 class PoemList extends Component {
   state = {};

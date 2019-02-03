@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import { Footer } from "./";
 import Header from "./Header";
-import LoginForm from "./LoginForm";
-import CreatePoem from "./CreatePoem";
-import UpdatePoem from "./UpdatePoem";
-import CreateUser from "./CreateUser";
-import UpdateUser from "./UpdateUser";
-import PoemList from "./PoemList";
+import LoginForm from "./users/LoginForm";
+import CreatePoem from "./poems/CreatePoem";
+import UpdatePoem from "./poems/UpdatePoem";
+import CreateUser from "./users/CreateUser";
+import UpdateUser from "./users/UpdateUser";
+import PoemList from "./poems/PoemList";
 import "../css/App.css";
 import "../favicon.ico";
 

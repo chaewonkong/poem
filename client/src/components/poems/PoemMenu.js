@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import * as actions from "../actions";
+import * as actions from "../../actions";
 
 class PoemMenu extends Component {
   state = {

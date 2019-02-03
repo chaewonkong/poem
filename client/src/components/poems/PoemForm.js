@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import * as actions from "../actions";
-import styles from "../css/CreatePoem.module.css";
+import * as actions from "../../actions";
+import styles from "../../css/CreatePoem.module.css";
 import PoemSubject from "./PoemSubject";
 
 class PoemForm extends Component {
