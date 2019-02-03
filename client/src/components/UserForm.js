@@ -54,7 +54,7 @@ class UserForm extends Component {
       data.append("nickname", nickname);
       data.append("password", password);
       data.append("password_conf", passwordConf);
-      data.append("image", image);
+      if (image) data.append("image", image);
       this.props.createUser(data);
     } else alert("비밀번호를 확인하세요");
   };

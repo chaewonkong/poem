@@ -12,11 +12,7 @@ class PoemList extends Component {
   componentDidMount() {
     this.props.fetchPoems();
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props) {
-      this.props.fetchPoems();
-    }
-  }
+
   renderPoems() {
     const poems = Array.from(this.props.poems);
     if (poems !== null) {

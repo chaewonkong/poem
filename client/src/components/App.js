@@ -18,6 +18,14 @@ class App extends Component {
     const token = localStorage.getItem("TOKEN");
     if (token) this.props.fetchUser(token);
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.auth !== this.props.auth) {
+      const token = localStorage.getItem("TOKEN");
+      if (token) this.props.fetchUser(token);
+    }
+  }
+
   render() {
     return (
       <div>
