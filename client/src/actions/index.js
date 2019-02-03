@@ -8,7 +8,8 @@ import {
   POEM_DELETE_SUCCESS,
   FETCH_USER_SUCCES,
   POEM_UPDATE,
-  UPDATE_USER
+  UPDATE_USER,
+  DELETE_USER
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => {
@@ -98,7 +99,18 @@ export const updateUser = ({
       );
   };
 };
-export const deleteUser = () => {};
+export const deleteUser = ({ userId, token }) => {
+  return function(dispatch) {
+    axios
+      .delete(`https://mighty-chamber-86168.herokuapp.com/users/${userId}/`, {
+        headers: { Authorization: "Token " + token }
+      })
+      .then(() => {
+        localStorage.setItem("TOKEN", "");
+        dispatch({ type: DELETE_USER });
+      });
+  };
+};
 
 export const fetchPoems = () => async dispatch => {
   const res = await axios.get(

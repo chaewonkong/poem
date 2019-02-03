@@ -30,6 +30,13 @@ class Header extends Component {
     this.props.logoutUser();
   };
 
+  handleDeleteUser = () => {
+    this.props.deleteUser({
+      userId: this.props.pk,
+      token: this.props.token
+    });
+  };
+
   render() {
     const { anchorEl } = this.state;
     return (
@@ -86,6 +93,9 @@ class Header extends Component {
                         </MenuItem>
                       </Link>
                       <MenuItem onClick={this.handleLogout}>로그아웃</MenuItem>
+                      <MenuItem onClick={this.handleDeleteUser}>
+                        회원탈퇴
+                      </MenuItem>
                     </Menu>
                   </div>
                 </div>

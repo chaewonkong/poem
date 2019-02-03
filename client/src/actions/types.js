@@ -7,3 +7,4 @@ export const POEM_DELETE_SUCCESS = "poem_delete_success";
 export const FETCH_USER_SUCCES = "fetch_user_success";
 export const POEM_UPDATE = "poem_update";
 export const UPDATE_USER = "user_update";
+export const DELETE_USER = "user_delete";

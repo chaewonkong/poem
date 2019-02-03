@@ -3,7 +3,8 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   FETCH_USER_SUCCES,
-  UPDATE_USER
+  UPDATE_USER,
+  DELETE_USER
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -24,6 +25,8 @@ export default function(state = INITIAL_STATE, action) {
       return action.payload;
     case UPDATE_USER:
       return action.payload;
+    case DELETE_USER:
+      return INITIAL_STATE;
     default:
       return state;
   }
