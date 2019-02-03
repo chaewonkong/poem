@@ -31,9 +31,15 @@ class UserForm extends Component {
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    if (e.target.name === "password" || e.target.name === "passwordConf") {
+      this.setState({
+        [e.target.name]: e.target.value.toLowerCase()
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
   };
 
   handleUpload = e => {
