@@ -13,6 +13,17 @@ class PoemList extends Component {
     this.props.fetchPoems();
   }
 
+  // shouldComponentUpdate() {
+  //   if (this.props.poems.poems.length !== 0) return false;
+  //   return true;
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.poems !== this.props.poems) {
+  //     console.log("update");
+  //     this.props.fetchPoems();
+  //   }
+  // }
+
   renderPoems() {
     const poems = Array.from(this.props.poems);
     if (poems !== null) {
@@ -34,6 +45,7 @@ class PoemList extends Component {
     }
   }
   render() {
+    console.log(Array.from(this.props.poems));
     return (
       <div className="mainContainer">
         {this.renderPoems()}

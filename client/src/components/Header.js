@@ -16,10 +16,12 @@ import "../css/Header.css";
 class Header extends Component {
   state = {
     anchorEl: null
+    // anchorEl: false
   };
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
+    // this.setState({ anchorEl: true });
   };
 
   handleClose = () => {
@@ -27,6 +29,7 @@ class Header extends Component {
   };
 
   handleLogout = () => {
+    this.setState({ anchorEl: null });
     this.props.logoutUser();
   };
 

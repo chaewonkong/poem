@@ -124,8 +124,7 @@ export const postPoem = ({ id, title, content, token }) => {
     if (id) {
       axios
         .put(
-          `https://mighty-chamber-86168.herokuapp.com
-      /poems/${id}/`,
+          `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
           { title, content },
           { headers: { Authorization: "Token " + token } }
         )
@@ -179,10 +178,14 @@ export const deletePoem = ({ id, token }) => {
         headers: { Authorization: "Token " + token }
       })
       .then(
-        dispatch({
-          type: POEM_DELETE_SUCCESS,
-          payload: { delete_success: true }
-        })
+        axios
+          .get("https://mighty-chamber-86168.herokuapp.com/poems/")
+          .then(res => {
+            return dispatch({
+              type: POEM_DELETE_SUCCESS,
+              payload: { ...res.data.results, delete_success: true }
+            });
+          })
       );
   };
 };
