@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
+import Avatar from "./Avatar";
 import * as actions from "../../actions";
 
 class UserForm extends Component {
@@ -58,6 +59,7 @@ class UserForm extends Component {
       this.props.createUser(data);
     } else alert("비밀번호를 확인하세요");
   };
+
   handleUpdateUser = () => {
     const { userId, image, nickname, password, identifier } = this.state;
     this.props.updateUser({
@@ -68,6 +70,21 @@ class UserForm extends Component {
       identifier,
       token: this.props.auth.token
     });
+  };
+
+  onImageChange = e => {
+    this.setState({ image: e.target });
+  };
+
+  beforeUpload = file => {
+    this.setState({
+      image: file,
+      imageUrl: URL.createObjectURL(file)
+    });
+  };
+
+  handleImageUpload = () => {
+    console.log(this.state);
   };
   render() {
     return (
@@ -84,7 +101,7 @@ class UserForm extends Component {
           <TextField
             name="nickname"
             required
-            label="별명"
+            label="필명"
             placeholder="숭어다랑어"
             onChange={this.handleChange}
             value={this.state.nickname}
@@ -110,8 +127,13 @@ class UserForm extends Component {
             <Typography color="textSecondary" variant="h6">
               프로필 사진
             </Typography>
-            {/* <Avatar /> */}
-            <input type="file" onChange={this.handleUpload} />
+            <Avatar
+              onChange={this.onImageChange}
+              beforeUpload={this.beforeUpload}
+              handleUpload={this.handleImageUpload}
+              imageUrl={this.state.imageUrl}
+            />
+            {this.state.image ? <p>{this.state.image.name}</p> : null}
           </div>
         </div>
         <div>
