@@ -11,21 +11,18 @@ class UserForm extends Component {
     identifier: "",
     nickname: "",
     password: "",
-    passwordConf: "",
-    selectedFile: null,
-    update: false
+    passwordConf: ""
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      const { identifier, nickname, image, userId, update } = this.props;
+      const { identifier, nickname, image, userId } = this.props;
       this.setState({
         ...this.state,
         identifier,
         userId,
         nickname,
-        image,
-        update
+        image
       });
     }
   }
@@ -40,10 +37,6 @@ class UserForm extends Component {
         [e.target.name]: e.target.value
       });
     }
-  };
-
-  handleUpload = e => {
-    this.setState({ image: e.target.files[0] });
   };
 
   handleCreateUser = () => {
@@ -123,9 +116,6 @@ class UserForm extends Component {
             onChange={this.handleChange}
           />
           <div>
-            {/* <Typography color="textSecondary" variant="h6">
-              프로필 사진
-            </Typography> */}
             <Avatar
               onChange={this.onImageChange}
               beforeUpload={this.beforeUpload}
