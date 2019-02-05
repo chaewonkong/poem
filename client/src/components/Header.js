@@ -17,7 +17,7 @@ import "../css/Header.css";
 class Header extends Component {
   state = {
     anchorEl: null,
-    isLoading: true
+    isLoading: this.props.isLoading
   };
 
   handleClick = event => {
