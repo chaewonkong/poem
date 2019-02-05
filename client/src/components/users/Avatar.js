@@ -12,7 +12,7 @@ class Avatar extends Component {
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">Upload</div>
+        <div className="ant-upload-text">프로필사진</div>
       </div>
     );
     const imageUrl = this.state.imageUrl;

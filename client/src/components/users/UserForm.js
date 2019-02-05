@@ -124,9 +124,9 @@ class UserForm extends Component {
             onChange={this.handleChange}
           />
           <div>
-            <Typography color="textSecondary" variant="h6">
+            {/* <Typography color="textSecondary" variant="h6">
               프로필 사진
-            </Typography>
+            </Typography> */}
             <Avatar
               onChange={this.onImageChange}
               beforeUpload={this.beforeUpload}
