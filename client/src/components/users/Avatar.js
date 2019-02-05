@@ -1,41 +1,32 @@
-import React, { Component } from "react";
-import { Upload, Icon, message } from "antd";
-import { connect } from "react-redux";
-import * as actions from "../../actions";
+import React from "react";
+import { Upload, Icon } from "antd";
 
-class Avatar extends Component {
-  state = {
-    loading: false
-  };
+const uploadButton = (
+  <div>
+    <Icon type="plus" />
+    <div className="ant-upload-text">프로필사진</div>
+  </div>
+);
 
-  render() {
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">프로필사진</div>
-      </div>
-    );
-    return (
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        showUploadList={false}
-        beforeUpload={this.props.beforeUpload}
-        onChange={this.props.onImageChange}
-        customRequest={this.props.handleUpload}
-      >
-        {this.props.imageUrl ? (
-          <img src={this.props.imageUrl} alt="avatar" width="100%" />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
-    );
-  }
-}
+const Avatar = props => {
+  const { beforeUpload, onImageChange, handleUpload, imageUrl } = props;
+  return (
+    <Upload
+      name="avatar"
+      listType="picture-card"
+      className="avatar-uploader"
+      showUploadList={false}
+      beforeUpload={beforeUpload}
+      onChange={onImageChange}
+      customRequest={handleUpload}
+    >
+      {imageUrl ? (
+        <img src={imageUrl} alt="avatar" width="100%" />
+      ) : (
+        uploadButton
+      )}
+    </Upload>
+  );
+};
 
-export default connect(
-  null,
-  actions
-)(Avatar);
+export default Avatar;
