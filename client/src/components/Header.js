@@ -11,11 +11,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import * as actions from "../actions";
+import LinearProgressBar from "./LinearProgressBar";
 import "../css/Header.css";
 
 class Header extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    isLoading: true
   };
 
   handleClick = event => {
@@ -39,7 +41,7 @@ class Header extends Component {
   };
 
   render() {
-    const { anchorEl } = this.state;
+    const { anchorEl, isLoading } = this.state;
     return (
       <div className="nav-wrapper">
         <AppBar
@@ -112,6 +114,7 @@ class Header extends Component {
               )}
             </Toolbar>
           </div>
+          {isLoading ? <LinearProgressBar /> : null}
         </AppBar>
       </div>
     );

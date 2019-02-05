@@ -10,6 +10,7 @@ import UpdatePoem from "./poems/UpdatePoem";
 import CreateUser from "./users/CreateUser";
 import UpdateUser from "./users/UpdateUser";
 import PoemList from "./poems/PoemList";
+import LinearProgressBar from "./LinearProgressBar";
 import "../css/App.css";
 import "../favicon.ico";
 
@@ -32,6 +33,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
+
             <div className="main">
               <Route exact path="/" component={PoemList} />
               <Route path="/poems/new" component={CreatePoem} />
