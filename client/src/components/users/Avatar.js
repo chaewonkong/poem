@@ -15,7 +15,6 @@ class Avatar extends Component {
         <div className="ant-upload-text">프로필사진</div>
       </div>
     );
-    const imageUrl = this.state.imageUrl;
     return (
       <Upload
         name="avatar"
