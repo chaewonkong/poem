@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
+import AddIcon from "@material-ui/icons/Add";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
@@ -46,10 +47,19 @@ class PoemList extends Component {
         {this.renderPoems()}
         <Link to="/poems/new" className="btn-floating">
           <Fab
-            style={{ color: "#ABABAB", boxShadow: "none" }}
-            aria-label="Edit"
+            style={{
+              background: "#ABABAB",
+              // color: "#ABABAB",
+              boxShadow: "none"
+            }}
+            aria-label="add"
           >
-            <Icon style={{ color: "white" }}>edit_icon</Icon>
+            {/* <Icon
+            // style={{ color: "white" }}
+            >
+              add_circle
+            </Icon> */}
+            <AddIcon style={{ color: "white" }} />
           </Fab>
         </Link>
       </div>

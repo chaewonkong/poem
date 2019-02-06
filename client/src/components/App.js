@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { Footer } from "./";
+import Footer from "./Footer";
 import Header from "./Header";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";

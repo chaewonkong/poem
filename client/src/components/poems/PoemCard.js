@@ -18,7 +18,7 @@ const PoemCard = props => {
         marginBottom: "2vh",
         background: "#E7E7E7",
         boxShadow: "none",
-        width: "73.6%"
+        width: "90%"
       }}
     >
       <CardHeader

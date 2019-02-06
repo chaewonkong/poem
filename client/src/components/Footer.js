@@ -9,7 +9,7 @@ import styles from "../css/Footer.module.css";
 const Footer = () => {
   return (
     <div className={styles.container}>
-      <BottomNavigation showLabels>
+      <BottomNavigation style={{ background: "#E7E7E7" }} showLabels>
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
         <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
@@ -18,4 +18,4 @@ const Footer = () => {
   );
 };
 
-export { Footer };
+export default Footer;
