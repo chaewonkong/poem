@@ -9,7 +9,9 @@ import "../../css/PoemList.css";
 import { PoemCard } from "../";
 
 class PoemList extends Component {
-  state = {};
+  state = {
+    btnHover: false
+  };
 
   componentDidMount() {
     this.props.fetchPoems();
@@ -18,6 +20,25 @@ class PoemList extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.poems.length !== this.props.poems.length) {
       this.props.fetchPoems();
+    }
+  }
+
+  onHover() {
+    this.setState({ btnHover: true });
+  }
+  onHoverDown() {
+    this.setState({ btnHover: false });
+  }
+
+  renderCreateBtn() {
+    if (this.state.btnHover) {
+      return (
+        <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8A%E1%85%B3%E1%84%80%E1%85%B5+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB+%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC_%E1%84%8B%E1%85%A9%E1%84%87%E1%85%A5%E1%84%89%E1%85%B5.svg" />
+      );
+    } else {
+      return (
+        <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8A%E1%85%B3%E1%84%80%E1%85%B5+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB+%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC_%E1%84%8B%E1%85%A9%E1%84%87%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%AB.svg" />
+      );
     }
   }
 
@@ -45,8 +66,14 @@ class PoemList extends Component {
     return (
       <div className="mainContainer">
         {this.renderPoems()}
+
         <Link to="/poems/new" className="btn-floating">
-          <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_css.svg" />
+          <div
+            onMouseOver={this.onHover.bind(this)}
+            onMouseLeave={this.onHoverDown.bind(this)}
+          >
+            {this.renderCreateBtn()}
+          </div>
         </Link>
       </div>
     );

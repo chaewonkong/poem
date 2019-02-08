@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Footer from "./Footer";
 import Header from "./Header";
-import LinearProgressBar from "./LinearProgressBar";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
 import UpdatePoem from "./poems/UpdatePoem";
@@ -30,33 +29,32 @@ class App extends Component {
   render() {
     const { container, headerStyle, bodyStyle, footerStyle } = styles;
     return (
-      <div style={container}>
-        <BrowserRouter>
-          <div>
-            <div style={headerStyle}>
-              <Header />
-            </div>
-            <div className="main" style={bodyStyle}>
-              <Route exact path="/" component={PoemList} />
-              <Route path="/poems/new" component={CreatePoem} />
-              <Route path="/poems/update" component={UpdatePoem} />
-              <Route path="/login" component={LoginForm} />
-              <Route path="/create_user" component={CreateUser} />
-              <Route path="/update_user" component={UpdateUser} />
-            </div>
-            <div style={footerStyle}>
-              <Footer />
-            </div>
+      <BrowserRouter>
+        <div style={container}>
+          <div style={headerStyle}>
+            <Header />
           </div>
-        </BrowserRouter>
-      </div>
+          <div className="main" style={bodyStyle}>
+            <Route exact path="/" component={PoemList} />
+            <Route path="/poems/new" component={CreatePoem} />
+            <Route path="/poems/update" component={UpdatePoem} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/create_user" component={CreateUser} />
+            <Route path="/update_user" component={UpdateUser} />
+          </div>
+          <div style={footerStyle}>
+            <Footer />
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
 const styles = {
   container: {
-    display: "flex"
+    display: "flex",
+    flexDirection: "column"
   },
   headerStyle: {
     flex: 1
