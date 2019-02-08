@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Footer from "./Footer";
 import Header from "./Header";
+import LinearProgressBar from "./LinearProgressBar";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
 import UpdatePoem from "./poems/UpdatePoem";
@@ -27,13 +28,15 @@ class App extends Component {
   // }
 
   render() {
+    const { container, headerStyle, bodyStyle, footerStyle } = styles;
     return (
-      <div>
+      <div style={container}>
         <BrowserRouter>
           <div>
-            <Header />
-
-            <div className="main">
+            <div style={headerStyle}>
+              <Header />
+            </div>
+            <div className="main" style={bodyStyle}>
               <Route exact path="/" component={PoemList} />
               <Route path="/poems/new" component={CreatePoem} />
               <Route path="/poems/update" component={UpdatePoem} />
@@ -41,13 +44,31 @@ class App extends Component {
               <Route path="/create_user" component={CreateUser} />
               <Route path="/update_user" component={UpdateUser} />
             </div>
-            <Footer />
+            <div style={footerStyle}>
+              <Footer />
+            </div>
           </div>
         </BrowserRouter>
       </div>
     );
   }
 }
+
+const styles = {
+  container: {
+    display: "flex"
+  },
+  headerStyle: {
+    flex: 1
+  },
+  bodyStyle: {
+    flex: 8
+  },
+  footerStyle: {
+    flex: 1
+  }
+};
+
 const mapStateToProps = state => {
   return state;
 };

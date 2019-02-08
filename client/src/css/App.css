@@ -8,8 +8,8 @@ html, body {
     background: #F7F7F7;
 }
 .main {
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    /* padding-top: 10vh; */
+    /* padding-bottom: 10vh; */
     width: 100%;
     margin: 0 auto;
 }

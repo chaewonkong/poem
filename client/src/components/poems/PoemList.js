@@ -46,21 +46,7 @@ class PoemList extends Component {
       <div className="mainContainer">
         {this.renderPoems()}
         <Link to="/poems/new" className="btn-floating">
-          <Fab
-            style={{
-              background: "#ABABAB",
-              // color: "#ABABAB",
-              boxShadow: "none"
-            }}
-            aria-label="add"
-          >
-            {/* <Icon
-            // style={{ color: "white" }}
-            >
-              add_circle
-            </Icon> */}
-            <AddIcon style={{ color: "white" }} />
-          </Fab>
+          <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_css.svg" />
         </Link>
       </div>
     );

@@ -47,7 +47,7 @@ class Header extends Component {
         <AppBar
           position="fixed"
           style={{
-            background: "#E7E7E7",
+            background: "#B9F9F9",
             boxShadow: "none"
           }}
         >
@@ -59,18 +59,22 @@ class Header extends Component {
           >
             <Toolbar className="toolbar">
               <IconButton color="inherit" aria-label="Menu">
-                <MenuIcon style={{ color: "#707070" }} />
+                <MenuIcon style={{ color: "#A4A4A4" }} />
               </IconButton>
               <Link
                 to="/"
                 className="brand-logo"
                 style={{ textDecoration: "none" }}
               >
-                <Typography variant="h6" style={{ color: "#707070" }}>
+                <Typography variant="h6" style={{ color: "#A4A4A4" }}>
                   하루시작
                 </Typography>
               </Link>
-              {this.props.nickname ? (
+              <img
+                alt="search"
+                src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
+              />
+              {/* {this.props.nickname ? (
                 <div>
                   <div>
                     <Button
@@ -107,11 +111,11 @@ class Header extends Component {
                   to="/login"
                   style={{ color: "black", textDecoration: "none" }}
                 >
-                  <Button color="inherit" style={{ color: "#707070" }}>
+                  <Button color="inherit" style={{ color: "#A4A4A4" }}>
                     로그인
                   </Button>
                 </Link>
-              )}
+              )} */}
             </Toolbar>
           </div>
           {isLoading ? <LinearProgressBar /> : null}

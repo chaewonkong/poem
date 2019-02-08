@@ -42,12 +42,9 @@ const PoemCard = props => {
         ))}
       </CardContent>
       <CardActions disableActionSpacing>
-        <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="Share">
-          <ShareIcon />
-        </IconButton>
+        <div>
+          <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8C%E1%85%A9%E1%87%82%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg" />
+        </div>
       </CardActions>
     </Card>
   );
