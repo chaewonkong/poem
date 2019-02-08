@@ -27,7 +27,7 @@ class App extends Component {
   // }
 
   render() {
-    const { container, headerStyle, bodyStyle, footerStyle } = styles;
+    const { container, headerStyle, bodyStyle } = styles;
     return (
       <BrowserRouter>
         <div style={container}>
@@ -42,9 +42,9 @@ class App extends Component {
             <Route path="/create_user" component={CreateUser} />
             <Route path="/update_user" component={UpdateUser} />
           </div>
-          <div style={footerStyle}>
+          {/* <div style={footerStyle}>
             <Footer />
-          </div>
+          </div> */}
         </div>
       </BrowserRouter>
     );
@@ -61,10 +61,10 @@ const styles = {
   },
   bodyStyle: {
     flex: 8
-  },
-  footerStyle: {
-    flex: 1
   }
+  // footerStyle: {
+  //   flex: 1
+  // }
 };
 
 const mapStateToProps = state => {
