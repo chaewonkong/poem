@@ -11,12 +11,11 @@ import "../css/Header.css";
 
 class Header extends Component {
   state = {
-    anchorEl: null,
     isLoading: this.props.isLoading
   };
 
   render() {
-    const { anchorEl, isLoading } = this.state;
+    const { isLoading } = this.state;
 
     return (
       <div className="nav-wrapper">
@@ -35,9 +34,6 @@ class Header extends Component {
           >
             <Toolbar className="toolbar">
               {this.props.nickname ? (
-                // <IconButton color="inherit" aria-label="Menu">
-                //   <MenuIcon style={{ color: "#A4A4A4" }} />
-                // </IconButton>
                 <UserMenu />
               ) : (
                 <Link to="/login">

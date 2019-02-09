@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Drawer } from "antd";
+import { Drawer, Button } from "antd";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
+import * as actions from "../../actions";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };
@@ -26,6 +27,14 @@ class UserMenu extends Component {
     });
   };
 
+  handleLogoutUser = () => {
+    this.props.logoutUser(this.props.auth.token);
+  };
+  handleDeleteUser = () => {
+    const { pk, token } = this.props.auth;
+    this.props.deleteUser({ userId: pk, token });
+  };
+
   render() {
     return (
       <div>
@@ -45,19 +54,24 @@ class UserMenu extends Component {
           visible={this.state.visible}
         >
           <Typography variant="h6" style={{ color: "#A4A4A4" }}>
-            {this.props.nickname}
+            {this.props.auth.nickname}
           </Typography>
           <br />
           <p>모아보기</p>
           <p>구독</p>
           <p>담아온 시</p>
           <p>설정</p>
+          <p onClick={this.handleLogoutUser}>로그아웃</p>
+          <p onClick={this.handleDeleteUser}>회원탈퇴</p>
         </Drawer>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => state.auth;
+const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(UserMenu);
+export default connect(
+  mapStateToProps,
+  actions
+)(UserMenu);

@@ -29,12 +29,18 @@ export const loginUser = ({ identifier, password }) => {
   };
 };
 
-export const logoutUser = () => {
+export const logoutUser = token => {
   return function(dispatch) {
-    localStorage.setItem("TOKEN", "");
-    dispatch({
-      type: LOGOUT_SUCCESS
-    });
+    axios
+      .get("https://mighty-chamber-86168.herokuapp.com/auth/logout/", {
+        headers: { Authorization: "Token " + token }
+      })
+      .then(() => {
+        localStorage.setItem("TOKEN", "");
+        return dispatch({
+          type: LOGOUT_SUCCESS
+        });
+      });
   };
 };
 
@@ -107,7 +113,7 @@ export const deleteUser = ({ userId, token }) => {
       })
       .then(() => {
         localStorage.setItem("TOKEN", "");
-        dispatch({ type: DELETE_USER });
+        return dispatch({ type: DELETE_USER });
       });
   };
 };
