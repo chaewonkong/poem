@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Drawer, Button } from "antd";
+import { Drawer, Button, Avatar } from "antd";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
@@ -53,9 +53,12 @@ class UserMenu extends Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <Typography variant="h6" style={{ color: "#A4A4A4" }}>
-            {this.props.auth.nickname}
-          </Typography>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Avatar src={this.props.auth.image} />
+            <Typography variant="h6" style={{ color: "#A4A4A4" }}>
+              {this.props.auth.nickname}
+            </Typography>
+          </div>
           <br />
           <p>모아보기</p>
           <p>구독</p>
