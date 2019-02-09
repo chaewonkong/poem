@@ -8,7 +8,7 @@ const uploadButton = (
   </div>
 );
 
-const Avatar = props => {
+const UploadProfile = props => {
   const { beforeUpload, onImageChange, handleUpload, imageUrl } = props;
   return (
     <Upload
@@ -29,4 +29,4 @@ const Avatar = props => {
   );
 };
 
-export default Avatar;
+export default UploadProfile;
