@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import * as actions from "../actions";
 import UserMenu from "./users/UserMenu";
@@ -37,12 +35,13 @@ class Header extends Component {
           >
             <Toolbar className="toolbar">
               {this.props.nickname ? (
-                <IconButton color="inherit" aria-label="Menu">
-                  <MenuIcon style={{ color: "#A4A4A4" }} />
-                </IconButton>
+                // <IconButton color="inherit" aria-label="Menu">
+                //   <MenuIcon style={{ color: "#A4A4A4" }} />
+                // </IconButton>
+                <UserMenu />
               ) : (
                 <Link to="/login">
-                  <Typography variant="p" styles={{ color: "#A4A4A4" }}>
+                  <Typography component="p" styles={{ color: "#A4A4A4" }}>
                     로그인
                   </Typography>
                 </Link>
