@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import Avatar from "./Avatar";
+import UploadProfile from "./UploadProfile";
 import * as actions from "../../actions";
 
 class UserForm extends Component {
@@ -80,43 +80,64 @@ class UserForm extends Component {
   };
   render() {
     return (
-      <div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <TextField
-            name="identifier"
-            required
-            label="id"
-            placeholder="k0000"
-            onChange={this.handleChange}
-            value={this.state.identifier}
-          />
-          <TextField
-            name="nickname"
-            required
-            label="필명"
-            placeholder="숭어다랑어"
-            onChange={this.handleChange}
-            value={this.state.nickname}
-          />
-          <TextField
-            name="password"
-            pattern="[0-9a-z]"
-            required
-            type="password"
-            label="비밀번호"
-            placeholder="알파벳 소문자/숫자"
-            onChange={this.handleChange}
-          />
-          <TextField
-            name="passwordConf"
-            required
-            type="password"
-            label="비밀번호 확인"
-            placeholder="알파벳 소문자/숫자"
-            onChange={this.handleChange}
-          />
-          <div>
-            <Avatar
+      <div
+        style={{
+          display: "flex",
+          // width: "100%",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <TextField
+              name="identifier"
+              required
+              label="id"
+              placeholder="k0000"
+              onChange={this.handleChange}
+              value={this.state.identifier}
+            />
+            <TextField
+              name="nickname"
+              required
+              label="필명"
+              placeholder="숭어다랑어"
+              onChange={this.handleChange}
+              value={this.state.nickname}
+            />
+            <TextField
+              name="password"
+              pattern="[0-9a-z]"
+              required
+              type="password"
+              label="비밀번호"
+              placeholder="알파벳 소문자/숫자"
+              onChange={this.handleChange}
+            />
+            <TextField
+              name="passwordConf"
+              required
+              type="password"
+              label="비밀번호 확인"
+              placeholder="알파벳 소문자/숫자"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "3vh"
+            }}
+          >
+            <UploadProfile
               onChange={this.onImageChange}
               beforeUpload={this.beforeUpload}
               handleUpload={this.handleImageUpload}
