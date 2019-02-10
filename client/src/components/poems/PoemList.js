@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
 import AddIcon from "@material-ui/icons/Add";
@@ -6,15 +6,18 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import "../../css/PoemList.css";
-import { PoemCard } from "../";
+import PoemCard from "./PoemCard";
+import Loading from "../Loading";
 
 class PoemList extends Component {
   state = {
-    btnHover: false
+    btnHover: false,
+    isLoading: true
   };
 
   componentDidMount() {
     this.props.fetchPoems();
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -64,18 +67,23 @@ class PoemList extends Component {
   }
   render() {
     return (
-      <div className="mainContainer">
-        {this.renderPoems()}
-
-        <Link to="/poems/new" className="btn-floating">
-          <div
-            onMouseOver={this.onHover.bind(this)}
-            onMouseLeave={this.onHoverDown.bind(this)}
-          >
-            {this.renderCreateBtn()}
+      <Fragment>
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <div className="mainContainer">
+            {this.renderPoems()}
+            <Link to="/poems/new" className="btn-floating">
+              <div
+                onMouseOver={this.onHover.bind(this)}
+                onMouseLeave={this.onHoverDown.bind(this)}
+              >
+                {this.renderCreateBtn()}
+              </div>
+            </Link>
           </div>
-        </Link>
-      </div>
+        )}
+      </Fragment>
     );
   }
 }

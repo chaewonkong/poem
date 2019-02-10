@@ -50,4 +50,4 @@ const PoemCard = props => {
   );
 };
 
-export { PoemCard };
+export default PoemCard;
