@@ -30,8 +30,8 @@ class CreatePoem extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 0 }}>
-        <div
+      <div>
+        {/* <div
           style={{
             display: "flex",
             justifyContent: "space-around",
@@ -44,12 +44,20 @@ class CreatePoem extends Component {
           <Typography style={{ color: "#A4A4A4" }} variant="h6">
             자유창작 모드
           </Typography>
-        </div>
-        <div>{this.renderForm()}</div>
+        </div> */}
+        {this.renderForm()}
       </div>
     );
   }
 }
+// const styles = {
+//   container: {
+//     display: "flex",
+//     width: "100%",
+//     flexDirection: "column",
+//     alignItems: "center"
+//   }
+// };
 const mapStateToProps = state => {
   return { poems: state.poems, auth: state.auth };
 };
