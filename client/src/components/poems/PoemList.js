@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
 import "../../css/PoemList.css";
 import PoemCard from "./PoemCard";
@@ -75,6 +76,16 @@ class PoemList extends Component {
           <Loading />
         ) : (
           <div className="mainContainer">
+            <p
+              style={{
+                width: "90%",
+                float: "left",
+                color: "#ABABAB",
+                fontSize: 20
+              }}
+            >
+              # 20xx년 xx월 xx일, 오늘
+            </p>
             {this.renderPoems()}
             <Link to="/poems/new" className="btn-floating">
               <div
