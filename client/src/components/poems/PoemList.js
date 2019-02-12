@@ -91,7 +91,8 @@ class PoemList extends Component {
               <div
                 onMouseOver={this.onHover.bind(this)}
                 onMouseLeave={this.onHoverDown.bind(this)}
-                onTouchStart={() => {}}
+                onTouchStart={this.onHover.bind(this)}
+                onTouchEnd={this.onHoverDown.bind(this)}
               >
                 {this.renderCreateBtn()}
               </div>
