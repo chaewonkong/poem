@@ -89,8 +89,8 @@ class PoemList extends Component {
             {this.renderPoems()}
             <Link to="/poems/new" className="btn-floating">
               <div
-                onMouseOver={this.onHover.bind(this)}
-                onMouseLeave={this.onHoverDown.bind(this)}
+                onPointerEnter={this.onHover.bind(this)}
+                onPointerOut={this.onHoverDown.bind(this)}
                 onTouchStart={this.onHover.bind(this)}
                 onTouchEnd={this.onHoverDown.bind(this)}
               >
