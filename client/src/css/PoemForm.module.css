@@ -1,0 +1,16 @@
+.container {
+    width: 90%
+  }
+
+/* .formStyle {
+    width: "90%"
+  }
+
+.linkStyle {
+    text-decoration: "none"
+  } */
+
+  .btnCreate {
+    display: flex;
+    justify-content: center;
+}

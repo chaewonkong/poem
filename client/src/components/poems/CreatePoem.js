@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
+import styles from "../../css/CreatePoem.module.css";
 
 class CreatePoem extends Component {
   state = {
@@ -30,7 +31,7 @@ class CreatePoem extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         {/* <div
           style={{
             display: "flex",
