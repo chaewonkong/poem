@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PoemForm from "./PoemForm";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import AppBar from "@material-ui/core/AppBar";
+import { Typography } from "@material-ui/core/Typography";
+import { Tabs } from "antd";
 import styles from "../../css/CreatePoem.module.css";
+
+const TabPane = Tabs.TabPane;
 
 class CreatePoem extends Component {
   state = {
@@ -28,25 +28,34 @@ class CreatePoem extends Component {
   };
 
   handleChange = () => {};
-
+  callback = () => {};
   render() {
     return (
       <div className={styles.container}>
-        {/* <div
-          style={{
+        <Tabs
+          defaultActiveKey="1"
+          onChange={this.callback}
+          tabBarStyle={{
             display: "flex",
-            justifyContent: "space-around",
-            background: "#8EF5F8"
+
+            justifyContent: "center"
           }}
         >
-          <Typography style={{ color: "#A4A4A4" }} variant="h6">
-            길라잡이 모드
-          </Typography>
-          <Typography style={{ color: "#A4A4A4" }} variant="h6">
-            자유창작 모드
-          </Typography>
-        </div> */}
-        {this.renderForm()}
+          <TabPane
+            tab="길라잡이 모드"
+            key="1"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            {this.renderForm()}
+          </TabPane>
+          <TabPane tab="자유창작 모드" key="2">
+            공백
+          </TabPane>
+        </Tabs>
       </div>
     );
   }
