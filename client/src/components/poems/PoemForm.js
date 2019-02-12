@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import * as actions from "../../actions";
-import PoemSubject from "./PoemSubject";
+import Typography from "@material-ui/core/Typography";
 import styles from "../../css/PoemForm.module.css";
 
 class PoemForm extends Component {
@@ -55,7 +55,7 @@ class PoemForm extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <PoemSubject title="꽃" />
+        {this.props.showTheme ? <Typography variant="h6">꽃</Typography> : null}
         <form className={styles.formStyle}>
           <TextField
             id="title"

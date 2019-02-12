@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Drawer, Button, Avatar } from "antd";
+import { Drawer, Avatar } from "antd";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
@@ -67,7 +67,10 @@ class UserMenu extends Component {
               alignItems: "center"
             }}
           >
-            <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%86%E1%85%A9%E1%84%8B%E1%85%A1%E1%84%87%E1%85%A9%E1%84%80%E1%85%B5+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg" />
+            <img
+              alt="모아보기"
+              src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%86%E1%85%A9%E1%84%8B%E1%85%A1%E1%84%87%E1%85%A9%E1%84%80%E1%85%B5+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
+            />
             <p>모아보기</p>
           </div>
           <div
@@ -77,7 +80,10 @@ class UserMenu extends Component {
               alignItems: "center"
             }}
           >
-            <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%80%E1%85%AE%E1%84%83%E1%85%A9%E1%86%A8+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg" />
+            <img
+              alt="구독"
+              src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%80%E1%85%AE%E1%84%83%E1%85%A9%E1%86%A8+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
+            />
             <p>구독</p>
           </div>
           <div
@@ -87,7 +93,10 @@ class UserMenu extends Component {
               alignItems: "center"
             }}
           >
-            <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%A9%E1%86%AB%E1%84%89%E1%85%B5+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg" />
+            <img
+              alt="담아온 시"
+              src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%A9%E1%86%AB%E1%84%89%E1%85%B5+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
+            />
             <p>담아온 시</p>
           </div>
           <div
@@ -97,7 +106,10 @@ class UserMenu extends Component {
               alignItems: "center"
             }}
           >
-            <img src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg" />
+            <img
+              alt="설정"
+              src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
+            />
             <p>설정</p>
           </div>
           <p onClick={this.handleLogoutUser}>로그아웃</p>
