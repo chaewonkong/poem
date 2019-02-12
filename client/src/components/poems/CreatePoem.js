@@ -29,12 +29,16 @@ class CreatePoem extends Component {
           onChange={this.callback}
           tabBarStyle={{
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
+            fontFamily: "'Jeju Myeongjo', serif",
+            color: "#707070"
           }}
         >
           <TabPane tab="길라잡이 모드" key="1" className={styles.tabStyle}>
-            <Typography variant="h6">글감</Typography>
-            <p style={{ fontSize: 20 }}>
+            <Typography variant="h6" style={{ color: "#707070" }}>
+              글감
+            </Typography>
+            <p style={{ fontSize: 20, color: "#ABABAB" }}>
               자세히 보아야 예쁘다.
               <br /> 오래 보아야 사랑스럽다. <br />
               너도 그렇다. <br />
