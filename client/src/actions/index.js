@@ -109,7 +109,9 @@ export const deleteUser = ({ userId, token }) => {
       })
       .then(() => {
         localStorage.setItem("TOKEN", "");
-        return dispatch({ type: DELETE_USER });
+        return dispatch({
+          type: DELETE_USER
+        });
       });
   };
 };

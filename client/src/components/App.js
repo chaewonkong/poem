@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { container, headerStyle, bodyStyle } = styles;
     return (
       <BrowserRouter>
