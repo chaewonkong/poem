@@ -18,7 +18,10 @@ class PoemList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.poems.length !== this.props.poems.length) {
+    if (
+      prevProps.poems.length !== this.props.poems.length ||
+      prevProps.auth !== this.props.auth
+    ) {
       this.props.fetchPoems();
     }
   }
