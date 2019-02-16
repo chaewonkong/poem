@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
 import "../../css/PoemList.css";
 import PoemCard from "./PoemCard";

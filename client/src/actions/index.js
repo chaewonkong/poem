@@ -1,15 +1,11 @@
 import axios from "axios";
 import {
-  FETCH_POEMS,
-  POST_POEM_SUCCESS,
-  CREATE_USER,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  POEM_DELETE_SUCCESS,
-  FETCH_USER_SUCCES,
-  POEM_UPDATE,
-  UPDATE_USER,
-  DELETE_USER
+  FETCH_USER,
+  DELETE_USER,
+  FETCH_POEMS,
+  POEM_UPDATE
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => {
@@ -55,7 +51,7 @@ export const createUser = data => {
       .then(res => {
         localStorage.setItem("TOKEN", res.data.token);
         return dispatch({
-          type: CREATE_USER,
+          type: FETCH_USER,
           payload: { ...res, redirect: "/" }
         });
       });
@@ -69,7 +65,7 @@ export const fetchUser = token => {
         headers: { Authorization: "Token " + token }
       })
       .then(res =>
-        dispatch({ type: FETCH_USER_SUCCES, payload: { ...res.data, token } })
+        dispatch({ type: FETCH_USER, payload: { ...res.data, token } })
       );
   };
 };
@@ -99,7 +95,7 @@ export const updateUser = ({
       )
       .then(res =>
         dispatch({
-          type: UPDATE_USER,
+          type: FETCH_USER,
           payload: { ...res.data, userId }
         })
       );
@@ -136,7 +132,7 @@ export const postPoem = ({ id, title, content, token }) => {
         )
         .then(res =>
           dispatch({
-            type: POST_POEM_SUCCESS,
+            type: FETCH_POEMS,
             payload: { ...res.dada, post_success: true }
           })
         );
@@ -149,7 +145,7 @@ export const postPoem = ({ id, title, content, token }) => {
         )
         .then(res =>
           dispatch({
-            type: POST_POEM_SUCCESS,
+            type: FETCH_POEMS,
             payload: {
               ...res.data,
               post_success: true
@@ -188,7 +184,7 @@ export const deletePoem = ({ id, token }) => {
           .get("https://mighty-chamber-86168.herokuapp.com/poems/")
           .then(res => {
             return dispatch({
-              type: POEM_DELETE_SUCCESS,
+              type: FETCH_POEMS,
               payload: { ...res.data.results, delete_success: true }
             });
           })
