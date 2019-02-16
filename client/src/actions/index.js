@@ -52,7 +52,7 @@ export const createUser = data => {
         localStorage.setItem("TOKEN", res.data.token);
         return dispatch({
           type: FETCH_USER,
-          payload: { ...res, redirect: "/" }
+          payload: { ...res.data, redirect: "/" }
         });
       });
   };

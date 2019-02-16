@@ -19,14 +19,8 @@ class App extends Component {
     if (token) this.props.fetchUser(token);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.auth !== this.props.auth) {
-  //     const token = localStorage.getItem("TOKEN");
-  //     if (token) this.props.fetchUser(token);
-  //   }
-  // }
-
   render() {
+    console.log(this.props);
     const { container, headerStyle, bodyStyle } = styles;
     return (
       <BrowserRouter>
