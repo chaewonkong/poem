@@ -121,8 +121,8 @@ export const postPoem = ({ title, content, token }) => async dispatch => {
 };
 
 export const updatePoem = ({ id, title, content, token }) => async dispatch => {
-  const res = await axios.post(
-    "https://mighty-chamber-86168.herokuapp.com/poems/",
+  const res = await axios.put(
+    `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
     { title, content },
     { headers: { Authorization: "Token " + token } }
   );

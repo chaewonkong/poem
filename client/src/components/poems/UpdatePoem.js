@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
 import PoemForm from "./PoemForm";
 
 class UpdatePoem extends Component {
@@ -33,7 +32,4 @@ const mapStateToProps = state => {
   return { poems: state.poems, auth: state.auth };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(UpdatePoem);
+export default connect(mapStateToProps)(UpdatePoem);
