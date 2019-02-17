@@ -115,7 +115,7 @@ export const postPoem = ({ title, content, token }) => async dispatch => {
     type: FETCH_POEMS,
     payload: {
       ...res.data,
-      post_success: true
+      redirect: "/"
     }
   });
 };
@@ -130,7 +130,7 @@ export const updatePoem = ({ id, title, content, token }) => async dispatch => {
     type: FETCH_POEMS,
     payload: {
       ...res.data,
-      post_success: true
+      redirect: "/"
     }
   });
 };

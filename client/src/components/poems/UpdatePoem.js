@@ -17,8 +17,8 @@ class UpdatePoem extends Component {
   }
 
   renderForm = () => {
-    if (this.props.poems.post_success) {
-      return <Redirect push to="/" />;
+    if (this.props.poems.redirect) {
+      return <Redirect push to={this.props.poems.redirect} />;
     }
     return <PoemForm variant="update" />;
   };

@@ -19,8 +19,8 @@ class CreatePoem extends Component {
   renderForm = free => {
     if (this.props.auth.token === undefined) {
       return <Redirect push to="/login" />;
-    } else if (this.props.poems.post_success) {
-      return <Redirect push to="/" />;
+    } else if (this.props.poems.redirect) {
+      return <Redirect push to={this.props.poems.redirect} />;
     } else {
       const { user, title, content } = this.state;
       return (
