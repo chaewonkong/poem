@@ -79,7 +79,6 @@ export const updateUser = ({
   token
 }) => {
   return function(dispatch) {
-    console.log({ userId, image, nickname, password, identifier, token });
     axios
       .put(
         `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
@@ -175,21 +174,13 @@ export const updatePoem = ({ id, token }) => {
       );
   };
 };
+
 export const deletePoem = ({ id, token }) => {
   return function(dispatch) {
     axios
       .delete(`https://mighty-chamber-86168.herokuapp.com/poems/${id}/`, {
         headers: { Authorization: "Token " + token }
       })
-      .then(
-        axios
-          .get("https://mighty-chamber-86168.herokuapp.com/poems/")
-          .then(res => {
-            return dispatch({
-              type: FETCH_POEMS,
-              payload: { ...res.data.results, delete_success: true }
-            });
-          })
-      );
+      .then(dispatch({ type: FETCH_POEMS }));
   };
 };
