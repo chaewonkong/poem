@@ -1,4 +1,4 @@
-import { FETCH_POEMS, POEM_UPDATE } from "../actions/types";
+import { FETCH_POEMS, FETCH_POEM } from "../actions/types";
 
 const INITIAL_STATE = { poems: [] };
 
@@ -6,7 +6,7 @@ export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_POEMS:
       return action.payload || INITIAL_STATE;
-    case POEM_UPDATE:
+    case FETCH_POEM:
       return action.payload;
     default:
       return state;

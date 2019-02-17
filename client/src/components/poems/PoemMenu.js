@@ -19,7 +19,7 @@ class PoemMenu extends Component {
   };
 
   handleUpdate = () => {
-    this.props.updatePoem({ id: this.props.id, token: this.props.auth.token });
+    this.props.fetchPoem({ id: this.props.id, token: this.props.auth.token });
   };
 
   handleClick = event => {

@@ -44,12 +44,20 @@ class PoemForm extends Component {
   };
 
   handleSubmit = () => {
-    this.props.postPoem({
-      id: this.props.poems.id || undefined,
-      token: this.props.auth.token,
-      title: this.state.title,
-      content: this.state.content.replace(/\n/g, "\n")
-    });
+    if (this.props.variant === "create") {
+      this.props.postPoem({
+        token: this.props.auth.token,
+        title: this.state.title,
+        content: this.state.content.replace(/\n/g, "\n")
+      });
+    } else if (this.props.variant === "update") {
+      this.props.updatePoem({
+        id: this.props.poems.id || undefined,
+        token: this.props.auth.token,
+        title: this.state.title,
+        content: this.state.content.replace(/\n/g, "\n")
+      });
+    }
   };
 
   render() {

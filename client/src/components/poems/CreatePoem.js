@@ -45,10 +45,20 @@ class CreatePoem extends Component {
               <br />
               나태주, "들꽃"
             </p>
-            <PoemForm user={user} showTheme={false} content={content} />
+            <PoemForm
+              variant="create"
+              user={user}
+              showTheme={false}
+              content={content}
+            />
           </TabPane>
           <TabPane tab="자유창작 모드" key="2" className={styles.tabStyle}>
-            <PoemForm user={user} showTheme={true} content={content} />
+            <PoemForm
+              variant="create"
+              user={user}
+              showTheme={true}
+              content={content}
+            />
           </TabPane>
         </Tabs>
       );
