@@ -73,7 +73,7 @@ class PoemForm extends Component {
             multiline
             margin="normal"
             variant="outlined"
-            placeholder="서시"
+            placeholder="꽃"
             onChange={this.handleChange}
             value={this.state.title}
           />
@@ -85,10 +85,10 @@ class PoemForm extends Component {
             multiline
             margin="normal"
             variant="outlined"
-            rows="10"
+            rows="12"
             onChange={this.handleChange}
             value={this.state.content}
-            placeholder={`죽는 날까지 하늘을 우러러\n한점 부끄럼이 없기를\n잎새에 이는 바람에도\n나는 괴로워했다\n별을 노래하는 마음으로\n모든 죽어가는 것을 사랑해야지\n그리고 나한테 주어진 길을\n걸어가야겠다.\n\n오늘 밤에도 별이 바람에 스치운다.`}
+            placeholder={`꽃을 받았을 때 기분이 좋은 건\n단순히 꽃이 예뻐서가 아니다.\n약속 시간보다 일찍나와\n꽃집에 들렀을 너의 소중한 시간,\n나를 생각하며 신중하게 골랐을 마음,\n활짝 웃을 내 표정을 기대하며 걸었을 발걸음,\n너에게 난 참 소중한 사람이라고\n네가 말하지 않아도\n꽃이 전부 말해주니까\n\n -김요비`}
           />
         </form>
         <div className={styles.btnCreate}>
