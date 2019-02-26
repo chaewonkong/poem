@@ -131,7 +131,6 @@ class UserMenu extends Component {
             />
             <p>설정</p>
           </div>
-          <p onClick={this.handleLogoutUser}>로그아웃</p>
           <p onClick={this.handleDeleteUser}>회원탈퇴</p>
         </Drawer>
       </div>
