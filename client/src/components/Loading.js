@@ -21,6 +21,8 @@ const Loading = () => {
 };
 const styles = {
   container: {
+    width: "100%",
+    background: "rgb(236, 236, 236)",
     display: "flex",
     flexDirection: "column",
     marginTop: "15vh",

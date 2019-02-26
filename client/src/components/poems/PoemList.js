@@ -14,7 +14,7 @@ class PoemList extends Component {
 
   componentDidMount() {
     this.props.fetchPoems();
-    setTimeout(() => this.setState({ isLoading: false }), 1000);
+    setTimeout(() => this.setState({ isLoading: false }), 5000);
   }
 
   componentDidUpdate(prevProps, prevState) {
