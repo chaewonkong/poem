@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import PoemForm from "./PoemForm";
 import Typography from "@material-ui/core/Typography";
 import { Tabs } from "antd";
-import styles from "../../css/CreatePoem.module.css";
+import "../../css/CreatePoem.css";
+import { Modal, Button } from "antd";
 
 const TabPane = Tabs.TabPane;
 
@@ -13,12 +14,51 @@ class CreatePoem extends Component {
     user: "",
     title: "",
     content: "",
-    value: 0
+    value: 0,
+    visible: true
+  };
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = e => {
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = e => {
+    this.setState({
+      visible: false
+    });
   };
 
   renderForm = free => {
     if (this.props.auth.token === undefined) {
-      return <Redirect push to="/login" />;
+      return (
+        <Modal
+          className="modal"
+          width="240px"
+          centered
+          cancelText="아니요"
+          okText="네"
+          closable={false}
+          okButtonProps={{
+            type: "default",
+            href: "/login"
+          }}
+          cancelButtonProps={{ type: "default", href: "/" }}
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>
+            로그인이 필요한 서비스입니다. <br /> 로그인 하시겠습니까?
+          </p>
+        </Modal>
+      );
     } else if (this.props.poems.redirect) {
       return <Redirect push to={this.props.poems.redirect} />;
     } else {
@@ -34,7 +74,7 @@ class CreatePoem extends Component {
             color: "#707070"
           }}
         >
-          <TabPane tab="길라잡이 모드" key="1" className={styles.tabStyle}>
+          <TabPane tab="길라잡이 모드" key="1" className="tabStyle">
             <Typography variant="h6" style={{ color: "#707070" }}>
               글감
             </Typography>
@@ -52,7 +92,7 @@ class CreatePoem extends Component {
               content={content}
             />
           </TabPane>
-          <TabPane tab="자유창작 모드" key="2" className={styles.tabStyle}>
+          <TabPane tab="자유창작 모드" key="2" className="tabStyle">
             <PoemForm
               variant="create"
               user={user}
@@ -68,7 +108,7 @@ class CreatePoem extends Component {
   handleChange = () => {};
   callback = () => {};
   render() {
-    return <div className={styles.container}>{this.renderForm()}</div>;
+    return <div className="container">{this.renderForm()}</div>;
   }
 }
 
