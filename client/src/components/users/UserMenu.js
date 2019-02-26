@@ -39,7 +39,7 @@ class UserMenu extends Component {
   render() {
     const menu = (
       <div>
-        <Button size="5vw" onClick={this.handleLogoutUser}>
+        <Button size="large" onClick={this.handleLogoutUser}>
           로그아웃
         </Button>
       </div>
