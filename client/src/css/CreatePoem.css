@@ -10,18 +10,23 @@
     align-items: center;
   }
 
-.ant-modal-footer > div {
+.ant-modal-body {
+  padding: 24px 24px 12px 24px !important;
+}
+.modal-div {
   display: flex;
+  border-top: 1px solid #bbb;
   /* justify-content: space-between */
+
 }
 
-.ant-btn, .ant-btn-default {
+.modal-btn {
   flex: 1;
   border: none !important;
   border-radius: 0 1important; 
 }
 
-.ant-btn-default:first-child {
+.modal-btn:first-child {
   flex: 1;
   border: none !important;
   border-radius: 0 !important; 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PoemForm from "./PoemForm";
 import Typography from "@material-ui/core/Typography";
@@ -27,7 +27,6 @@ class CreatePoem extends Component {
     this.setState({
       visible: false
     });
-    // return <Redirect push to="/login" />;
   };
 
   handleCancel = e => {
@@ -36,7 +35,7 @@ class CreatePoem extends Component {
     });
   };
 
-  renderForm = free => {
+  renderForm = () => {
     if (this.props.auth.token === undefined) {
       return (
         <Modal
@@ -54,10 +53,19 @@ class CreatePoem extends Component {
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
+          footer={null}
         >
           <p>
             로그인이 필요한 서비스입니다. <br /> 로그인 하시겠습니까?
           </p>
+          <div className="modal-div">
+            <Button className="modal-btn" onClick={this.handleOk}>
+              <Link to="/">아니오</Link>
+            </Button>
+            <Button className="modal-btn" onClick={this.handleCancel}>
+              <Link to="/login">예</Link>
+            </Button>
+          </div>
         </Modal>
       );
     } else if (this.props.poems.redirect) {
