@@ -22,7 +22,7 @@ class CreatePoem extends Component {
     } else if (this.props.poems.redirect) {
       return <Redirect push to={this.props.poems.redirect} />;
     } else {
-      const { user, title, content } = this.state;
+      const { user, content } = this.state;
       return (
         <Tabs
           defaultActiveKey="1"

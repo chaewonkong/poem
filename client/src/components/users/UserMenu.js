@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
+import { Dropdown, Button } from "antd";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };
@@ -36,6 +37,13 @@ class UserMenu extends Component {
   };
 
   render() {
+    const menu = (
+      <div>
+        <Button size="5vw" onClick={this.handleLogoutUser}>
+          로그아웃
+        </Button>
+      </div>
+    );
     return (
       <div>
         <IconButton
@@ -53,12 +61,23 @@ class UserMenu extends Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Avatar src={this.props.auth.image} />
-            <Typography variant="h6" style={{ color: "#A4A4A4" }}>
-              {this.props.auth.nickname}
-            </Typography>
-          </div>
+          {" "}
+          <Dropdown overlay={menu} placement="bottomCenter" trigger={["click"]}>
+            {/* <Button> */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Avatar src={this.props.auth.image} />
+              <Typography variant="h6" style={{ color: "#A4A4A4" }}>
+                {this.props.auth.nickname}
+              </Typography>
+            </div>
+            {/* </Button> */}
+          </Dropdown>
+          {/* <div style={{ display: "flex", alignItems: "center" }}>
+              <Avatar src={this.props.auth.image} />
+              <Typography variant="h6" style={{ color: "#A4A4A4" }}>
+                {this.props.auth.nickname}
+              </Typography>
+            </div> */}
           <br />
           <div
             style={{
