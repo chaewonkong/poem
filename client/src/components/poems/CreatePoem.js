@@ -27,6 +27,7 @@ class CreatePoem extends Component {
     this.setState({
       visible: false
     });
+    // return <Redirect push to="/login" />;
   };
 
   handleCancel = e => {
