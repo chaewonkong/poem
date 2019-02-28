@@ -66,6 +66,10 @@ class PoemList extends Component {
             date={poem.written_date}
             id={poem.id}
             poemDelete={this.props.deletePoem}
+            likes={poem.likes}
+            dislikes={poem.dislikes}
+            do_like={poem.do_like}
+            do_dislike={poem.do_dislike}
           />
         );
       });

@@ -1,0 +1,41 @@
+.reaction-counter {
+    display: flex;
+    padding-left: 1vw;
+    align-items: center;
+}
+
+.counter-img:last-of-type {
+    margin-left: 1vw;
+}
+
+.counter-txt {
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.reaction-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 2vh;
+    border-top: 1px solid #ABABAB;
+    align-items: center
+}
+
+.reaction-box {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.reaction-box:first-child {
+    border-right: 1px solid #ABABAB;
+}
+.reaction-visible {
+    width: 80%;
+    border-radius: 3vw;
+    background: #8EF5F8;
+    opacity: 0.5
+}
