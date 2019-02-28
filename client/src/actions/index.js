@@ -98,11 +98,19 @@ export const deleteUser = ({ userId, token }) => async dispatch => {
   });
 };
 
-export const fetchPoems = () => async dispatch => {
-  const res = await axios.get(
-    "https://mighty-chamber-86168.herokuapp.com/poems/"
-  );
-  dispatch({ type: FETCH_POEMS, payload: res.data.results });
+export const fetchPoems = token => async dispatch => {
+  if (token) {
+    const res = await axios.get(
+      "https://mighty-chamber-86168.herokuapp.com/poems/",
+      { headers: { Authorization: "Token " + token } }
+    );
+    dispatch({ type: FETCH_POEMS, payload: res.data.results });
+  } else {
+    const res = await axios.get(
+      "https://mighty-chamber-86168.herokuapp.com/poems/"
+    );
+    dispatch({ type: FETCH_POEMS, payload: res.data.results });
+  }
 };
 
 export const postPoem = ({ title, content, token }) => async dispatch => {
@@ -153,6 +161,28 @@ export const fetchPoem = ({ id, token }) => async dispatch => {
 export const deletePoem = ({ id, token }) => async dispatch => {
   const res = await axios.delete(
     `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
+    {
+      headers: { Authorization: "Token " + token }
+    }
+  );
+  dispatch({ type: FETCH_POEMS });
+};
+
+export const likePoem = ({ id, token }) => async dispatch => {
+  const res = await axios.post(
+    `https://mighty-chamber-86168.herokuapp.com/poems/${id}/like/`,
+    {},
+    {
+      headers: { Authorization: "Token " + token }
+    }
+  );
+  dispatch({ type: FETCH_POEMS });
+};
+
+export const dislikePoem = ({ id, token }) => async dispatch => {
+  const res = await axios.post(
+    `https://mighty-chamber-86168.herokuapp.com/poems/${id}/dislike/`,
+    {},
     {
       headers: { Authorization: "Token " + token }
     }

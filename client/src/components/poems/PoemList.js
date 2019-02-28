@@ -13,7 +13,8 @@ class PoemList extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchPoems();
+    if (this.props.auth.token) this.props.fetchPoems(this.props.auth.token);
+    else this.props.fetchPoems();
     setTimeout(() => this.setState({ isLoading: false }), 1000);
   }
 
@@ -22,7 +23,9 @@ class PoemList extends Component {
       prevProps.poems.length !== this.props.poems.length ||
       prevProps.auth !== this.props.auth
     ) {
-      this.props.fetchPoems();
+      if (this.props.auth.token) {
+        this.props.fetchPoems(this.props.auth.token);
+      } else this.props.fetchPoems();
     }
   }
 
@@ -57,15 +60,14 @@ class PoemList extends Component {
       return poems.map(poem => {
         return (
           <PoemCard
-            image={poem.writer.image}
-            title={poem.title}
-            content={poem.content}
             key={poem.id}
+            image={poem.writer.image}
             nickname={poem.writer.nickname}
             userId={poem.writer.id}
-            date={poem.written_date}
             id={poem.id}
-            poemDelete={this.props.deletePoem}
+            date={poem.written_date}
+            title={poem.title}
+            content={poem.content}
             likes={poem.likes}
             dislikes={poem.dislikes}
             do_like={poem.do_like}

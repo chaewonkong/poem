@@ -30,11 +30,18 @@
     align-items: center;
 }
 
+.reaction-btn {
+    border: none;
+    background: none;
+}
+
 .reaction-box:first-child {
     border-right: 1px solid #ABABAB;
 }
 .reaction-visible {
+    display: flex;
     width: 80%;
+    justify-content: center;
     border-radius: 3vw;
     background: #8EF5F8;
     opacity: 0.5

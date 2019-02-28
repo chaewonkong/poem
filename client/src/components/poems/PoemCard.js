@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,23 +9,46 @@ import Avatar from "@material-ui/core/Avatar";
 import PoemMenu from "./PoemMenu";
 import IconButton from "@material-ui/core/IconButton";
 import uuidv1 from "uuid/v1";
+import * as actions from "../../actions";
 import "../../css/PoemCard.css";
 
 class PoemCard extends Component {
-  render() {
-    const {
-      image,
-      nickname,
-      id,
-      userId,
-      date,
-      title,
-      content,
+  state = {};
+
+  componentDidMount() {
+    const { likes, dislikes, do_like, do_dislike } = this.props;
+    this.setState({
       likes,
       dislikes,
       do_like,
       do_dislike
-    } = this.props;
+    });
+  }
+
+  toggleLike = () => {
+    if (this.props.token) {
+      const { token, id } = this.props;
+      this.setState({
+        likes: String(Number(this.state.likes) + 1),
+        do_like: !this.state.do_like
+      });
+      this.props.likePoem({ token, id });
+    }
+  };
+  toggleDislike = () => {
+    if (this.props.token) {
+      const { token, id } = this.props;
+      this.setState({
+        dislikes: String(Number(this.state.dislikes) + 1),
+        do_dislike: !this.state.do_dislike
+      });
+      this.props.dislikePoem({ token, id });
+    }
+  };
+
+  render() {
+    const { image, nickname, userId, id, date, title, content } = this.props;
+    const { likes, dislikes, do_like, do_dislike } = this.state;
     return (
       <Card
         style={{
@@ -80,7 +104,9 @@ class PoemCard extends Component {
                   alt="like"
                   src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8C%E1%85%A9%E1%87%82%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
                 />
-                좋아요
+                <button className="reaction-btn" onClick={this.toggleLike}>
+                  좋아요
+                </button>
               </div>
             </div>
             <div className="reaction-box">
@@ -91,7 +117,9 @@ class PoemCard extends Component {
                   alt="different"
                   src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
                 />
-                달라요
+                <button className="reaction-btn" onClick={this.toggleDislike}>
+                  달라요
+                </button>
               </div>
             </div>
           </div>
@@ -101,4 +129,11 @@ class PoemCard extends Component {
   }
 }
 
-export default PoemCard;
+const mapStateToProps = state => {
+  return { token: state.auth.token };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(PoemCard);
