@@ -9,7 +9,7 @@ import Loading from "../Loading";
 class PoemList extends Component {
   state = {
     btnHover: false,
-    isLoading: true
+    isLoading: false
   };
 
   componentDidMount() {
