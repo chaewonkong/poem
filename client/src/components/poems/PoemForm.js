@@ -66,6 +66,7 @@ class PoemForm extends Component {
         {this.props.showTheme ? <Typography variant="h6">꽃</Typography> : null}
         <form className={styles.formStyle}>
           <TextField
+            style={{ background: "#E7E7E7" }}
             id="title"
             name="title"
             fullWidth
@@ -78,6 +79,7 @@ class PoemForm extends Component {
             value={this.state.title}
           />
           <TextField
+            style={{ background: "#E7E7E7" }}
             id="content"
             name="content"
             fullWidth
