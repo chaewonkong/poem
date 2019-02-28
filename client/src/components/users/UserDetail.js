@@ -33,7 +33,7 @@ class UserDetail extends Component {
       <div>
         <div
           style={{
-            margin: "5vw",
+            margin: "5vw 2vw",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -54,7 +54,15 @@ class UserDetail extends Component {
             <p>담아감</p>
           </div>
         </div>
-        <div style={{ margin: "5vw" }}>{this.renderPoems()}</div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
+          {this.renderPoems()}
+        </div>
       </div>
     );
   }

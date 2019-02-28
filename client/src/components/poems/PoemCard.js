@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -58,16 +59,18 @@ class PoemCard extends Component {
           width: "90%"
         }}
       >
-        <CardHeader
-          avatar={<Avatar src={image} alt={nickname} />}
-          action={
-            <IconButton>
-              <PoemMenu id={id} userId={userId} />
-            </IconButton>
-          }
-          title={nickname}
-          subheader={date}
-        />
+        <Link to="/user_detail">
+          <CardHeader
+            avatar={<Avatar src={image} alt={nickname} />}
+            action={
+              <IconButton>
+                <PoemMenu id={id} userId={userId} />
+              </IconButton>
+            }
+            title={nickname}
+            subheader={date}
+          />
+        </Link>
         <CardContent style={{ textAlign: "center" }}>
           <Typography variant="h5" style={{ color: "#707070" }} gutterBottom>
             {title}
