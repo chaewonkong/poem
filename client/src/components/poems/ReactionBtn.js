@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import "../../css/ReactionBtn.css";
 
 class ReactionBtn extends Component {
   state = {};
@@ -19,20 +20,19 @@ class ReactionBtn extends Component {
     }
   }
 
-  handleReactionToggle() {
-    // if (this.props.type === "do_like") {
-    //   if (this.props.token) {
-    //     const { token, id } = this.props;
-    //     this.props.likePoem({ token, id });
-    //   }
-    // } else {
-    //   if (this.props.token) {
-    //     const { token, id } = this.props;
-    //     this.props.dislikePoem({ token, id });
-    //   }
-    // }
-    console.log(this.props);
-  }
+  handleReactionToggle = () => {
+    if (this.props.type === "do_like") {
+      if (this.props.token) {
+        const { token, id } = this.props;
+        this.props.likePoem({ token, id });
+      }
+    } else {
+      if (this.props.token) {
+        const { token, id } = this.props;
+        this.props.dislikePoem({ token, id });
+      }
+    }
+  };
 
   renderImgType() {
     if (this.props.type === "do_like") {
@@ -53,11 +53,11 @@ class ReactionBtn extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { visible, type } = this.props;
     return (
       <div className="reaction-box">
-        <div className={visible ? "reaction-visible" : "reaction-hidden"}>
+        <div className={visible ? "reaction-visible" : "reaction-hidden"} />
+        <div className="btn-container">
           {this.renderImgType()}
           <button className="reaction-btn" onClick={this.handleReactionToggle}>
             {type === "do_like" ? "좋아요" : "달라요"}

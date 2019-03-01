@@ -22,32 +22,8 @@
     align-items: center
 }
 
-.reaction-box {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.reaction-visible {
-    display: flex;
-    justify-content: center;
-    border-radius: 3vw;
-    background: #8EF5F8;
-    opacity: 0.5;
-}
-
 .btn-container {
     
     z-index: 6
 }
 
-.reaction-btn {
-    border: none;
-    background: none;
-}
-
-.reaction-box:first-child {
-    border-right: 1px solid #ABABAB;
-}
