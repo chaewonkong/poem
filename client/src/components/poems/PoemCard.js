@@ -12,6 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import uuidv1 from "uuid/v1";
 import * as actions from "../../actions";
 import "../../css/PoemCard.css";
+import ReactionBtn from "./ReactionBtn";
 
 class PoemCard extends Component {
   state = {};
@@ -38,26 +39,26 @@ class PoemCard extends Component {
     }
   }
 
-  toggleLike = () => {
-    if (this.props.token) {
-      const { token, id } = this.props;
-      this.setState({
-        likes: String(Number(this.state.likes) + 1),
-        do_like: !this.state.do_like
-      });
-      this.props.likePoem({ token, id });
-    }
-  };
-  toggleDislike = () => {
-    if (this.props.token) {
-      const { token, id } = this.props;
-      this.setState({
-        dislikes: String(Number(this.state.dislikes) + 1),
-        do_dislike: !this.state.do_dislike
-      });
-      this.props.dislikePoem({ token, id });
-    }
-  };
+  // toggleLike = () => {
+  //   if (this.props.token) {
+  //     const { token, id } = this.props;
+  //     this.setState({
+  //       likes: String(Number(this.state.likes) + 1),
+  //       do_like: !this.state.do_like
+  //     });
+  //     this.props.likePoem({ token, id });
+  //   }
+  // };
+  // toggleDislike = () => {
+  //   if (this.props.token) {
+  //     const { token, id } = this.props;
+  //     this.setState({
+  //       dislikes: String(Number(this.state.dislikes) + 1),
+  //       do_dislike: !this.state.do_dislike
+  //     });
+  //     this.props.dislikePoem({ token, id });
+  //   }
+  // };
 
   render() {
     const { image, nickname, userId, id, date, title, content } = this.props;
@@ -111,32 +112,21 @@ class PoemCard extends Component {
           />
           <p className="counter-txt">{dislikes}</p>
         </div>
+
         <CardActions disableActionSpacing>
           <div className="reaction-container">
-            <div className="reaction-box">
-              <div className={do_like ? "reaction-visible" : "reaction-hidden"}>
-                <img
-                  alt="like"
-                  src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8C%E1%85%A9%E1%87%82%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
-                />
-                <button className="reaction-btn" onClick={this.toggleLike}>
-                  좋아요
-                </button>
-              </div>
-            </div>
-            <div className="reaction-box">
-              <div
-                className={do_dislike ? "reaction-visible" : "reaction-hidden"}
-              >
-                <img
-                  alt="different"
-                  src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
-                />
-                <button className="reaction-btn" onClick={this.toggleDislike}>
-                  달라요
-                </button>
-              </div>
-            </div>
+            <ReactionBtn
+              type="do_like"
+              visible={do_like}
+              token={this.props.token}
+              id={id}
+            />
+            <ReactionBtn
+              type="do_dislike"
+              visible={do_dislike}
+              token={this.props.token}
+              id={id}
+            />
           </div>
         </CardActions>
       </Card>
