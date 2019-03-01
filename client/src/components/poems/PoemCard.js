@@ -35,7 +35,6 @@ class PoemCard extends Component {
         do_like,
         do_dislike
       });
-      console.log("Props changed");
     }
   }
 
