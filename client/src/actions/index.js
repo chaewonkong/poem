@@ -24,8 +24,9 @@ export const loginUser = ({ identifier, password }) => async dispatch => {
 };
 
 export const logoutUser = token => async dispatch => {
-  const res = await axios.get(
+  const res = await axios.post(
     "https://mighty-chamber-86168.herokuapp.com/auth/logout/",
+    {},
     {
       headers: { Authorization: "Token " + token }
     }

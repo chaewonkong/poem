@@ -9,13 +9,13 @@ import Loading from "../Loading";
 class PoemList extends Component {
   state = {
     btnHover: false,
-    isLoading: false
+    isLoading: true
   };
 
   componentDidMount() {
     if (this.props.auth.token) this.props.fetchPoems(this.props.auth.token);
     else this.props.fetchPoems();
-    setTimeout(() => this.setState({ isLoading: false }), 1000);
+    this.setState({ isLoading: false });
   }
 
   componentDidUpdate(prevProps, prevState) {
