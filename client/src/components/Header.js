@@ -49,7 +49,7 @@ class Header extends Component {
                 <UserMenu />
               ) : (
                 <Link to="/login">
-                  <Typography component="p" styles={{ color: "#A4A4A4" }}>
+                  <Typography component="p" styles={{ color: "#707070" }}>
                     로그인
                   </Typography>
                 </Link>
@@ -59,7 +59,7 @@ class Header extends Component {
                 className="brand-logo"
                 style={{ textDecoration: "none" }}
               >
-                <Typography variant="h6" style={{ color: "#A4A4A4" }}>
+                <Typography variant="h6" style={{ color: "#707070" }}>
                   하루시작
                 </Typography>
               </Link>
