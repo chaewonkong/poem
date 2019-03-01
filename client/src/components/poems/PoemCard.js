@@ -25,6 +25,18 @@ class PoemCard extends Component {
       do_dislike
     });
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      const { likes, dislikes, do_like, do_dislike } = this.props;
+      this.setState({
+        likes,
+        dislikes,
+        do_like,
+        do_dislike
+      });
+      console.log("Props changed");
+    }
+  }
 
   toggleLike = () => {
     if (this.props.token) {
