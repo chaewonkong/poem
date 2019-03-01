@@ -39,27 +39,6 @@ class PoemCard extends Component {
     }
   }
 
-  // toggleLike = () => {
-  //   if (this.props.token) {
-  //     const { token, id } = this.props;
-  //     this.setState({
-  //       likes: String(Number(this.state.likes) + 1),
-  //       do_like: !this.state.do_like
-  //     });
-  //     this.props.likePoem({ token, id });
-  //   }
-  // };
-  // toggleDislike = () => {
-  //   if (this.props.token) {
-  //     const { token, id } = this.props;
-  //     this.setState({
-  //       dislikes: String(Number(this.state.dislikes) + 1),
-  //       do_dislike: !this.state.do_dislike
-  //     });
-  //     this.props.dislikePoem({ token, id });
-  //   }
-  // };
-
   render() {
     const { image, nickname, userId, id, date, title, content } = this.props;
     const { likes, dislikes, do_like, do_dislike } = this.state;
