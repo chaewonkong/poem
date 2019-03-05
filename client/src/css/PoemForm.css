@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.ant-tabs {
+  width: 90%
+}
+
+.ant-tabs-tab:hover {
+  color: #B9F9F9 !important
+}
+
+ .ant-tabs-tab-active {
+  color: #B9F9F9 !important
+}
+
+.ant-tabs-ink-bar {
+  background-color: #B9F9F9 !important
+}
+
+/*
+.linkStyle {
+    text-decoration: "none"
+  } */
+
+  .btnCreate {
+    display: flex;
+    justify-content: center;
+}
