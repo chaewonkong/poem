@@ -5,7 +5,7 @@ import { Input } from "antd";
 import Button from "@material-ui/core/Button";
 import * as actions from "../../actions";
 import Typography from "@material-ui/core/Typography";
-import styles from "../../css/PoemForm.css";
+import "../../css/PoemForm.css";
 
 class PoemForm extends Component {
   state = {
