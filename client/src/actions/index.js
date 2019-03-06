@@ -5,7 +5,8 @@ import {
   FETCH_USER,
   DELETE_USER,
   FETCH_POEMS,
-  FETCH_POEM
+  FETCH_POEM,
+  UPDATE_HEADER
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => async dispatch => {
@@ -189,4 +190,16 @@ export const dislikePoem = ({ id, token }) => async dispatch => {
     }
   );
   dispatch({ type: FETCH_POEMS });
+};
+
+export const updateHeader = ({
+  type,
+  text,
+  leftAction,
+  rightAction
+}) => dispatch => {
+  return dispatch({
+    type,
+    payload: { type, text, leftAction, rightAction }
+  });
 };
