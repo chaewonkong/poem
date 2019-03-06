@@ -4,7 +4,6 @@ import * as actions from "../../actions";
 
 class PoemSetting extends Component {
   render() {
-    console.log(this.props);
     return <div>Poem Title and Content</div>;
   }
 }

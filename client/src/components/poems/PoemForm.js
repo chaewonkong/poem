@@ -61,7 +61,6 @@ class PoemForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { TextArea } = Input;
     return (
       <div className="container">
