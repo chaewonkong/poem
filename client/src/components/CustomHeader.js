@@ -12,3 +12,5 @@ class CustomHeader extends Component {
     );
   }
 }
+
+export default CustomHeader;

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import * as actions from "../actions";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Header from "./Header";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
@@ -21,14 +22,13 @@ class App extends Component {
   }
 
   render() {
-    const { container, headerStyle, bodyStyle } = styles;
     return (
       <BrowserRouter>
-        <div style={container}>
-          <div style={headerStyle}>
+        <Container>
+          <HeaderContainer>
             <Header />
-          </div>
-          <div className="main" style={bodyStyle}>
+          </HeaderContainer>
+          <BodyContainer>
             <Route exact path="/" component={PoemList} />
             <Route path="/poems/new" component={CreatePoem} />
             <Route path="/poems/update" component={UpdatePoem} />
@@ -36,31 +36,36 @@ class App extends Component {
             <Route path="/create_user" component={CreateUser} />
             <Route path="/update_user" component={UpdateUser} />
             <Route path="/user_detail" component={UserDetail} />
-          </div>
+          </BodyContainer>
           {/* <div style={footerStyle}>
             <Footer />
           </div> */}
-        </div>
+        </Container>
       </BrowserRouter>
     );
   }
 }
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column"
-  },
-  headerStyle: {
-    flex: 1
-  },
-  bodyStyle: {
-    flex: 8
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const HeaderContainer = styled.div`
+  flex: 1;
+`;
+
+const BodyContainer = styled.div`
+  flex: 8;
+  padding-top: 10vh;
+  /* padding-bottom: 10vh; */
+  width: 100%;
+  margin: 0 auto;
+
+  @media (orientation: landscape) {
+    width: 30vw;
   }
-  // footerStyle: {
-  //   flex: 1
-  // }
-};
+`;
 
 const mapStateToProps = state => {
   return state;

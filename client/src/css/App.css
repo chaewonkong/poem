@@ -7,15 +7,3 @@ h1, h2, h3, h4, h5, h6, p, span {
 html, body {
     background: #F7F7F7;
 }
-.main {
-    padding-top: 10vh;
-    /* padding-bottom: 10vh; */
-    width: 100%;
-    margin: 0 auto;
-}
-
-@media(orientation: landscape) {
-    .main{
-        width:30vw;
-    }
-}
