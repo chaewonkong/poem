@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import * as actions from "../actions";
 // import Footer from "./Footer";
 import Header from "./Header";
+import CustomHeader from "./CustomHeader";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
 import UpdatePoem from "./poems/UpdatePoem";
@@ -12,8 +13,21 @@ import CreateUser from "./users/CreateUser";
 import UpdateUser from "./users/UpdateUser";
 import PoemList from "./poems/PoemList";
 import UserDetail from "./users/UserDetail";
+import theme from "../css/theme";
 import "../css/App.css";
 import "../favicon.ico";
+
+const GlobalStyle = createGlobalStyle`
+  @import '~antd/dist/antd.css';
+  @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
+  h1, h2, h3, h4, h5, h6, p, span {
+      font-family: 'Jeju Myeongjo', serif !important;
+  }
+  html, body {
+      background: #F7F7F7;
+  }
+`;
 
 class App extends Component {
   componentDidMount() {
@@ -24,23 +38,28 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Container>
-          <HeaderContainer>
-            <Header />
-          </HeaderContainer>
-          <BodyContainer>
-            <Route exact path="/" component={PoemList} />
-            <Route path="/poems/new" component={CreatePoem} />
-            <Route path="/poems/update" component={UpdatePoem} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/create_user" component={CreateUser} />
-            <Route path="/update_user" component={UpdateUser} />
-            <Route path="/user_detail" component={UserDetail} />
-          </BodyContainer>
-          {/* <div style={footerStyle}>
+        <ThemeProvider theme={theme}>
+          <Fragment>
+            <GlobalStyle />
+            <Container>
+              <HeaderContainer>
+                <Header />
+              </HeaderContainer>
+              <BodyContainer>
+                <Route exact path="/" component={PoemList} />
+                <Route path="/poems/new" component={CreatePoem} />
+                <Route path="/poems/update" component={UpdatePoem} />
+                <Route path="/login" component={LoginForm} />
+                <Route path="/create_user" component={CreateUser} />
+                <Route path="/update_user" component={UpdateUser} />
+                <Route path="/user_detail" component={UserDetail} />
+              </BodyContainer>
+              {/* <div style={footerStyle}>
             <Footer />
           </div> */}
-        </Container>
+            </Container>
+          </Fragment>
+        </ThemeProvider>
       </BrowserRouter>
     );
   }
