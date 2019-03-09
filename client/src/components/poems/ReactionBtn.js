@@ -105,6 +105,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
+  z-index: 10;
   border: none;
   background: none;
   cursor: pointer;
