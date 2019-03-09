@@ -1,12 +1,3 @@
-.container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 0;
-    margin:0;
-  }
-
 .ant-tabs {
   width: 90%
 }
@@ -27,8 +18,3 @@
 .linkStyle {
     text-decoration: "none"
   } */
-
-  .btnCreate {
-    display: flex;
-    justify-content: center;
-}

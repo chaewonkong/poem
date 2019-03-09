@@ -12,19 +12,10 @@ import UpdateUser from "./users/UpdateUser";
 import PoemList from "./poems/PoemList";
 import UserDetail from "./users/UserDetail";
 import theme from "../css/theme";
-import "../css/App.css";
 import "../favicon.ico";
+import "../css/App.css";
 
 const GlobalStyle = createGlobalStyle`
-  @import '~antd/dist/antd.css';
-  @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
-
-  h1, h2, h3, h4, h5, h6, p, span {
-      font-family: 'Jeju Myeongjo', serif !important;
-  }
-  html, body {
-      background: #F7F7F7;
-  }
   a {
     text-decoration: none;
   }

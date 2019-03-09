@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled, { css } from "styled-components";
 import * as actions from "../../actions";
-import "../../css/ReactionBtn.css";
 
 class ReactionBtn extends Component {
   state = {};
@@ -55,20 +55,61 @@ class ReactionBtn extends Component {
   render() {
     const { visible, type } = this.props;
     return (
-      <div className="reaction-box">
-        <div className={visible ? "reaction-visible" : "reaction-hidden"} />
-        <div className="btn-container">
+      <Container>
+        <Highlight visible={visible} />
+        <ButtonContainer>
           {this.renderImgType()}
-          <button className="reaction-btn" onClick={this.handleReactionToggle}>
+          <Button onClick={this.handleReactionToggle}>
             {type === "do_like" ? "좋아요" : "달라요"}
-          </button>
-        </div>
-      </div>
+          </Button>
+        </ButtonContainer>
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => state;
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &:first-child {
+    border-right: 1px solid ${props => props.theme.defaultColor};
+  }
+`;
+
+const Highlight = styled.div`
+  ${props => {
+    if (props.visible) {
+      return css`
+        display: flex;
+        position: absolute;
+        width: 150px;
+        height: 30px;
+        justify-content: center;
+        border-radius: 3vw;
+        background: #8ef5f8;
+        opacity: 0.5;
+      `;
+    }
+  }}
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: ${props => props.theme.darkGreyColor};
+`;
 
 export default connect(
   mapStateToProps,

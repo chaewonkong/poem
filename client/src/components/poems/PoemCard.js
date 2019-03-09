@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -11,7 +12,6 @@ import PoemMenu from "./PoemMenu";
 import IconButton from "@material-ui/core/IconButton";
 import uuidv1 from "uuid/v1";
 import * as actions from "../../actions";
-import "../../css/PoemCard.css";
 import ReactionBtn from "./ReactionBtn";
 
 class PoemCard extends Component {
@@ -42,14 +42,7 @@ class PoemCard extends Component {
     const { image, nickname, userId, id, date, title, content } = this.props;
     const { likes, dislikes, do_like, do_dislike } = this.state;
     return (
-      <Card
-        style={{
-          marginBottom: "2vh",
-          background: "#E7E7E7",
-          boxShadow: "none",
-          width: "90%"
-        }}
-      >
+      <StyledCard>
         <Link to="/user_detail">
           <CardHeader
             avatar={<Avatar src={image} alt={nickname} />}
@@ -76,23 +69,21 @@ class PoemCard extends Component {
             </Typography>
           ))}
         </CardContent>
-        <div className="reaction-counter">
-          <img
-            className="counter-img"
+        <ReactionCounter>
+          <CounterImage
             alt="좋아요"
             src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8C%E1%85%A9%E1%87%82%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
           />
-          <p className="counter-txt">{likes}</p>
-          <img
-            className="counter-img"
+          <CounterText>{likes}</CounterText>
+          <CounterImage
             alt="달라요"
             src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AD+%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.svg"
           />
-          <p className="counter-txt">{dislikes}</p>
-        </div>
+          <CounterText>{dislikes}</CounterText>
+        </ReactionCounter>
 
         <CardActions disableActionSpacing>
-          <div className="reaction-container">
+          <ReactionContainer>
             <ReactionBtn
               type="do_like"
               visible={do_like}
@@ -105,12 +96,44 @@ class PoemCard extends Component {
               token={this.props.token}
               id={id}
             />
-          </div>
+          </ReactionContainer>
         </CardActions>
-      </Card>
+      </StyledCard>
     );
   }
 }
+
+const StyledCard = styled(Card)`
+  margin-bottom: 2vh;
+  background: ${props => props.theme.lightGreyColor} !important;
+  box-shadow: none !important;
+  width: 90%;
+`;
+
+const ReactionCounter = styled.div`
+  display: flex;
+  padding-left: 1vw;
+  align-items: center;
+`;
+const CounterImage = styled.img`
+  :last-of-type {
+    margin-left: 1vw;
+  }
+`;
+
+const CounterText = styled.p`
+  font-size: 0.8em;
+  margin: 0;
+`;
+
+const ReactionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 2vh;
+  border-top: 1px solid ${props => props.theme.defaultColor};
+  align-items: center;
+`;
 
 const mapStateToProps = state => {
   return { token: state.auth.token };

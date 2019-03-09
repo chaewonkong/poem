@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { Input } from "antd";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -61,34 +62,16 @@ class PoemForm extends Component {
   };
 
   render() {
-    const { TextArea } = Input;
     return (
-      <div className="container">
+      <Container>
         {this.props.showTheme ? <Typography variant="h6">꽃</Typography> : null}
-        <form style={{ width: "100%" }}>
+        <Form>
           <p># 제목</p>
-          <Input
-            name="title"
-            style={{
-              background: "#E7E7E7",
-              border: "none",
-              outline: "none"
-            }}
-            onChange={this.handleChange}
-          />
+          <StyledInput name="title" onChange={this.handleChange} />
           <p># 본문</p>
-          <TextArea
-            name="content"
-            rows={16}
-            style={{
-              background: "#E7E7E7",
-              border: "none",
-              outline: "none"
-            }}
-            onChange={this.handleChange}
-          />
-        </form>
-        <div className="btnCreate">
+          <TextArea name="content" rows={16} onChange={this.handleChange} />
+        </Form>
+        <ButtonContainer>
           <Button
             type="submit"
             onClick={this.handleSubmit}
@@ -102,11 +85,41 @@ class PoemForm extends Component {
               작성취소
             </Button>
           </Link>
-        </div>
-      </div>
+        </ButtonContainer>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  margin: 0;
+`;
+
+const Form = styled.form`
+  width: 100%;
+`;
+
+const StyledInput = styled(Input)`
+  background-color: ${props => props.theme.lightGreyColor} !important;
+  border: none;
+  outline: none;
+`;
+
+const TextArea = styled(Input.TextArea)`
+  background-color: ${props => props.theme.lightGreyColor} !important;
+  border: none;
+  outline: none;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const mapStateToProps = state => state;
 
