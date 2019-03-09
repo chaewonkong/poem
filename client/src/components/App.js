@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import * as actions from "../actions";
 // import Footer from "./Footer";
-import Header from "./Header";
+import DefaultHeader from "./DefaultHeader";
 import CustomHeader from "./CustomHeader";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
@@ -43,7 +43,7 @@ class App extends Component {
             <GlobalStyle />
             <Container>
               <HeaderContainer>
-                <Header />
+                <DefaultHeader />
               </HeaderContainer>
               <BodyContainer>
                 <Route exact path="/" component={PoemList} />

@@ -6,9 +6,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import * as actions from "../actions";
+import CustomHeader from "./CustomHeader";
 import UserMenu from "./users/UserMenu";
-import LinearProgressBar from "./LinearProgressBar";
 import Search from "./Search";
 import "../css/Header.css";
 
@@ -27,31 +28,16 @@ class Header extends Component {
   };
 
   render() {
-    const { isLoading, open } = this.state;
-
     return (
-      <div className="nav-wrapper">
-        <AppBar
-          position="fixed"
-          style={{
-            background: "#B9F9F9",
-            boxShadow: "none"
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center"
-            }}
-          >
+      <Bar position="fixed">
+        <BarContainer>
+          <CustomHeader>
             <Toolbar className="toolbar">
               {this.props.nickname ? (
                 <UserMenu />
               ) : (
                 <Link to="/login">
-                  <Typography component="p" styles={{ color: "#707070" }}>
-                    로그인
-                  </Typography>
+                  <Title size="1rem">로그인</Title>
                 </Link>
               )}
               <Link
@@ -59,12 +45,8 @@ class Header extends Component {
                 className="brand-logo"
                 style={{ textDecoration: "none" }}
               >
-                <Typography variant="h6" style={{ color: "#707070" }}>
-                  하루시작
-                </Typography>
+                <Title>하루시작</Title>
               </Link>
-
-              {/* <div style={{ display: "flex", alignItems: "center" }}> */}
               <Button variant="text" onClick={this.handleOpen}>
                 <img
                   alt="search"
@@ -77,28 +59,43 @@ class Header extends Component {
                 open={this.state.open}
                 onClose={this.handleClose}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    paddingTop: "1vh"
-                  }}
-                >
+                <SearchContainer>
                   <Search />
-                </div>
+                </SearchContainer>
               </Modal>
-              {/* </div> */}
             </Toolbar>
-          </div>
-          {isLoading ? <LinearProgressBar /> : null}
-        </AppBar>
-      </div>
+          </CustomHeader>
+        </BarContainer>
+      </Bar>
     );
   }
 }
 
 const mapStateToProps = state => state.auth;
+
+const Bar = styled(AppBar)`
+  background: ${props => props.theme.highlightColor};
+  box-shadow: none;
+`;
+
+const BarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1vh;
+`;
+
+const Title = styled.h1`
+  color: ${props => props.theme.darkGreyColor};
+  font-size: ${props => (props.size ? props.size : "1.2rem")};
+  margin: 0.5rem;
+  padding: 0;
+`;
 
 export default connect(
   mapStateToProps,
