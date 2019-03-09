@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import * as actions from "../../actions";
 import "../../css/PoemList.css";
+import DefaultHeader from "../DefaultHeader";
 import PoemCard from "./PoemCard";
 import Loading from "../Loading";
 
@@ -81,6 +82,7 @@ class PoemList extends Component {
   render() {
     return (
       <Fragment>
+        <DefaultHeader />
         {this.state.isLoading ? (
           <Loading />
         ) : (

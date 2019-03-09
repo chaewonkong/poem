@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import * as actions from "../actions";
 // import Footer from "./Footer";
-import DefaultHeader from "./DefaultHeader";
-import CustomHeader from "./CustomHeader";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
 import UpdatePoem from "./poems/UpdatePoem";
@@ -27,6 +25,9 @@ const GlobalStyle = createGlobalStyle`
   html, body {
       background: #F7F7F7;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 class App extends Component {
@@ -42,9 +43,9 @@ class App extends Component {
           <Fragment>
             <GlobalStyle />
             <Container>
-              <HeaderContainer>
+              {/* <HeaderContainer>
                 <DefaultHeader />
-              </HeaderContainer>
+              </HeaderContainer> */}
               <BodyContainer>
                 <Route exact path="/" component={PoemList} />
                 <Route path="/poems/new" component={CreatePoem} />
@@ -54,9 +55,6 @@ class App extends Component {
                 <Route path="/update_user" component={UpdateUser} />
                 <Route path="/user_detail" component={UserDetail} />
               </BodyContainer>
-              {/* <div style={footerStyle}>
-            <Footer />
-          </div> */}
             </Container>
           </Fragment>
         </ThemeProvider>
@@ -70,14 +68,8 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const HeaderContainer = styled.div`
-  flex: 1;
-`;
-
 const BodyContainer = styled.div`
-  flex: 8;
   padding-top: 10vh;
-  /* padding-bottom: 10vh; */
   width: 100%;
   margin: 0 auto;
 

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import PoemForm from "./PoemForm";
+import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import { Tabs } from "antd";
-import "../../css/CreatePoem.css";
 import { Modal, Button } from "antd";
-
-const TabPane = Tabs.TabPane;
+import CustomHeader from "../CustomHeader";
+import PoemForm from "./PoemForm";
+import "../../css/CreatePoem.css";
 
 class CreatePoem extends Component {
   state = {
@@ -75,7 +75,7 @@ class CreatePoem extends Component {
       return (
         <Tabs
           defaultActiveKey="1"
-          onChange={this.callback}
+          onChange={() => {}}
           tabBarStyle={{
             display: "flex",
             justifyContent: "center",
@@ -83,7 +83,7 @@ class CreatePoem extends Component {
             color: "#707070"
           }}
         >
-          <TabPane tab="길라잡이 모드" key="1" className="tabStyle">
+          <TabPane tab="길라잡이 모드" key="1">
             <Typography variant="h6" style={{ color: "#707070" }}>
               글감
             </Typography>
@@ -114,12 +114,27 @@ class CreatePoem extends Component {
     }
   };
 
-  handleChange = () => {};
-  callback = () => {};
   render() {
-    return <div className="container">{this.renderForm()}</div>;
+    return (
+      <Container>
+        <CustomHeader />
+        {this.renderForm()}
+      </Container>
+    );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const TabPane = styled(Tabs.TabPane)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const mapStateToProps = state => {
   return { poems: state.poems, auth: state.auth };

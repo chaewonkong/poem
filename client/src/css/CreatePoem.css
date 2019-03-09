@@ -1,15 +1,3 @@
-.container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-.tabStyle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
 .ant-modal-body {
   padding: 24px 24px 12px 24px !important;
 }

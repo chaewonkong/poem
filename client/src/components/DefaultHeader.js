@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import * as actions from "../actions";
 import CustomHeader from "./CustomHeader";
@@ -40,11 +39,7 @@ class Header extends Component {
                   <Title size="1rem">로그인</Title>
                 </Link>
               )}
-              <Link
-                to="/"
-                className="brand-logo"
-                style={{ textDecoration: "none" }}
-              >
+              <Link to="/" className="brand-logo">
                 <Title>하루시작</Title>
               </Link>
               <Button variant="text" onClick={this.handleOpen}>

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 class CustomHeader extends Component {
@@ -14,7 +15,9 @@ class CustomHeader extends Component {
                 src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
                 onClick={() => window.history.back()}
               />
-              <Title>하루시작</Title>
+              <Link to="">
+                <Title>시 쓰기</Title>
+              </Link>
               <NavButton
                 src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B3%E1%86%B7%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
                 onClick={() => window.location.replace("/login")}
@@ -39,7 +42,10 @@ const Title = styled.h1`
 `;
 
 const HeaderContainer = styled.div`
+  min-height: 64px;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,7 +58,6 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
   @media (orientation: landscape) {
     width: 30vw;
   }

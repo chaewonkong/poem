@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import DefaultHeader from "../DefaultHeader";
 import styles from "../../css/LoginForm.module.css";
 import * as actions from "../../actions";
 
@@ -22,6 +23,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
+        <DefaultHeader />
         {/* {this.props.redirect ? (<Redirect push to="/" />) : ( */}
         {this.props.redirect ? (
           <Redirect push to={this.props.redirect} />

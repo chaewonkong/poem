@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import DefaultHeader from "../DefaultHeader";
 import UserForm from "./UserForm";
 
 class UpdateUser extends Component {
@@ -21,6 +22,7 @@ class UpdateUser extends Component {
     const { pk, nickname, image, identifier } = this.state;
     return (
       <div>
+        <DefaultHeader />
         {this.props.auth.redirect ? (
           <Redirect push to={this.props.auth.redirect} />
         ) : (
