@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -80,22 +81,9 @@ class UserForm extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          // width: "100%",
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
+      <Container>
         <div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
+          <InputContainer>
             <TextField
               name="identifier"
               required
@@ -129,14 +117,8 @@ class UserForm extends Component {
               placeholder="알파벳 소문자/숫자"
               onChange={this.handleChange}
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "3vh"
-            }}
-          >
+          </InputContainer>
+          <ImageContainer>
             <UploadProfile
               onChange={this.onImageChange}
               beforeUpload={this.beforeUpload}
@@ -144,7 +126,7 @@ class UserForm extends Component {
               imageUrl={this.state.imageUrl}
             />
             {this.state.image ? <p>{this.state.image.name}</p> : null}
-          </div>
+          </ImageContainer>
         </div>
         <div>
           <Button
@@ -162,10 +144,28 @@ class UserForm extends Component {
             </Button>
           </Link>
         </div>
-      </div>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 3vh;
+`;
 
 const mapStateToProps = state => state;
 

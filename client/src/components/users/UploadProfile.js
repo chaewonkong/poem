@@ -1,5 +1,6 @@
 import React from "react";
 import { Upload, Icon } from "antd";
+import styled from "styled-components";
 
 const uploadButton = (
   <div>
@@ -20,13 +21,13 @@ const UploadProfile = props => {
       onChange={onImageChange}
       customRequest={handleUpload}
     >
-      {imageUrl ? (
-        <img src={imageUrl} alt="avatar" width="100%" />
-      ) : (
-        uploadButton
-      )}
+      {imageUrl ? <ImagePreview src={imageUrl} alt="avatar" /> : uploadButton}
     </Upload>
   );
 };
+
+const ImagePreview = styled.img`
+  width: 100%;
+`;
 
 export default UploadProfile;

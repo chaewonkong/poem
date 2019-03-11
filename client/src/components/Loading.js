@@ -1,23 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 
 const Loading = () => {
   return (
-    <div style={styles.container}>
+    <Container>
       <img
         alt="logo"
         src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_%E1%84%91%E1%85%B3%E1%84%85%E1%85%A6%E1%84%8C%E1%85%A6%E1%86%AB.svg"
       />
-    </div>
+    </Container>
   );
 };
-const styles = {
-  container: {
-    width: "100%",
-    background: "rgb(236, 236, 236)",
-    display: "flex",
-    flexDirection: "column",
-    marginTop: "15vh",
-    alignItems: "center"
-  }
-};
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: "column";
+  margin-top: 15vh;
+  align-items: center;
+`;
+
 export default Loading;

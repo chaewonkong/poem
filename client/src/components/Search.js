@@ -1,50 +1,40 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
-const styles = {
-  root: {
-    padding: "2px 4px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 400,
-    maxWidth: "80%",
-    borderRadius: 100
-  },
-  input: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "'Jeju Myeongjo', serif !important"
-  },
-  iconButton: {
-    padding: 10
-  }
-};
-
-function Search(props) {
-  const { classes } = props;
-
+function Search() {
   return (
-    <Paper className={classes.root} elevation={1}>
-      <InputBase
-        className={classes.input}
-        placeholder="시 제목 혹은 글감 및 내용"
-      />
-      <IconButton className={classes.iconButton} aria-label="Search">
+    <Container elevation={1}>
+      <Input placeholder="시 제목 혹은 글감 및 내용" />
+      <Icon aria-label="Search">
         <SearchIcon />
-      </IconButton>
-    </Paper>
+      </Icon>
+    </Container>
   );
 }
 
-Search.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+const Container = styled(Paper)`
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  max-width: 80%;
+  border-radius: 30px !important;
+`;
 
-export default withStyles(styles)(Search);
+const Input = styled(InputBase)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ${props => props.theme.fontFamily};
+`;
+
+const Icon = styled(IconButton)`
+  padding: 10px;
+`;
+
+export default Search;
