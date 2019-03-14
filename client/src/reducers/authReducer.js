@@ -2,7 +2,8 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   FETCH_USER,
-  DELETE_USER
+  DELETE_USER,
+  FETCH_SELECTED_USER
 } from "../actions/types";
 
 const INITIAL_STATE = {

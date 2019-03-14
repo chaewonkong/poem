@@ -38,12 +38,16 @@ class PoemCard extends Component {
     }
   }
 
+  fetchSelectedUser = userId => {
+    this.props.fetchSelectedUser(userId);
+  };
+
   render() {
     const { image, nickname, userId, id, date, title, content } = this.props;
     const { likes, dislikes, do_like, do_dislike } = this.state;
     return (
       <StyledCard>
-        <Link to="/user_detail">
+        <Link to="/user_detail" onClick={() => this.fetchSelectedUser(userId)}>
           <CardHeader
             avatar={<Avatar src={image} alt={nickname} />}
             action={

@@ -5,7 +5,8 @@ import {
   FETCH_USER,
   DELETE_USER,
   FETCH_POEMS,
-  FETCH_POEM
+  FETCH_POEM,
+  FETCH_SELECTED_USER
 } from "./types";
 
 export const loginUser = ({ identifier, password }) => async dispatch => {
@@ -97,6 +98,13 @@ export const deleteUser = ({ userId, token }) => async dispatch => {
   dispatch({
     type: DELETE_USER
   });
+};
+
+export const fetchSelectedUser = userId => async dispatch => {
+  const res = await axios.get(
+    `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`
+  );
+  dispatch({ type: FETCH_SELECTED_USER, payload: res.data });
 };
 
 export const fetchPoems = token => async dispatch => {
