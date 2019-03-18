@@ -4,18 +4,6 @@ import { connect } from "react-redux";
 import PoemForm from "./PoemForm";
 
 class UpdatePoem extends Component {
-  state = { id: "", token: "", title: "", content: "" };
-
-  componentDidMount() {
-    const { id, title, content } = this.props.poems;
-    this.setState({
-      id,
-      token: this.props.auth.token,
-      title,
-      content
-    });
-  }
-
   renderForm = () => {
     if (this.props.poems.redirect) {
       return <Redirect push to={this.props.poems.redirect} />;

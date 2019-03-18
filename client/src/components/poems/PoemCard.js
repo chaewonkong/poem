@@ -47,18 +47,23 @@ class PoemCard extends Component {
     const { likes, dislikes, do_like, do_dislike } = this.state;
     return (
       <StyledCard>
-        <Link to="/user_detail" onClick={() => this.fetchSelectedUser(userId)}>
-          <CardHeader
-            avatar={<Avatar src={image} alt={nickname} />}
-            action={
-              <IconButton>
-                <PoemMenu id={id} userId={userId} />
-              </IconButton>
-            }
-            title={nickname}
-            subheader={date}
-          />
-        </Link>
+        <CardHeader
+          avatar={
+            <Link
+              to={`/users/${userId}/detail`}
+              onClick={() => this.fetchSelectedUser(userId)}
+            >
+              <Avatar src={image} alt={nickname} />
+            </Link>
+          }
+          action={
+            <IconButton>
+              <Menu id={id} userId={userId} />
+            </IconButton>
+          }
+          title={nickname}
+          subheader={date}
+        />
         <CardContent style={{ textAlign: "center" }}>
           <Typography variant="h5" style={{ color: "#707070" }} gutterBottom>
             {title}
@@ -137,6 +142,10 @@ const ReactionContainer = styled.div`
   padding-top: 2vh;
   border-top: 1px solid ${props => props.theme.defaultColor};
   align-items: center;
+`;
+
+const Menu = styled(PoemMenu)`
+  z-index: 10;
 `;
 
 const mapStateToProps = state => {

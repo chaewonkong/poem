@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Input } from "antd";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import DefaultHeader from "../DefaultHeader";
 import * as actions from "../../actions";
 import "../../css/PoemForm.css";
 
@@ -64,12 +65,22 @@ class PoemForm extends Component {
   render() {
     return (
       <Container>
+        <DefaultHeader />
         {this.props.showTheme ? <Typography variant="h6">꽃</Typography> : null}
         <Form>
           <p># 제목</p>
-          <StyledInput name="title" onChange={this.handleChange} />
+          <StyledInput
+            name="title"
+            onChange={this.handleChange}
+            value={this.state.title}
+          />
           <p># 본문</p>
-          <TextArea name="content" rows={16} onChange={this.handleChange} />
+          <TextArea
+            name="content"
+            rows={16}
+            onChange={this.handleChange}
+            value={this.state.content}
+          />
         </Form>
         <ButtonContainer>
           <Button

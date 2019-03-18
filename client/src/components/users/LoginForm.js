@@ -58,7 +58,7 @@ class LoginForm extends Component {
               >
                 로그인
               </Button>
-              <Link to="/create_user" style={{ textDecoration: "none" }}>
+              <Link to="/users/new" style={{ textDecoration: "none" }}>
                 <Button
                   color="default"
                   onClick={this.handleSignin}

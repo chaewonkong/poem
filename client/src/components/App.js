@@ -39,12 +39,20 @@ class App extends Component {
               </HeaderContainer> */}
               <BodyContainer>
                 <Route exact path="/" component={PoemList} />
-                <Route path="/poems/new" component={CreatePoem} />
-                <Route path="/poems/update" component={UpdatePoem} />
+                <Route exact path="/poems/new" component={CreatePoem} />
+                <Route exact path="/poems/:id/update" component={UpdatePoem} />
                 <Route path="/login" component={LoginForm} />
-                <Route path="/create_user" component={CreateUser} />
-                <Route path="/update_user" component={UpdateUser} />
-                <Route path="/user_detail" component={UserDetail} />
+                <Route exact path="/users/new" component={CreateUser} />
+                <Route
+                  exact
+                  path="/users/:userId/update"
+                  component={UpdateUser}
+                />
+                <Route
+                  exact
+                  path="/users/:userId/detail"
+                  component={UserDetail}
+                />
               </BodyContainer>
             </Container>
           </Fragment>

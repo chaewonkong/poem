@@ -41,7 +41,7 @@ class PoemMenu extends Component {
             open={Boolean(this.state.anchorEl)}
             onClose={this.handleClose}
           >
-            <Link to="/poems/update">
+            <Link to={`/poems/${this.props.id}/update`}>
               <MenuItem onClick={this.handleUpdate}>수정</MenuItem>
             </Link>
             <MenuItem onClick={this.handleDelete}>삭제</MenuItem>
