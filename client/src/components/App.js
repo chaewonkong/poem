@@ -45,7 +45,7 @@ class App extends Component {
                 <Route exact path="/users/new" component={CreateUser} />
                 <Route
                   exact
-                  path="/users/:userId/update"
+                  path="/users//:userId/update"
                   component={UpdateUser}
                 />
                 <Route
