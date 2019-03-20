@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Drawer, Avatar } from "antd";
+import { Drawer, Avatar, Dropdown } from "antd";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
-import { Dropdown } from "antd";
 import "../../css/UserMenu.css";
 
 class UserMenu extends Component {

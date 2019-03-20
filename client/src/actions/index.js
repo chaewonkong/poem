@@ -107,18 +107,17 @@ export const fetchSelectedUser = userId => async dispatch => {
   dispatch({ type: FETCH_SELECTED_USER, payload: res.data });
 };
 
-export const fetchPoems = token => async dispatch => {
+export const fetchPoems = (
+  token,
+  url = "https://mighty-chamber-86168.herokuapp.com/poems/"
+) => async dispatch => {
+  if (!url) return;
   if (token) {
-    const res = await axios.get(
-      "https://mighty-chamber-86168.herokuapp.com/poems/",
-      { headers: { Authorization: token } }
-    );
-    dispatch({ type: FETCH_POEMS, payload: res.data.results });
+    const res = await axios.get(url, { headers: { Authorization: token } });
+    dispatch({ type: FETCH_POEMS, payload: res.data });
   } else {
-    const res = await axios.get(
-      "https://mighty-chamber-86168.herokuapp.com/poems/"
-    );
-    dispatch({ type: FETCH_POEMS, payload: res.data.results });
+    const res = await axios.get(url);
+    dispatch({ type: FETCH_POEMS, payload: res.data });
   }
 };
 

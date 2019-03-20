@@ -41,11 +41,11 @@ class App extends Component {
                 <Route exact path="/" component={PoemList} />
                 <Route exact path="/poems/new" component={CreatePoem} />
                 <Route exact path="/poems/:id/update" component={UpdatePoem} />
-                <Route path="/login" component={LoginForm} />
+                <Route path="/users/login" component={LoginForm} />
                 <Route exact path="/users/new" component={CreateUser} />
                 <Route
                   exact
-                  path="/users//:userId/update"
+                  path="/users/:userId/update"
                   component={UpdateUser}
                 />
                 <Route

@@ -35,7 +35,7 @@ class Header extends Component {
               {this.props.nickname ? (
                 <UserMenu />
               ) : (
-                <Link to="/login">
+                <Link to="/users/login">
                   <Title size="1rem">로그인</Title>
                 </Link>
               )}
