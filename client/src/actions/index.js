@@ -25,7 +25,7 @@ export const loginUser = ({ identifier, password }) => async dispatch => {
 };
 
 export const logoutUser = token => async dispatch => {
-  const res = await axios.post(
+  await axios.post(
     "https://mighty-chamber-86168.herokuapp.com/auth/logout/",
     {},
     {
@@ -88,7 +88,7 @@ export const updateUser = ({
 };
 
 export const deleteUser = ({ userId, token }) => async dispatch => {
-  const res = await axios.delete(
+  await axios.delete(
     `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
     {
       headers: { Authorization: token }
@@ -167,7 +167,7 @@ export const fetchPoem = ({ id, token }) => async dispatch => {
 };
 
 export const deletePoem = ({ id, token }) => async dispatch => {
-  const res = await axios.delete(
+  await axios.delete(
     `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
     {
       headers: { Authorization: token }
@@ -177,7 +177,7 @@ export const deletePoem = ({ id, token }) => async dispatch => {
 };
 
 export const likePoem = ({ id, token }) => async dispatch => {
-  const res = await axios.post(
+  await axios.post(
     `https://mighty-chamber-86168.herokuapp.com/poems/${id}/like/`,
     {},
     {
@@ -188,7 +188,7 @@ export const likePoem = ({ id, token }) => async dispatch => {
 };
 
 export const dislikePoem = ({ id, token }) => async dispatch => {
-  const res = await axios.post(
+  await axios.post(
     `https://mighty-chamber-86168.herokuapp.com/poems/${id}/dislike/`,
     {},
     {

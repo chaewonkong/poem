@@ -17,15 +17,14 @@ class PoemList extends Component {
   };
 
   componentDidMount() {
-    if (this.props.auth.token) this.props.fetchPoems(this.props.auth.token);
-    else this.props.fetchPoems();
+    if (this.props.auth.token) {
+      this.props.fetchPoems(this.props.auth.token);
+      this.setState({ isLoading: false });
+    } else this.props.fetchPoems();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      prevProps.poems.results.length !== this.props.poems.results.length ||
-      prevProps.auth !== this.props.auth
-    ) {
+    if (prevProps.poems.results.length !== this.props.poems.results.length) {
       this.setState({ isLoading: false });
       if (this.props.auth.token) {
         this.props.fetchPoems(this.props.auth.token);
