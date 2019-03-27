@@ -19,18 +19,23 @@ class PoemList extends Component {
   componentDidMount() {
     if (this.props.auth.token) this.props.fetchPoems(this.props.auth.token);
     else this.props.fetchPoems();
-    this.setState({ isLoading: false });
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      prevProps.poems.length !== this.props.poems.length ||
+      prevProps.poems.results.length !== this.props.poems.results.length ||
       prevProps.auth !== this.props.auth
     ) {
+      this.setState({ isLoading: false });
       if (this.props.auth.token) {
         this.props.fetchPoems(this.props.auth.token);
       } else this.props.fetchPoems();
     }
+  }
+
+  fetchMoreData(token, next) {
+    if (token) this.props.fetchPoems(token, next);
+    else this.props.fetchPoems(null, next);
   }
 
   renderPoems() {
@@ -57,41 +62,42 @@ class PoemList extends Component {
     }
   }
 
-  fetchMoreData(token, next) {
-    if (token) this.props.fetchPoems(token, next);
-    else this.props.fetchPoems(null, next);
+  renderView() {
+    const { token } = this.props.auth;
+    const { count, next } = this.props.poems || { count: 0, next: () => {} };
+
+    if (this.state.isLoading) return <Loading />;
+    else
+      return (
+        <Fragment>
+          <DefaultHeader />
+
+          <InfiniteList
+            dataLength={count}
+            hasMore={next ? true : false}
+            next={() => this.fetchMoreData(token, next)}
+            loader={<Icon type="loading" />}
+            endMessage={<h3>총 {count}개 결과</h3>}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <DateText># 20xx년 xx월 xx일, 오늘</DateText>
+            {this.renderPoems()}
+            <Link to="/poems/new" className="btn-floating">
+              <div>
+                <CreateButton hover={this.state.btnHover} />
+              </div>
+            </Link>
+          </InfiniteList>
+        </Fragment>
+      );
   }
 
   render() {
-    // console.log(this.props);
-    const { token } = this.props.auth;
-    const { count, next } = this.props.poems || { count: 0, next: () => {} };
-    return (
-      <Fragment>
-        <DefaultHeader />
-
-        <InfiniteList
-          dataLength={count}
-          hasMore={next ? true : false}
-          next={() => this.fetchMoreData(token, next)}
-          loader={<Icon type="loading" />}
-          endMessage={<h3>총 {count}개 결과</h3>}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
-          <DateText># 20xx년 xx월 xx일, 오늘</DateText>
-          {this.renderPoems()}
-          <Link to="/poems/new" className="btn-floating">
-            <div>
-              <CreateButton hover={this.state.btnHover} />
-            </div>
-          </Link>
-        </InfiniteList>
-      </Fragment>
-    );
+    return <Fragment>{this.renderView()}</Fragment>;
   }
 }
 

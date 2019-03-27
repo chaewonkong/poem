@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import * as actions from "../actions";
-// import Footer from "./Footer";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
 import UpdatePoem from "./poems/UpdatePoem";
@@ -26,7 +25,6 @@ class App extends Component {
     const token = localStorage.getItem("TOKEN");
     if (token) this.props.fetchUser(token);
   }
-
   render() {
     return (
       <BrowserRouter>
@@ -34,9 +32,6 @@ class App extends Component {
           <Fragment>
             <GlobalStyle />
             <Container>
-              {/* <HeaderContainer>
-                <DefaultHeader />
-              </HeaderContainer> */}
               <BodyContainer>
                 <Route exact path="/" component={PoemList} />
                 <Route exact path="/poems/new" component={CreatePoem} />
