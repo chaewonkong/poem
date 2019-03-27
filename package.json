@@ -12,7 +12,8 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "cd client && yarn deploy"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
