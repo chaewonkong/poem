@@ -4,15 +4,8 @@ import { connect } from "react-redux";
 import PoemForm from "./PoemForm";
 
 class UpdatePoem extends Component {
-  renderForm = () => {
-    if (this.props.poems.redirect) {
-      return <Redirect push to={this.props.poems.redirect} />;
-    }
-    return <PoemForm variant="update" />;
-  };
-
   render() {
-    return <div>{this.renderForm()}</div>;
+    return <PoemForm variant="update" />;
   }
 }
 

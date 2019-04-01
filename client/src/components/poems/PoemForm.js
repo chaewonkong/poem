@@ -29,7 +29,8 @@ class PoemForm extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      const { id, title, content } = this.props.poems;
+      console.log(this.props);
+      const { id, title, content } = this.props.poems.poem;
       this.setState({
         id,
         title,
@@ -65,7 +66,7 @@ class PoemForm extends Component {
         window.location.href = "/";
       }
     } else if (this.props.variant === "update") {
-      const id = this.props.poems.id;
+      const id = this.props.poems.poem.id;
       const res = await axios.put(
         `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
         { title, content },
@@ -73,7 +74,6 @@ class PoemForm extends Component {
           headers: { Authorization: token }
         }
       );
-      console.log(res.status);
       if (res.status === 200 || res.status === 201) {
         window.location.href = "/";
       }

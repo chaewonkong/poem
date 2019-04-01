@@ -117,9 +117,7 @@ class PoemList extends Component {
   }
 
   render() {
-    console.log(this.state);
     return <Fragment>{this.renderView()}</Fragment>;
-    // return <div>nothing</div>;
   }
 }
 

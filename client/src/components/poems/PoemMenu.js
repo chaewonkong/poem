@@ -30,8 +30,16 @@ class PoemMenu extends Component {
     }
   };
 
-  handleUpdate = () => {
-    this.props.fetchPoem({ id: this.props.id, token: this.props.auth.token });
+  handleUpdate = async () => {
+    const { id } = this.props;
+    const poems = this.props.poems;
+    const res = await axios.get(
+      `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`
+    );
+    if (res.status) {
+      console.log(res);
+      this.props.getPoem({ ...poems, poem: res.data });
+    }
   };
 
   handleClick = event => {
