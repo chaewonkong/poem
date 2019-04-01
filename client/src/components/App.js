@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import * as actions from "../actions";
 import LoginForm from "./users/LoginForm";
@@ -23,7 +24,20 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("TOKEN");
-    if (token) this.props.fetchUser(token);
+    if (token) this.fetchUser(token);
+    // if (token) localStorage.setItem("TOKEN", "");
+  }
+
+  async fetchUser(token) {
+    const res = await axios.get(
+      "https://mighty-chamber-86168.herokuapp.com/users/current-user/",
+      {
+        headers: {
+          Authorization: token
+        }
+      }
+    );
+    this.props.fetchUser({ ...res.data, token });
   }
   render() {
     return (

@@ -9,20 +9,20 @@ import {
   FETCH_SELECTED_USER
 } from "./types";
 
-export const loginUser = ({ identifier, password }) => async dispatch => {
-  const res = await axios.post(
-    "https://mighty-chamber-86168.herokuapp.com/auth/login/",
-    {
-      identifier,
-      password
-    }
-  );
-  localStorage.setItem("TOKEN", res.data.token);
-  dispatch({
-    type: LOGIN_SUCCESS,
-    payload: { ...res.data, redirect: "/" }
-  });
-};
+// export const loginUser = ({ identifier, password }) => async dispatch => {
+//   const res = await axios.post(
+//     "https://mighty-chamber-86168.herokuapp.com/auth/login/",
+//     {
+//       identifier,
+//       password
+//     }
+//   );
+//   localStorage.setItem("TOKEN", res.data.token);
+//   dispatch({
+//     type: LOGIN_SUCCESS,
+//     payload: { ...res.data, redirect: "/" }
+//   });
+// };
 
 export const logoutUser = token => async dispatch => {
   await axios.post(
@@ -51,15 +51,17 @@ export const createUser = data => async dispatch => {
   });
 };
 
-export const fetchUser = token => async dispatch => {
-  const res = await axios.get(
-    "https://mighty-chamber-86168.herokuapp.com/users/current-user/",
-    {
-      headers: { Authorization: token }
-    }
-  );
-  dispatch({ type: FETCH_USER, payload: { ...res.data, token } });
-};
+// export const fetchUser = token => async dispatch => {
+//   const res = await axios.get(
+//     "https://mighty-chamber-86168.herokuapp.com/users/current-user/",
+//     {
+//       headers: { Authorization: token }
+//     }
+//   );
+//   dispatch({ type: FETCH_USER, payload: { ...res.data, token } });
+// };
+
+export const fetchUser = user => ({ type: FETCH_USER, payload: user });
 
 export const updateUser = ({
   userId,
@@ -107,19 +109,21 @@ export const fetchSelectedUser = userId => async dispatch => {
   dispatch({ type: FETCH_SELECTED_USER, payload: res.data });
 };
 
-export const fetchPoems = (
-  token,
-  url = "https://mighty-chamber-86168.herokuapp.com/poems/"
-) => async dispatch => {
-  if (!url) return;
-  if (token) {
-    const res = await axios.get(url, { headers: { Authorization: token } });
-    dispatch({ type: FETCH_POEMS, payload: res.data });
-  } else {
-    const res = await axios.get(url);
-    dispatch({ type: FETCH_POEMS, payload: res.data });
-  }
-};
+// export const fetchPoems = (
+//   token,
+//   url = "https://mighty-chamber-86168.herokuapp.com/poems/"
+// ) => async dispatch => {
+//   if (!url) return;
+//   if (token) {
+//     const res = await axios.get(url, { headers: { Authorization: token } });
+//     dispatch({ type: FETCH_POEMS, payload: res.data });
+//   } else {
+//     const res = await axios.get(url);
+//     dispatch({ type: FETCH_POEMS, payload: res.data });
+//   }
+// };
+
+export const fetchPoems = data => ({ type: FETCH_POEMS, payload: data });
 
 export const postPoem = ({ title, content, token }) => async dispatch => {
   const res = await axios.post(

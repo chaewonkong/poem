@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -10,10 +11,19 @@ import * as actions from "../../actions";
 
 class LoginForm extends Component {
   state = { identifier: "", password: "" };
-  handleLogin = () => {
+
+  handleLogin = async () => {
     const { identifier, password } = this.state;
-    this.props.loginUser({ identifier, password });
+    const res = await axios.post(
+      "https://mighty-chamber-86168.herokuapp.com/auth/login/",
+      {
+        identifier,
+        password
+      }
+    );
+    localStorage.setItem("TOKEN", res.data.token);
   };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Icon } from "antd";
@@ -18,23 +19,40 @@ class PoemList extends Component {
 
   componentDidMount() {
     if (this.props.auth.token) {
-      this.props.fetchPoems(this.props.auth.token);
+      this.fetchPoems(this.props.auth.token);
       this.setState({ isLoading: false });
-    } else this.props.fetchPoems();
+    } else this.fetchPoems();
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.poems.results.length !== this.props.poems.results.length) {
       this.setState({ isLoading: false });
       if (this.props.auth.token) {
-        this.props.fetchPoems(this.props.auth.token);
-      } else this.props.fetchPoems();
+        this.fetchPoems(this.props.auth.token);
+      } else this.fetchPoems(null);
     }
   }
 
   fetchMoreData(token, next) {
-    if (token) this.props.fetchPoems(token, next);
-    else this.props.fetchPoems(null, next);
+    if (token) this.fetchPoems(token, next);
+    else this.fetchPoems(null, next);
+  }
+
+  async fetchPoems(
+    token,
+    next = "https://mighty-chamber-86168.herokuapp.com/poems/"
+  ) {
+    if (token) {
+      const res = await axios.get(next, {
+        headers: {
+          Authorization: token
+        }
+      });
+      this.props.fetchPoems(res.data);
+    } else {
+      const res = await axios.get(next);
+      this.props.fetchPoems(res.data);
+    }
   }
 
   renderPoems() {
@@ -97,6 +115,7 @@ class PoemList extends Component {
 
   render() {
     return <Fragment>{this.renderView()}</Fragment>;
+    // return <div>nothing</div>;
   }
 }
 
