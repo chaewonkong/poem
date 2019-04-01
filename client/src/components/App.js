@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("TOKEN");
-    if (token) this.fetchUser(token);
+    if (token.length) this.fetchUser(token);
     // if (token) localStorage.setItem("TOKEN", "");
   }
 

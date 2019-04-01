@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled from "styled-components";
 import { Drawer, Avatar, Dropdown } from "antd";
 import IconButton from "@material-ui/core/IconButton";
@@ -7,6 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
 import "../../css/UserMenu.css";
+import Axios from "../../../node_modules/axios";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };
@@ -29,8 +31,19 @@ class UserMenu extends Component {
     });
   };
 
-  handleLogoutUser = () => {
-    this.props.logoutUser(this.props.auth.token);
+  handleLogoutUser = async () => {
+    const token = this.props.auth.token;
+    const res = await Axios.post(
+      "https://mighty-chamber-86168.herokuapp.com/auth/logout/",
+      {},
+      {
+        headers: { Authorization: token }
+      }
+    );
+    if (res.status === 200) {
+      localStorage.setItem("TOKEN", "");
+      this.props.logoutUser();
+    }
   };
   handleDeleteUser = () => {
     const { pk, token } = this.props.auth;
