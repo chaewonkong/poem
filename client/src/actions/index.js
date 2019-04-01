@@ -14,11 +14,8 @@ export const logoutUser = () => {
 
 export const fetchUser = user => ({ type: FETCH_USER, payload: user });
 
-export const fetchSelectedUser = userId => async dispatch => {
-  const res = await axios.get(
-    `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`
-  );
-  dispatch({ type: FETCH_SELECTED_USER, payload: res.data });
+export const getSelectedUser = data => {
+  return { type: FETCH_SELECTED_USER, payload: data };
 };
 
 export const fetchPoems = data => ({ type: FETCH_POEMS, payload: data });

@@ -21,7 +21,10 @@ class PoemList extends Component {
     if (this.props.auth.token) {
       this.fetchPoems(this.props.auth.token);
       this.setState({ isLoading: false });
-    } else this.fetchPoems();
+    } else {
+      this.fetchPoems();
+      this.setState({ isLoading: false });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -114,6 +117,7 @@ class PoemList extends Component {
   }
 
   render() {
+    console.log(this.state);
     return <Fragment>{this.renderView()}</Fragment>;
     // return <div>nothing</div>;
   }

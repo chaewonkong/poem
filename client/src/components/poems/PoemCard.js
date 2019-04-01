@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import axios from "axios";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -38,8 +39,13 @@ class PoemCard extends Component {
     }
   }
 
-  fetchSelectedUser = userId => {
-    this.props.fetchSelectedUser(userId);
+  fetchSelectedUser = async userId => {
+    const res = await axios.get(
+      `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`
+    );
+    if (res.status === 200) {
+      this.props.getSelectedUser(res.data);
+    }
   };
 
   render() {
