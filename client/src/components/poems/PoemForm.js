@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled from "styled-components";
 import { Input } from "antd";
 import Button from "@material-ui/core/Button";
@@ -45,13 +46,29 @@ class PoemForm extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (this.props.variant === "create") {
-      this.props.postPoem({
-        token: this.props.auth.token,
-        title: this.state.title,
-        content: this.state.content.replace(/\n/g, "\n")
-      });
+      // this.props.postPoem({
+      //   token: this.props.auth.token,
+      //   title: this.state.title,
+      //   content: this.state.content.replace(/\n/g, "\n")
+      // });
+      const token = this.props.auth.token,
+        title = this.state.title,
+        content = this.state.content.replace(/\n/g, "\n");
+      const res = await axios.post(
+        "https://mighty-chamber-86168.herokuapp.com/poems/",
+        {
+          title,
+          content
+        },
+        {
+          headers: { Authorization: token }
+        }
+      );
+      if (res.status === 200 || res.status === 201) {
+        window.location.href = "/";
+      }
     } else if (this.props.variant === "update") {
       this.props.updatePoem({
         id: this.props.poems.id || undefined,

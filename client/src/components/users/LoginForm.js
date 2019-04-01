@@ -21,7 +21,10 @@ class LoginForm extends Component {
         password
       }
     );
-    localStorage.setItem("TOKEN", res.data.token);
+    if (res.status === 200) {
+      localStorage.setItem("TOKEN", res.data.token);
+      window.location.href = "/";
+    }
   };
 
   handleChange = e => {
