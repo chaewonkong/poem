@@ -46,9 +46,19 @@ class UserMenu extends Component {
       this.props.logoutUser();
     }
   };
-  handleDeleteUser = () => {
+  handleDeleteUser = async () => {
     const { pk, token } = this.props.auth;
-    this.props.deleteUser({ userId: pk, token });
+    const userId = pk;
+    const res = await axios.delete(
+      `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
+      {
+        headers: { Authorization: token }
+      }
+    );
+    if (res.status === 204) {
+      localStorage.setItem("TOKEN", "");
+      this.props.fetchUser({});
+    }
   };
 
   render() {

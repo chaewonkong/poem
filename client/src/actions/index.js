@@ -14,19 +14,6 @@ export const logoutUser = () => {
 
 export const fetchUser = user => ({ type: FETCH_USER, payload: user });
 
-export const deleteUser = ({ userId, token }) => async dispatch => {
-  await axios.delete(
-    `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
-    {
-      headers: { Authorization: token }
-    }
-  );
-  localStorage.setItem("TOKEN", "");
-  dispatch({
-    type: DELETE_USER
-  });
-};
-
 export const fetchSelectedUser = userId => async dispatch => {
   const res = await axios.get(
     `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`
