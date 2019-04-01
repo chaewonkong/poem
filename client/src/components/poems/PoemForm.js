@@ -47,15 +47,10 @@ class PoemForm extends Component {
   };
 
   handleSubmit = async () => {
+    const token = this.props.auth.token,
+      title = this.state.title,
+      content = this.state.content.replace(/\n/g, "\n");
     if (this.props.variant === "create") {
-      // this.props.postPoem({
-      //   token: this.props.auth.token,
-      //   title: this.state.title,
-      //   content: this.state.content.replace(/\n/g, "\n")
-      // });
-      const token = this.props.auth.token,
-        title = this.state.title,
-        content = this.state.content.replace(/\n/g, "\n");
       const res = await axios.post(
         "https://mighty-chamber-86168.herokuapp.com/poems/",
         {
@@ -70,12 +65,18 @@ class PoemForm extends Component {
         window.location.href = "/";
       }
     } else if (this.props.variant === "update") {
-      this.props.updatePoem({
-        id: this.props.poems.id || undefined,
-        token: this.props.auth.token,
-        title: this.state.title,
-        content: this.state.content.replace(/\n/g, "\n")
-      });
+      const id = this.props.poems.id;
+      const res = await axios.put(
+        `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
+        { title, content },
+        {
+          headers: { Authorization: token }
+        }
+      );
+      console.log(res.status);
+      if (res.status === 200 || res.status === 201) {
+        window.location.href = "/";
+      }
     }
   };
 

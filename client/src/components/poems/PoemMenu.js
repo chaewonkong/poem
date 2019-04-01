@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
+import _ from "lodash";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -11,11 +13,21 @@ class PoemMenu extends Component {
     anchorEl: null
   };
 
-  handleDelete = () => {
-    this.props.deletePoem({
-      id: this.props.id,
-      token: this.props.auth.token
-    });
+  handleDelete = async () => {
+    const id = this.props.id;
+    const token = this.props.auth.token;
+    const res = await axios.delete(
+      `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
+      {
+        headers: { Authorization: token }
+      }
+    );
+    if (res.status === 200 || 204) {
+      // poems.results
+      const poems = this.props.poems.results;
+      _.remove(poems, poem => poem.id === id);
+      this.props.fetchPoems({ ...this.props.poems, results: poems });
+    }
   };
 
   handleUpdate = () => {
