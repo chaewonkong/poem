@@ -9,20 +9,6 @@ import {
   FETCH_SELECTED_USER
 } from "./types";
 
-// export const logoutUser = token => async dispatch => {
-//   await axios.post(
-//     "https://mighty-chamber-86168.herokuapp.com/auth/logout/",
-//     {},
-//     {
-//       headers: { Authorization: token }
-//     }
-//   );
-//   localStorage.setItem("TOKEN", "");
-//   return dispatch({
-//     type: LOGOUT_SUCCESS
-//   });
-// };
-
 export const logoutUser = () => {
   return { type: LOGOUT_SUCCESS };
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
@@ -40,16 +41,22 @@ class UserForm extends Component {
     }
   };
 
-  handleCreateUser = () => {
+  handleCreateUser = async () => {
     const { identifier, nickname, password, passwordConf, image } = this.state;
     if (password === passwordConf) {
       const data = new FormData();
       data.append("identifier", identifier);
       data.append("nickname", nickname);
-      data.append("password", password);
-      data.append("password_conf", passwordConf);
+      data.append("password", password.toLowerCase());
       if (image) data.append("image", image);
-      this.props.createUser(data);
+      const res = await axios.post(
+        "https://mighty-chamber-86168.herokuapp.com/users/",
+        data
+      );
+      if (res.status === 201) {
+        localStorage.setItem("TOKEN", res.data.token);
+        window.location.href = "/";
+      }
     } else alert("비밀번호를 확인하세요");
   };
 
