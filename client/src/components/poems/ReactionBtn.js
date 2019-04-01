@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled, { css } from "styled-components";
 import * as actions from "../../actions";
 
@@ -20,22 +21,31 @@ class ReactionBtn extends Component {
     }
   }
 
-  handleReactionToggle = () => {
-    if (this.props.type === "do_like") {
-      if (this.props.token) {
-        const { token, id } = this.props;
-        this.props.likePoem({ token, id });
-      }
-    } else {
-      if (this.props.token) {
-        const { token, id } = this.props;
-        this.props.dislikePoem({ token, id });
+  handleReactionToggle = async () => {
+    if (this.props.token) {
+      const type = this.props.type;
+      const { token, id } = this.props;
+      const res = await axios.post(
+        `https://mighty-chamber-86168.herokuapp.com/poems/${id}/${type}/`,
+        {},
+        {
+          headers: { Authorization: token }
+        }
+      );
+      if (res.status === 200) {
+        const res = await axios.get(
+          `https://mighty-chamber-86168.herokuapp.com/poems/`,
+          {
+            headers: { Authorization: token }
+          }
+        );
+        this.props.reactPoem(res.data);
       }
     }
   };
 
   renderImgType() {
-    if (this.props.type === "do_like") {
+    if (this.props.type === "like") {
       return (
         <img
           alt="different"
@@ -60,7 +70,7 @@ class ReactionBtn extends Component {
         <ButtonContainer>
           {this.renderImgType()}
           <Button onClick={this.handleReactionToggle}>
-            {type === "do_like" ? "좋아요" : "달라요"}
+            {type === "like" ? "좋아요" : "달라요"}
           </Button>
         </ButtonContainer>
       </Container>
@@ -102,10 +112,11 @@ const Highlight = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
+  z-index: 1;
 `;
 
 const Button = styled.button`
-  z-index: 10;
+  z-index: 1;
   border: none;
   background: none;
   cursor: pointer;

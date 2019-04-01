@@ -106,7 +106,11 @@ class PoemList extends Component {
           >
             <DateText># 20xx년 xx월 xx일, 오늘</DateText>
             {this.renderPoems()}
-            <Link to="/poems/new" className="btn-floating">
+            <Link
+              to="/poems/new"
+              className="btn-floating"
+              style={{ zIndex: 10 }}
+            >
               <div>
                 <CreateButton hover={this.state.btnHover} />
               </div>

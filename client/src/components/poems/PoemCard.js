@@ -100,13 +100,13 @@ class PoemCard extends Component {
         <CardActions disableActionSpacing>
           <ReactionContainer>
             <ReactionBtn
-              type="do_like"
+              type="like"
               visible={do_like}
               token={this.props.token}
               id={id}
             />
             <ReactionBtn
-              type="do_dislike"
+              type="dislike"
               visible={do_dislike}
               token={this.props.token}
               id={id}

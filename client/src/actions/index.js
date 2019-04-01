@@ -1,10 +1,9 @@
-import axios from "axios";
 import {
   LOGOUT_SUCCESS,
   FETCH_USER,
-  DELETE_USER,
   FETCH_POEMS,
   FETCH_POEM,
+  REACT_POEM,
   FETCH_SELECTED_USER
 } from "./types";
 
@@ -20,41 +19,8 @@ export const getSelectedUser = data => {
 
 export const fetchPoems = data => ({ type: FETCH_POEMS, payload: data });
 
-// export const fetchPoem = ({ id, token }) => async dispatch => {
-//   const res = await axios.get(
-//     `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`
-//   );
-//   dispatch({
-//     type: FETCH_POEM,
-//     payload: {
-//       title: res.data.title,
-//       content: res.data.content,
-//       id,
-//       token
-//     }
-//   });
-// };
-
 export const getPoem = data => ({ type: FETCH_POEM, payload: data });
 
-export const likePoem = ({ id, token }) => async dispatch => {
-  await axios.post(
-    `https://mighty-chamber-86168.herokuapp.com/poems/${id}/like/`,
-    {},
-    {
-      headers: { Authorization: token }
-    }
-  );
-  dispatch({ type: FETCH_POEMS });
-};
-
-export const dislikePoem = ({ id, token }) => async dispatch => {
-  await axios.post(
-    `https://mighty-chamber-86168.herokuapp.com/poems/${id}/dislike/`,
-    {},
-    {
-      headers: { Authorization: token }
-    }
-  );
-  dispatch({ type: FETCH_POEMS });
+export const reactPoem = data => {
+  return { type: REACT_POEM, payload: data };
 };

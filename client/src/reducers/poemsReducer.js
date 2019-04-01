@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { FETCH_POEMS, FETCH_POEM } from "../actions/types";
+import { FETCH_POEMS, FETCH_POEM, REACT_POEM } from "../actions/types";
 
 const INITIAL_STATE = { results: [] };
 
@@ -20,6 +20,8 @@ export default function(state = INITIAL_STATE, action) {
       return action.payload;
     // return action.payload || INITIAL_STATE;
     case FETCH_POEM:
+      return action.payload;
+    case REACT_POEM:
       return action.payload;
     default:
       return state;
