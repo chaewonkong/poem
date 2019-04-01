@@ -8,7 +8,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
 import "../../css/UserMenu.css";
-import Axios from "../../../node_modules/axios";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };
@@ -31,9 +30,11 @@ class UserMenu extends Component {
     });
   };
 
+  handleUpdateUser = () => (window.location.href = "/users/new");
+
   handleLogoutUser = async () => {
     const token = this.props.auth.token;
-    const res = await Axios.post(
+    const res = await axios.post(
       "https://mighty-chamber-86168.herokuapp.com/auth/logout/",
       {},
       {
@@ -54,6 +55,8 @@ class UserMenu extends Component {
     const menu = (
       <div>
         <LogoutButton onClick={this.handleLogoutUser}>로그아웃</LogoutButton>
+        <LogoutButton onClick={this.handleUpdateUser}>정보수정</LogoutButton>
+        <LogoutButton onClick={this.handleDeleteUser}>회원탈퇴</LogoutButton>
       </div>
     );
     return (

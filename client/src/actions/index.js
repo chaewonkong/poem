@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   FETCH_USER,
   DELETE_USER,
@@ -13,46 +12,7 @@ export const logoutUser = () => {
   return { type: LOGOUT_SUCCESS };
 };
 
-export const createUser = data => async dispatch => {
-  const res = await axios({
-    url: "https://mighty-chamber-86168.herokuapp.com/users/",
-    method: "post",
-    data
-  });
-  localStorage.setItem("TOKEN", res.data.token);
-  dispatch({
-    type: FETCH_USER,
-    payload: { ...res.data, redirect: "/" }
-  });
-};
-
 export const fetchUser = user => ({ type: FETCH_USER, payload: user });
-
-export const updateUser = ({
-  userId,
-  image,
-  nickname,
-  password,
-  identifier,
-  token
-}) => async dispatch => {
-  const res = await axios.put(
-    `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
-    {
-      image,
-      nickname,
-      password,
-      identifier
-    },
-    {
-      headers: { Authorization: token }
-    }
-  );
-  dispatch({
-    type: FETCH_USER,
-    payload: { ...res.data, userId }
-  });
-};
 
 export const deleteUser = ({ userId, token }) => async dispatch => {
   await axios.delete(

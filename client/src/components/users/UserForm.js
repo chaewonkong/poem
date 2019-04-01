@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -13,18 +13,20 @@ class UserForm extends Component {
     identifier: "",
     nickname: "",
     password: "",
-    passwordConf: ""
+    passwordConf: "",
+    image: "",
+    isUpdate: false
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props) {
-      const { identifier, nickname, image, userId } = this.props;
+    if (prevProps.auth !== this.props.auth) {
+      const { identifier, nickname, image, pk } = this.props.auth;
       this.setState({
-        ...this.state,
         identifier,
-        userId,
         nickname,
-        image
+        image,
+        userId: pk,
+        isUpdate: true
       });
     }
   }
@@ -60,16 +62,24 @@ class UserForm extends Component {
     } else alert("비밀번호를 확인하세요");
   };
 
-  handleUpdateUser = () => {
+  handleUpdateUser = async () => {
+    const { token } = this.props.auth;
     const { userId, image, nickname, password, identifier } = this.state;
-    this.props.updateUser({
-      userId,
-      nickname,
-      password,
-      image,
-      identifier,
-      token: this.props.auth.token
-    });
+    const data = new FormData();
+    data.append("identifier", identifier);
+    data.append("nickname", nickname);
+    data.append("password", password);
+    if (image) data.append("image", image);
+    const res = await axios.put(
+      `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
+      data,
+      {
+        headers: { Authorization: token }
+      }
+    );
+    if (res.status === 200) {
+      window.location.href = "/";
+    }
   };
 
   onImageChange = e => {
@@ -87,6 +97,8 @@ class UserForm extends Component {
     console.log(this.state);
   };
   render() {
+    const { isUpdate } = this.state;
+
     return (
       <Container>
         <div>
@@ -138,12 +150,10 @@ class UserForm extends Component {
         <div>
           <Button
             color="primary"
-            onClick={
-              this.state.update ? this.handleUpdateUser : this.handleCreateUser
-            }
+            onClick={isUpdate ? this.handleUpdateUser : this.handleCreateUser}
             variant="outlined"
           >
-            회원가입하기
+            {isUpdate ? "업데이트" : "회원가입"}
           </Button>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button color="secondary" variant="outlined">
