@@ -6,3 +6,4 @@ export const FETCH_POEMS = "fetch_poems";
 export const FETCH_POEM = "fetch_poem";
 export const REACT_POEM = "react_poem";
 export const FETCH_SELECTED_USER = "fetch_selected_user";
+export const FETCH_TODAY = "fetch_today";

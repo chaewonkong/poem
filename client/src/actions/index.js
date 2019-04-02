@@ -4,7 +4,8 @@ import {
   FETCH_POEMS,
   FETCH_POEM,
   REACT_POEM,
-  FETCH_SELECTED_USER
+  FETCH_SELECTED_USER,
+  FETCH_TODAY
 } from "./types";
 
 export const logoutUser = () => {
@@ -24,3 +25,5 @@ export const getPoem = data => ({ type: FETCH_POEM, payload: data });
 export const reactPoem = data => {
   return { type: REACT_POEM, payload: data };
 };
+
+export const getToday = data => ({ type: FETCH_TODAY, payload: data });

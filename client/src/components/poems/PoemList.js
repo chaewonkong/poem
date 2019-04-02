@@ -58,6 +58,13 @@ class PoemList extends Component {
     }
   }
 
+  fetchToday = async () => {
+    const res = await axios.get(
+      "https://mighty-chamber-86168.herokuapp.com/poems/about-today/"
+    );
+    this.props.getToday(res.data);
+  };
+
   renderPoems() {
     const poems = this.props.poems;
     if (poems.results) {
@@ -109,6 +116,7 @@ class PoemList extends Component {
             <Link
               to="/poems/new"
               className="btn-floating"
+              onClick={this.fetchToday}
               style={{ zIndex: 10 }}
             >
               <div>

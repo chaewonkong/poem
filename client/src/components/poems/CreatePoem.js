@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import { Tabs } from "antd";
 import { Modal, Button } from "antd";
+import * as actions from "../../actions";
 import CustomHeader from "../CustomHeader";
 import PoemForm from "./PoemForm";
 import "../../css/CreatePoem.css";
@@ -17,6 +19,9 @@ class CreatePoem extends Component {
     value: 0,
     visible: true
   };
+
+  componentDidMount() {}
+
   showModal = () => {
     this.setState({
       visible: true
@@ -72,6 +77,8 @@ class CreatePoem extends Component {
       return <Redirect push to={this.props.poems.redirect} />;
     } else {
       const { user, content } = this.state;
+      console.log(this.props.today);
+      const guide = this.props.today ? this.props.today["가이드 형식"] : "꽃";
       return (
         <Tabs
           defaultActiveKey="1"
@@ -84,15 +91,16 @@ class CreatePoem extends Component {
           }}
         >
           <TabPane tab="길라잡이 모드" key="1">
-            <Typography variant="h6" style={{ color: "#707070" }}>
+            {/* <Typography variant="h6" style={{ color: "#707070" }}>
               글감
-            </Typography>
+            </Typography> */}
             <p style={{ fontSize: 20, color: "#ABABAB" }}>
-              자세히 보아야 예쁘다.
+              {/* 자세히 보아야 예쁘다.
               <br /> 오래 보아야 사랑스럽다. <br />
               너도 그렇다. <br />
               <br />
-              나태주, "들꽃"
+              나태주, "들꽃" */}
+              {guide}
             </p>
             <PoemForm
               variant="create"
@@ -137,7 +145,10 @@ const TabPane = styled(Tabs.TabPane)`
 `;
 
 const mapStateToProps = state => {
-  return { poems: state.poems, auth: state.auth };
+  return { poems: state.poems, auth: state.auth, today: state.today };
 };
 
-export default connect(mapStateToProps)(CreatePoem);
+export default connect(
+  mapStateToProps,
+  actions
+)(CreatePoem);

@@ -28,7 +28,7 @@ class PoemForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props) {
+    if (prevProps !== this.props && this.props.variant === "update") {
       console.log(this.props);
       const { id, title, content } = this.props.poems.poem;
       this.setState({
@@ -81,10 +81,13 @@ class PoemForm extends Component {
   };
 
   render() {
+    const subject = this.props.today ? this.props.today["주제"] : "꽃";
     return (
       <Container>
         <DefaultHeader />
-        {this.props.showTheme ? <Typography variant="h6">꽃</Typography> : null}
+        {this.props.showTheme ? (
+          <Typography variant="h6">{subject}</Typography>
+        ) : null}
         <Form>
           <p># 제목</p>
           <StyledInput
