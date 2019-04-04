@@ -58,6 +58,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90%;
   @media (orientation: landscape) {
     width: 30vw;
   }
