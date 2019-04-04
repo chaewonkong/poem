@@ -20,11 +20,10 @@ class UserForm extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.auth !== this.props.auth) {
-      const { identifier, nickname, image, pk } = this.props.auth;
+      const { identifier, nickname, pk } = this.props.auth;
       this.setState({
         identifier,
         nickname,
-        image,
         userId: pk,
         isUpdate: true
       });
@@ -49,7 +48,7 @@ class UserForm extends Component {
       const data = new FormData();
       data.append("identifier", identifier);
       data.append("nickname", nickname);
-      data.append("password", password.toLowerCase());
+      data.append("password");
       if (image) data.append("image", image);
       const res = await axios.post(
         "https://mighty-chamber-86168.herokuapp.com/users/",
@@ -64,12 +63,12 @@ class UserForm extends Component {
 
   handleUpdateUser = async () => {
     const { token } = this.props.auth;
-    const { userId, image, nickname, password, identifier } = this.state;
+    const { userId, image, nickname, identifier, password } = this.state;
     const data = new FormData();
-    data.append("identifier", identifier);
-    data.append("nickname", nickname);
-    data.append("password", password);
-    if (image) data.append("image", image);
+    if (identifier.length) data.append("identifier", identifier);
+    if (nickname.length) data.append("nickname", nickname);
+    if (password.length )data.append("password", password);
+    if (image.length) data.append("image", image);
     const res = await axios.put(
       `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
       data,
@@ -105,7 +104,7 @@ class UserForm extends Component {
           <InputContainer>
             <TextField
               name="identifier"
-              required
+              required={isUpdate? false : true}
               label="id"
               placeholder="k0000"
               onChange={this.handleChange}
@@ -113,7 +112,7 @@ class UserForm extends Component {
             />
             <TextField
               name="nickname"
-              required
+              required={isUpdate? false : true}
               label="필명"
               placeholder="숭어다랑어"
               onChange={this.handleChange}
@@ -122,7 +121,7 @@ class UserForm extends Component {
             <TextField
               name="password"
               pattern="[0-9a-z]"
-              required
+              required={isUpdate? false : true}
               type="password"
               label="비밀번호"
               placeholder="알파벳 소문자/숫자"
@@ -130,7 +129,7 @@ class UserForm extends Component {
             />
             <TextField
               name="passwordConf"
-              required
+              required={isUpdate? false : true}
               type="password"
               label="비밀번호 확인"
               placeholder="알파벳 소문자/숫자"
