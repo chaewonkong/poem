@@ -13,7 +13,7 @@
     "client": "npm run start --prefix client",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "deploy": "cd client && yarn deploy"
+    "deploy": "cd client && yarn deploy && git add --all && git commit -m \"Build and deploy\""
   },
   "dependencies": {
     "body-parser": "^1.18.3",
