@@ -33,11 +33,14 @@ class LoginForm extends Component {
     });
   };
 
+  handleEnterSubmit(e) {
+    if (e.key === "Enter") this.handleLogin();
+  }
+
   render() {
     return (
       <div>
         <DefaultHeader />
-        {/* {this.props.redirect ? (<Redirect push to="/" />) : ( */}
         {this.props.redirect ? (
           <Redirect push to={this.props.redirect} />
         ) : (
@@ -61,6 +64,7 @@ class LoginForm extends Component {
                 label="password"
                 placeholder="password"
                 type="password"
+                onKeyPress={this.handleEnterSubmit.bind(this)}
               />
             </div>
             <div className={styles.loginBtn}>
