@@ -111,7 +111,6 @@ class PoemList extends Component {
               alignItems: "center"
             }}
           >
-            <DateText># 20xx년 xx월 xx일, 오늘</DateText>
             {this.renderPoems()}
             <Link
               to="/poems/new"
@@ -150,14 +149,6 @@ const InfiniteList = styled(InfiniteScroll)`
   display: flex;
   flexdirection: column;
   alignitems: center;
-`;
-
-const DateText = styled.p`
-  margin-top: 10vh;
-  width: 90%;
-  float: left;
-  color: ABABAB;
-  font-size: 20px;
 `;
 
 const mapStateToProps = state => {
