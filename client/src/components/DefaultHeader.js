@@ -29,7 +29,6 @@ class Header extends Component {
   render() {
     return (
       <Bar position="fixed">
-        <BarContainer>
           <CustomHeader>
             <Toolbar className="toolbar">
               {this.props.nickname ? (
@@ -60,7 +59,6 @@ class Header extends Component {
               </Modal>
             </Toolbar>
           </CustomHeader>
-        </BarContainer>
       </Bar>
     );
   }
@@ -71,11 +69,11 @@ const mapStateToProps = state => state.auth;
 const Bar = styled(AppBar)`
   background: ${props => props.theme.highlightColor};
   box-shadow: none;
+  display: flex;
 `;
 
 const BarContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  
 `;
 
 const SearchContainer = styled.div`
