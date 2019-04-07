@@ -81,13 +81,11 @@ class PoemForm extends Component {
   };
 
   render() {
-    const subject = this.props.today ? this.props.today["주제"] : "꽃";
+    const subject = this.props.today ? this.props.today.subject : "꽃";
     return (
       <Container>
         <DefaultHeader />
-        {this.props.showTheme ? (
-          <Typography variant="h6">{subject}</Typography>
-        ) : null}
+        {this.props.showTheme ? <h3>{subject}</h3> : null}
         <Form>
           <p># 제목</p>
           <StyledInput

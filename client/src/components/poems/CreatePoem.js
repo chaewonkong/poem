@@ -77,8 +77,9 @@ class CreatePoem extends Component {
       return <Redirect push to={this.props.poems.redirect} />;
     } else {
       const { user, content } = this.state;
-      console.log(this.props.today);
-      const guide = this.props.today ? this.props.today["가이드 형식"] : "꽃";
+      const { guide_format, subject } = this.props.today
+        ? this.props.today
+        : "꽃";
       return (
         <Tabs
           defaultActiveKey="1"
@@ -91,16 +92,14 @@ class CreatePoem extends Component {
           }}
         >
           <TabPane tab="길라잡이 모드" key="1">
-            {/* <Typography variant="h6" style={{ color: "#707070" }}>
-              글감
-            </Typography> */}
+            <h3>{subject}</h3>
             <p style={{ fontSize: 20, color: "#ABABAB" }}>
               {/* 자세히 보아야 예쁘다.
               <br /> 오래 보아야 사랑스럽다. <br />
               너도 그렇다. <br />
               <br />
               나태주, "들꽃" */}
-              {guide}
+              {guide_format}
             </p>
             <PoemForm
               variant="create"

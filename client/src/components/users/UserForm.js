@@ -48,7 +48,7 @@ class UserForm extends Component {
       const data = new FormData();
       data.append("identifier", identifier);
       data.append("nickname", nickname);
-      data.append("password");
+      data.append("password", password);
       if (image) data.append("image", image);
       const res = await axios.post(
         "https://mighty-chamber-86168.herokuapp.com/users/",
@@ -67,15 +67,20 @@ class UserForm extends Component {
     const data = new FormData();
     if (identifier.length) data.append("identifier", identifier);
     if (nickname.length) data.append("nickname", nickname);
-    if (password.length )data.append("password", password);
+    if (password.length) data.append("password", password);
     if (image.length) data.append("image", image);
-    const res = await axios.put(
-      `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
-      data,
-      {
-        headers: { Authorization: token }
-      }
-    );
+    const res = await axios
+      .put(
+        `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
+        data,
+        {
+          headers: { Authorization: token }
+        }
+      )
+      .catch(e => {
+        alert("이미 있는 아이디 입니다");
+        window.location.href = "/users/new";
+      });
     if (res.status === 200) {
       window.location.href = "/";
     }
@@ -104,7 +109,7 @@ class UserForm extends Component {
           <InputContainer>
             <TextField
               name="identifier"
-              required={isUpdate? false : true}
+              required={isUpdate ? false : true}
               label="id"
               placeholder="k0000"
               onChange={this.handleChange}
@@ -112,7 +117,7 @@ class UserForm extends Component {
             />
             <TextField
               name="nickname"
-              required={isUpdate? false : true}
+              required={isUpdate ? false : true}
               label="필명"
               placeholder="숭어다랑어"
               onChange={this.handleChange}
@@ -121,7 +126,7 @@ class UserForm extends Component {
             <TextField
               name="password"
               pattern="[0-9a-z]"
-              required={isUpdate? false : true}
+              required={isUpdate ? false : true}
               type="password"
               label="비밀번호"
               placeholder="알파벳 소문자/숫자"
@@ -129,7 +134,7 @@ class UserForm extends Component {
             />
             <TextField
               name="passwordConf"
-              required={isUpdate? false : true}
+              required={isUpdate ? false : true}
               type="password"
               label="비밀번호 확인"
               placeholder="알파벳 소문자/숫자"
