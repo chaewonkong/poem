@@ -3,6 +3,7 @@ const theme = {
   darkGreyColor: "#707070",
   defaultColor: "#ABABAB",
   lightGreyColor: "#E7E7E7",
+  dangerColor: "#f50057",
   fontFamily: "'Jeju Myeongjo', serif !important"
 };
 

@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import UploadProfile from "./UploadProfile";
+import ModalView from "../common/ModalView";
 import * as actions from "../../actions";
 
 class UserForm extends Component {
@@ -15,7 +16,9 @@ class UserForm extends Component {
     password: "",
     passwordConf: "",
     image: "",
-    isUpdate: false
+    isUpdate: false,
+    idError: "",
+    nickError: ""
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -29,6 +32,12 @@ class UserForm extends Component {
       });
     }
   }
+
+  toggleModal = () => {
+    this.setState({
+      visible: !this.state.visible
+    });
+  };
 
   handleChange = e => {
     if (e.target.name === "password" || e.target.name === "passwordConf") {
@@ -69,7 +78,7 @@ class UserForm extends Component {
     if (nickname.length) data.append("nickname", nickname);
     if (password.length) data.append("password", password);
     if (image.length) data.append("image", image);
-    const res = await axios
+    axios
       .put(
         `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
         data,
@@ -77,13 +86,16 @@ class UserForm extends Component {
           headers: { Authorization: token }
         }
       )
-      .catch(e => {
-        alert("이미 있는 아이디 입니다");
-        window.location.href = "/users/new";
+      .then(response => {
+        if (response.status === 200) window.location.href = "/";
+      })
+      .catch(error => {
+        const { data } = error.response;
+        if (data.identifier)
+          this.setState({ idError: data.identifier.join("\n") });
+        if (data.nickname)
+          this.setState({ nickError: data.nickname.join("\n") });
       });
-    if (res.status === 200) {
-      window.location.href = "/";
-    }
   };
 
   onImageChange = e => {
@@ -101,7 +113,7 @@ class UserForm extends Component {
     console.log(this.state);
   };
   render() {
-    const { isUpdate } = this.state;
+    const { isUpdate, idError, nickError } = this.state;
 
     return (
       <Container>
@@ -115,6 +127,7 @@ class UserForm extends Component {
               onChange={this.handleChange}
               value={this.state.identifier}
             />
+            {idError ? <Error>{idError}</Error> : null}
             <TextField
               name="nickname"
               required={isUpdate ? false : true}
@@ -123,6 +136,7 @@ class UserForm extends Component {
               onChange={this.handleChange}
               value={this.state.nickname}
             />
+            {nickError ? <Error>{nickError}</Error> : null}
             <TextField
               name="password"
               pattern="[0-9a-z]"
@@ -186,6 +200,10 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 3vh;
+`;
+
+const Error = styled.p`
+  color: ${props => props.theme.dangerColor};
 `;
 
 const mapStateToProps = state => state;
