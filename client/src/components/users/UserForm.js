@@ -6,7 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import UploadProfile from "./UploadProfile";
-import ModalView from "../common/ModalView";
 import * as actions from "../../actions";
 
 class UserForm extends Component {
@@ -59,15 +58,22 @@ class UserForm extends Component {
       data.append("nickname", nickname);
       data.append("password", password);
       if (image) data.append("image", image);
-      const res = await axios.post(
-        "https://mighty-chamber-86168.herokuapp.com/users/",
-        data
-      );
-      if (res.status === 201) {
-        localStorage.setItem("TOKEN", res.data.token);
-        window.location.href = "/";
-      }
-    } else alert("비밀번호를 확인하세요");
+      axios
+        .post("https://mighty-chamber-86168.herokuapp.com/users/", data)
+        .then(response => {
+          if (response.status === 201) {
+            localStorage.setItem("TOKEN", response.data.token);
+            window.location.href = "/";
+          }
+        })
+        .catch(error => {
+          const { data } = error.response;
+          if (data.identifier)
+            this.setState({ idError: data.identifier.join("\n") });
+          if (data.nickname)
+            this.setState({ nickError: data.nickname.join("\n") });
+        });
+    }
   };
 
   handleUpdateUser = async () => {
