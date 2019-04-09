@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Tabs } from "antd";
 import * as actions from "../../actions";
 import ModalView from "../common/ModalView";
 import PoemForm from "./PoemForm";
+import PoemDetail from "./PoemDetail";
 import "../../css/CreatePoem.css";
 
 class CreatePoem extends Component {
@@ -24,6 +24,10 @@ class CreatePoem extends Component {
     });
   };
 
+  handleClick(type) {
+    this.setState({ type });
+  }
+
   renderForm = () => {
     if (this.props.auth.token === undefined) {
       return (
@@ -40,11 +44,29 @@ class CreatePoem extends Component {
         />
       );
     } else {
-      return <PoemForm variant="create" />;
+      switch (this.state.type) {
+        case "form":
+          return (
+            <PoemForm
+              variant="create"
+              handleClick={this.handleClick.bind(this)}
+            />
+          );
+        case "detail":
+          return <PoemDetail />;
+        default:
+          return (
+            <PoemForm
+              variant="create"
+              handleClick={this.handleClick.bind(this)}
+            />
+          );
+      }
     }
   };
 
   render() {
+    console.log(this.state);
     return <Container>{this.renderForm()}</Container>;
   }
 }
@@ -53,12 +75,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-`;
-
-const TabPane = styled(Tabs.TabPane)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const mapStateToProps = state => {

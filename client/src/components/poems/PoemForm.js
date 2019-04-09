@@ -49,6 +49,7 @@ class PoemForm extends Component {
           <Button
             type="submit"
             onClick={this.handleSubmit}
+            // onClick={() => this.props.handleClick("detail")}
             color="primary"
             variant="outlined"
           >
@@ -100,7 +101,8 @@ class PoemForm extends Component {
         }
       );
       if (res.status === 200 || res.status === 201) {
-        window.location.href = "/";
+        // window.location.href = "/";
+        this.props.handleClick("detail");
       }
     } else if (this.props.variant === "update") {
       const id = this.props.poems.poem.id;
@@ -112,7 +114,8 @@ class PoemForm extends Component {
         }
       );
       if (res.status === 200 || res.status === 201) {
-        window.location.href = "/";
+        // window.location.href = "/";
+        this.props.handleClick("detail");
       } else console.log(res);
     }
   };
