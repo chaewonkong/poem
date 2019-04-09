@@ -40,8 +40,6 @@ class CreatePoem extends Component {
           message="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"
         />
       );
-    } else if (this.props.poems.redirect) {
-      return <Redirect push to={this.props.poems.redirect} />;
     } else {
       const { user, content } = this.state;
       const { guide_format, subject } = this.props.today
@@ -60,14 +58,7 @@ class CreatePoem extends Component {
         >
           <TabPane tab="길라잡이 모드" key="1">
             <h3>{subject}</h3>
-            <p style={{ fontSize: 20, color: "#ABABAB" }}>
-              {/* 자세히 보아야 예쁘다.
-              <br /> 오래 보아야 사랑스럽다. <br />
-              너도 그렇다. <br />
-              <br />
-              나태주, "들꽃" */}
-              {guide_format}
-            </p>
+            <p style={{ fontSize: 20, color: "#ABABAB" }}>{guide_format}</p>
             <PoemForm
               variant="create"
               user={user}
