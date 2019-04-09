@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
 import styled from "styled-components";
-import Typography from "@material-ui/core/Typography";
 import { Tabs } from "antd";
-import { Modal, Button } from "antd";
+import { Button } from "antd";
 import * as actions from "../../actions";
-import CustomHeader from "../CustomHeader";
+import ModalView from "../common/ModalView";
 import PoemForm from "./PoemForm";
 import "../../css/CreatePoem.css";
 
@@ -16,8 +14,7 @@ class CreatePoem extends Component {
     user: "",
     title: "",
     content: "",
-    value: 0,
-    visible: true
+    value: 0
   };
 
   componentDidMount() {}
@@ -28,50 +25,20 @@ class CreatePoem extends Component {
     });
   };
 
-  handleOk = e => {
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleCancel = e => {
-    this.setState({
-      visible: false
-    });
-  };
-
   renderForm = () => {
     if (this.props.auth.token === undefined) {
       return (
-        <Modal
-          className="modal"
+        <ModalView
           width="240px"
           centered
           cancelText="아니요"
           okText="네"
-          closable={false}
-          okButtonProps={{
-            type: "default",
-            href: "/login"
-          }}
-          cancelButtonProps={{ type: "default", href: "/" }}
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
+          handleOk={() => (window.location.href = "/users/login")}
+          handleCancel={() => (window.location.href = "/")}
+          visible={true}
           footer={null}
-        >
-          <p>
-            로그인이 필요한 서비스입니다. <br /> 로그인 하시겠습니까?
-          </p>
-          <div className="modal-div">
-            <Button className="modal-btn" onClick={this.handleOk}>
-              <Link to="/">아니오</Link>
-            </Button>
-            <Button className="modal-btn" onClick={this.handleCancel}>
-              <Link to="/login">예</Link>
-            </Button>
-          </div>
-        </Modal>
+          message="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"
+        />
       );
     } else if (this.props.poems.redirect) {
       return <Redirect push to={this.props.poems.redirect} />;
@@ -109,6 +76,7 @@ class CreatePoem extends Component {
             />
           </TabPane>
           <TabPane tab="자유창작 모드" key="2" className="tabStyle">
+            <h3>{subject}</h3>
             <PoemForm
               variant="create"
               user={user}
@@ -122,12 +90,7 @@ class CreatePoem extends Component {
   };
 
   render() {
-    return (
-      <Container>
-        <CustomHeader />
-        {this.renderForm()}
-      </Container>
-    );
+    return <Container>{this.renderForm()}</Container>;
   }
 }
 

@@ -5,8 +5,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Input } from "antd";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import DefaultHeader from "../DefaultHeader";
+import CustomHeader from "../CustomHeader";
 import * as actions from "../../actions";
 import "../../css/PoemForm.css";
 
@@ -81,11 +80,9 @@ class PoemForm extends Component {
   };
 
   render() {
-    const subject = this.props.today ? this.props.today.subject : "꽃";
     return (
       <Container>
-        <DefaultHeader />
-        {this.props.showTheme ? <h3>{subject}</h3> : null}
+        <CustomHeader />
         <Form>
           <p># 제목</p>
           <StyledInput

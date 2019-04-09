@@ -9,7 +9,9 @@ const ModalView = props => {
       centered
       closable={props.closable}
       visible={props.visible}
-      footer={null}
+      footer={props.footer}
+      okButtonProps={props.okButtonProps}
+      cancelButtonProps={props.cancelButtonProps}
     >
       <p>{props.message}</p>
       <div className="modal-div">
