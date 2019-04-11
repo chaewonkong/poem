@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroller";
 import { Icon } from "antd";
 import * as actions from "../../actions";
 import "../../css/PoemList.css";
@@ -14,7 +14,8 @@ import Loading from "../Loading";
 class PoemList extends Component {
   state = {
     btnHover: false,
-    isLoading: true
+    isLoading: true,
+    hasMore: true
   };
 
   componentDidMount() {
@@ -37,7 +38,9 @@ class PoemList extends Component {
   }
 
   fetchMoreData(token, next) {
-    if (token) this.fetchPoems(token, next);
+    if (next === null) {
+      this.setState({ hasMore: false });
+    } else if (token) this.fetchPoems(token, next);
     else this.fetchPoems(null, next);
   }
 
@@ -65,6 +68,8 @@ class PoemList extends Component {
     this.props.getToday(res.data);
   };
 
+  loadMore() {}
+
   renderPoems() {
     const poems = this.props.poems;
     if (poems.results) {
@@ -91,7 +96,7 @@ class PoemList extends Component {
 
   renderView() {
     const { token } = this.props.auth;
-    const { count, next } = this.props.poems || { count: 0, next: () => {} };
+    const { count, next } = this.props.poems;
 
     if (this.state.isLoading) return <Loading />;
     else
@@ -100,11 +105,15 @@ class PoemList extends Component {
           <DefaultHeader />
 
           <InfiniteList
-            dataLength={count}
-            hasMore={next ? true : false}
-            next={() => this.fetchMoreData(token, next)}
-            loader={<Icon type="loading" />}
-            endMessage={<h3>총 {count}개 결과</h3>}
+            pageStart={0}
+            loadMore={() => this.fetchMoreData(token, next)}
+            loader={
+              <div className="loader" key={0}>
+                <Icon type="loading" />
+              </div>
+            }
+            hasMore={this.state.hasMore}
+            // useWindow={false}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -112,22 +121,23 @@ class PoemList extends Component {
             }}
           >
             {this.renderPoems()}
-            <Link
-              to="/poems/new"
-              className="btn-floating"
-              onClick={this.fetchToday}
-              style={{ zIndex: 10 }}
-            >
-              <div>
-                <CreateButton hover={this.state.btnHover} />
-              </div>
-            </Link>
           </InfiniteList>
+          <Link
+            to="/poems/new"
+            className="btn-floating"
+            onClick={this.fetchToday}
+            style={{ zIndex: 10 }}
+          >
+            <div>
+              <CreateButton hover={this.state.btnHover} />
+            </div>
+          </Link>
         </Fragment>
       );
   }
 
   render() {
+    console.log(this.props.poems);
     return <Fragment>{this.renderView()}</Fragment>;
   }
 }
