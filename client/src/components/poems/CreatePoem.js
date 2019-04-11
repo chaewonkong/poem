@@ -5,6 +5,7 @@ import * as actions from "../../actions";
 import ModalView from "../common/ModalView";
 import PoemForm from "./PoemForm";
 import PoemDetail from "./PoemDetail";
+import PoemPublish from "./PoemPublish";
 import "../../css/CreatePoem.css";
 
 class CreatePoem extends Component {
@@ -59,6 +60,14 @@ class CreatePoem extends Component {
           return (
             <PoemDetail
               handleNext={this.handleNext.bind(this)}
+              handlePrev={this.handleNext.bind(this)}
+              title={this.state.title}
+              content={this.state.content}
+            />
+          );
+        case "publish":
+          return (
+            <PoemPublish
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
               content={this.state.content}

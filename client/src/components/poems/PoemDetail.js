@@ -14,7 +14,13 @@ const PoemDetail = props => {
             title: props.title
           })
         }
-        handleRight={() => {}}
+        handleRight={() =>
+          props.handlePrev({
+            type: "publish",
+            content: props.content,
+            title: props.title
+          })
+        }
       />
       <h3>{props.title}</h3>
       {props.content.split("\n").map(line => (
