@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import { Input, Tabs } from "antd";
-import Button from "@material-ui/core/Button";
 import CustomHeader from "../CustomHeader";
 import * as actions from "../../actions";
 import "../../css/PoemForm.css";
@@ -55,22 +53,6 @@ class PoemForm extends Component {
             value={this.state.content}
           />
         </Form>
-        <ButtonContainer>
-          <Button
-            type="submit"
-            onClick={this.handleSubmit}
-            // onClick={() => this.props.handleClick("detail")}
-            color="primary"
-            variant="outlined"
-          >
-            작성완료
-          </Button>
-          <Link to="/">
-            <Button color="secondary" variant="outlined">
-              작성취소
-            </Button>
-          </Link>
-        </ButtonContainer>
       </Container>
     );
   }
@@ -186,11 +168,6 @@ const TextArea = styled(Input.TextArea)`
   background-color: ${props => props.theme.lightGreyColor} !important;
   border: none;
   outline: none;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const mapStateToProps = state => state;

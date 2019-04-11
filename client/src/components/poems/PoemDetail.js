@@ -18,7 +18,7 @@ const PoemDetail = props => {
       />
       <h3>{props.title}</h3>
       {props.content.split("\n").map(line => (
-        <p key="line">{line}</p>
+        <p key={line}>{line}</p>
       ))}
     </div>
   );
