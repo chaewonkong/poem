@@ -29,7 +29,17 @@ class PoemForm extends Component {
   renderForm() {
     return (
       <Container>
-        <CustomHeader />
+        <CustomHeader
+          title="시 본문 작성"
+          handleLeft={this.props.handlePrev}
+          handleRight={() =>
+            this.props.handleNext({
+              type: "detail",
+              title: this.state.title,
+              content: this.state.content
+            })
+          }
+        />
         <Form>
           <p># 제목</p>
           <StyledInput

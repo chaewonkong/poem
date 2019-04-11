@@ -24,8 +24,8 @@ class CreatePoem extends Component {
     });
   };
 
-  handleClick(type) {
-    this.setState({ type });
+  handleNext({ type, title, content }) {
+    this.setState({ title, content, type });
   }
 
   renderForm = () => {
@@ -49,16 +49,26 @@ class CreatePoem extends Component {
           return (
             <PoemForm
               variant="create"
-              handleClick={this.handleClick.bind(this)}
+              handleNext={this.handleNext.bind(this)}
+              handlePrev={() => window.history.back()}
+              title={this.state.title}
+              content={this.state.content}
             />
           );
         case "detail":
-          return <PoemDetail />;
+          return (
+            <PoemDetail
+              handleNext={this.handleNext.bind(this)}
+              handlePrev={this.handleNext.bind(this)}
+              title={this.state.title}
+              content={this.state.content}
+            />
+          );
         default:
           return (
             <PoemForm
               variant="create"
-              handleClick={this.handleClick.bind(this)}
+              handleClick={this.handleNext.bind(this)}
             />
           );
       }

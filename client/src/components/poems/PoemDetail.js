@@ -1,11 +1,25 @@
 import React from "react";
 import CustomHeader from "../CustomHeader";
 
-const PoemDetail = () => {
+const PoemDetail = props => {
+  console.log(props);
   return (
     <div>
-      <CustomHeader />
-      <h3>detail</h3>
+      <CustomHeader
+        title="시 세부사항 설정"
+        handleLeft={() =>
+          props.handlePrev({
+            type: "form",
+            content: props.content,
+            title: props.title
+          })
+        }
+        handleRight={() => {}}
+      />
+      <h3>{props.title}</h3>
+      {props.content.split("\n").map(line => (
+        <p key="line">{line}</p>
+      ))}
     </div>
   );
 };
