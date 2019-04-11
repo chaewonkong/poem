@@ -1,8 +1,22 @@
 import React from "react";
+import axios from "axios";
 import CustomHeader from "../CustomHeader";
+import { connect } from "react-redux";
+
+const handleSubmit = async props => {
+  const { token } = props.auth;
+  const { title, content } = props;
+  const res = await axios.post(
+    "https://mighty-chamber-86168.herokuapp.com/poems/",
+    { content, title },
+    { headers: { Authorization: token } }
+  );
+  if (res.status == 201) {
+    window.location.href = "/";
+  }
+};
 
 const PoemPublish = props => {
-  console.log(props);
   return (
     <div>
       <CustomHeader
@@ -14,10 +28,13 @@ const PoemPublish = props => {
             title: props.title
           })
         }
+        handleRight={() => handleSubmit(props)}
       />
       <h3>Publish</h3>
     </div>
   );
 };
 
-export default PoemPublish;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(PoemPublish);

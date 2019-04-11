@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import styled from "styled-components";
 import { Input, Tabs } from "antd";
 import CustomHeader from "../CustomHeader";
@@ -75,41 +74,6 @@ class PoemForm extends Component {
       [e.target.name]: e.target.value,
       user: e.target.user || "chaewonkong"
     });
-  };
-
-  handleSubmit = async () => {
-    const token = this.props.auth.token,
-      title = this.state.title,
-      content = this.state.content.replace(/\n/g, "\n");
-    if (this.props.variant === "create") {
-      const res = await axios.post(
-        "https://mighty-chamber-86168.herokuapp.com/poems/",
-        {
-          title,
-          content
-        },
-        {
-          headers: { Authorization: token }
-        }
-      );
-      if (res.status === 200 || res.status === 201) {
-        // window.location.href = "/";
-        this.props.handleClick("detail");
-      }
-    } else if (this.props.variant === "update") {
-      const id = this.props.poems.poem.id;
-      const res = await axios.put(
-        `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
-        { title, content },
-        {
-          headers: { Authorization: token }
-        }
-      );
-      if (res.status === 200 || res.status === 201) {
-        // window.location.href = "/";
-        this.props.handleClick("detail");
-      } else console.log(res);
-    }
   };
 
   render() {

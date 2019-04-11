@@ -96,7 +96,7 @@ class PoemList extends Component {
 
   renderView() {
     const { token } = this.props.auth;
-    const { count, next } = this.props.poems;
+    const { next } = this.props.poems;
 
     if (this.state.isLoading) return <Loading />;
     else
