@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import CustomHeader from "../CustomHeader";
 import { connect } from "react-redux";
+import CustomHeader from "../CustomHeader";
+import { Container, PoemContent } from "../common";
 
 const handleSubmit = async props => {
   const { token } = props.auth;
@@ -18,7 +19,7 @@ const handleSubmit = async props => {
 
 const PoemPublish = props => {
   return (
-    <div>
+    <Container>
       <CustomHeader
         title="완성된 시"
         handleLeft={() =>
@@ -30,8 +31,13 @@ const PoemPublish = props => {
         }
         handleRight={() => handleSubmit(props)}
       />
-      <h3>Publish</h3>
-    </div>
+      <PoemContent>
+        <h3>{props.title}</h3>
+        {props.content.split("\n").map(line => (
+          <p key={line}>{line}</p>
+        ))}
+      </PoemContent>
+    </Container>
   );
 };
 

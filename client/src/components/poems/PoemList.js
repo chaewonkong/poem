@@ -137,7 +137,6 @@ class PoemList extends Component {
   }
 
   render() {
-    console.log(this.props.poems);
     return <Fragment>{this.renderView()}</Fragment>;
   }
 }
