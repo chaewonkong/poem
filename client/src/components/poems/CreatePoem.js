@@ -14,7 +14,8 @@ class CreatePoem extends Component {
     title: "",
     content: "",
     value: 0,
-    type: "form"
+    type: "form",
+    align: "left"
   };
 
   componentDidMount() {}
@@ -25,8 +26,8 @@ class CreatePoem extends Component {
     });
   };
 
-  handleNext({ type, title, content }) {
-    this.setState({ title, content, type });
+  handleNext({ type, title, content, align }) {
+    this.setState({ title, content, type, align });
   }
 
   renderForm = () => {
@@ -63,6 +64,7 @@ class CreatePoem extends Component {
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
               content={this.state.content}
+              align={this.state.align}
             />
           );
         case "publish":
@@ -71,6 +73,7 @@ class CreatePoem extends Component {
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
               content={this.state.content}
+              align={this.state.align}
             />
           );
         default:

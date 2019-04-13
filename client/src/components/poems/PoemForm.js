@@ -33,7 +33,8 @@ class PoemForm extends Component {
             this.props.handleNext({
               type: "detail",
               title: this.state.title,
-              content: this.state.content
+              content: this.state.content,
+              align: "left"
             })
           }
         />

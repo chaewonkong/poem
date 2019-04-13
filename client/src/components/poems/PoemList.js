@@ -88,6 +88,7 @@ class PoemList extends Component {
             dislikes={poem.dislikes}
             do_like={poem.do_like}
             do_dislike={poem.do_dislike}
+            align={poem.align}
           />
         );
       });
@@ -137,6 +138,7 @@ class PoemList extends Component {
   }
 
   render() {
+    console.log(this.props.poems);
     return <Fragment>{this.renderView()}</Fragment>;
   }
 }

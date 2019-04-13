@@ -49,7 +49,16 @@ class PoemCard extends Component {
   };
 
   render() {
-    const { image, nickname, userId, id, date, title, content } = this.props;
+    const {
+      image,
+      nickname,
+      userId,
+      id,
+      date,
+      title,
+      content,
+      align
+    } = this.props;
     const { likes, dislikes, do_like, do_dislike } = this.state;
     return (
       <StyledCard>
@@ -70,8 +79,12 @@ class PoemCard extends Component {
           title={nickname}
           subheader={date}
         />
-        <CardContent style={{ textAlign: "center" }}>
-          <Typography variant="h5" style={{ color: "#707070" }} gutterBottom>
+        <CardContent style={{ textAlign: align }}>
+          <Typography
+            variant="h5"
+            style={{ color: "#707070", textAlign: "center" }}
+            gutterBottom
+          >
             {title}
           </Typography>
           {content.split("\n").map(line => (
