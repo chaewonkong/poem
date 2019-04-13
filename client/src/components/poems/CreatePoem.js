@@ -88,7 +88,6 @@ class CreatePoem extends Component {
   };
 
   render() {
-    console.log(this.state);
     return <Container>{this.renderForm()}</Container>;
   }
 }
