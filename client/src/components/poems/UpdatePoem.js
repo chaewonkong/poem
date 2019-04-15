@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import PoemForm from "./PoemForm";
 import CreatePoem from "./CreatePoem";
 
 class UpdatePoem extends Component {
