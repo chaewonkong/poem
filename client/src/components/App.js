@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../global_styles";
 import * as actions from "../actions";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
@@ -13,13 +14,6 @@ import PoemList from "./poems/PoemList";
 import UserDetail from "./users/UserDetail";
 import theme from "../css/theme";
 import "../favicon.ico";
-import "../css/App.css";
-
-const GlobalStyle = createGlobalStyle`
-  a {
-    text-decoration: none;
-  }
-`;
 
 class App extends Component {
   componentDidMount() {

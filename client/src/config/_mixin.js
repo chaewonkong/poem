@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const color = {
   highlightColor: "#B9F9F9",
   darkGreyColor: "#707070",
@@ -11,8 +13,8 @@ export const fontFamily = {
 };
 
 export const sizes = {
-  desktop: 992,
-  phone: 420
+  desktop: 2560,
+  mobile: 420
 };
 
 export const media = Object.keys(sizes).reduce((acc, label) => {

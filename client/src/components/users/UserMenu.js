@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
-import "../../css/UserMenu.css";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };

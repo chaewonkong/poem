@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Input, Tabs } from "antd";
 import CustomHeader from "../CustomHeader";
 import * as actions from "../../actions";
-import "../../css/PoemForm.css";
 
 class PoemForm extends Component {
   state = {

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
+import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import DefaultHeader from "../DefaultHeader";
-import styles from "../../css/LoginForm.module.css";
 import * as actions from "../../actions";
 
 class LoginForm extends Component {
@@ -45,7 +45,7 @@ class LoginForm extends Component {
           <Redirect push to={this.props.redirect} />
         ) : (
           <div>
-            <div className={styles.inputContainer}>
+            <InputContainer>
               <Typography variant="h5" color="textPrimary">
                 로그인
               </Typography>
@@ -66,8 +66,8 @@ class LoginForm extends Component {
                 type="password"
                 onKeyPress={this.handleEnterSubmit.bind(this)}
               />
-            </div>
-            <div className={styles.loginBtn}>
+            </InputContainer>
+            <LoginBtnContainer>
               <Button
                 color="primary"
                 variant="outlined"
@@ -75,7 +75,7 @@ class LoginForm extends Component {
               >
                 로그인
               </Button>
-              <Link to="/users/new" style={{ textDecoration: "none" }}>
+              <Link to="/users/new">
                 <Button
                   color="default"
                   onClick={this.handleSignin}
@@ -84,14 +84,29 @@ class LoginForm extends Component {
                   회원가입
                 </Button>
               </Link>
-            </div>
+            </LoginBtnContainer>
           </div>
         )}
       </div>
     );
   }
 }
+
+const InputContainer = styled.div`
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LoginBtnContainer = styled.div`
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+`;
+
 const mapStateToProps = state => state.auth;
+
 export default connect(
   mapStateToProps,
   actions

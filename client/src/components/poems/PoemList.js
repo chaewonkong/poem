@@ -6,8 +6,8 @@ import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroller";
 import { Icon } from "antd";
 import * as actions from "../../actions";
-import "../../css/PoemList.css";
 import DefaultHeader from "../DefaultHeader";
+import { media } from "../../config/_mixin";
 import PoemCard from "./PoemCard";
 import Loading from "../Loading";
 
@@ -123,16 +123,15 @@ class PoemList extends Component {
           >
             {this.renderPoems()}
           </InfiniteList>
-          <Link
+          <CreateLink
             to="/poems/new"
-            className="btn-floating"
             onClick={this.fetchToday}
-            style={{ zIndex: 10 }}
+            // style={{ zIndex: 10 }}
           >
             <div>
               <CreateButton hover={this.state.btnHover} />
             </div>
-          </Link>
+          </CreateLink>
         </Fragment>
       );
   }
@@ -160,6 +159,14 @@ const InfiniteList = styled(InfiniteScroll)`
   display: flex;
   flexdirection: column;
   alignitems: center;
+`;
+
+const CreateLink = styled(Link)`
+  position: fixed;
+  right: 10vw;
+  bottom: 10vh;
+  z-index: 10;
+  ${media.desktop`right: 38vw;`}
 `;
 
 const mapStateToProps = state => {

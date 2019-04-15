@@ -6,7 +6,6 @@ import ModalView from "../common/ModalView";
 import PoemForm from "./PoemForm";
 import PoemDetail from "./PoemDetail";
 import PoemPublish from "./PoemPublish";
-import "../../css/CreatePoem.css";
 
 class CreatePoem extends Component {
   state = {
