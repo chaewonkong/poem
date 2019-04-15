@@ -7,7 +7,17 @@ import { Container } from "../common";
 
 const handleSubmit = async props => {
   const { token } = props.auth;
-  const { title, content, align } = props;
+  const { title, content, align, id } = props;
+  if (props.variant === "update") {
+    const res = await axios.put(
+      `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
+      { content, title, align },
+      { headers: { Authorization: token } }
+    );
+    if (res.status === 200) {
+      window.location.href = "/";
+    }
+  }
   const res = await axios.post(
     "https://mighty-chamber-86168.herokuapp.com/poems/",
     { content, title, align },
@@ -19,6 +29,7 @@ const handleSubmit = async props => {
 };
 
 const PoemPublish = props => {
+  console.log(props);
   return (
     <Container>
       <CustomHeader

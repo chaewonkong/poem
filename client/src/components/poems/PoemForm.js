@@ -34,7 +34,7 @@ class PoemForm extends Component {
               type: "detail",
               title: this.state.title,
               content: this.state.content,
-              align: "left"
+              align: this.state.align
             })
           }
         />
@@ -59,12 +59,12 @@ class PoemForm extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props && this.props.variant === "update") {
-      console.log(this.props);
-      const { id, title, content } = this.props.poems.poem;
+      const { id, title, content, align } = this.props.poems.poem;
       this.setState({
         id,
         title,
         content,
+        align,
         token: this.props.auth.token
       });
     }

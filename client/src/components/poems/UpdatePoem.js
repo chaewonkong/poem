@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PoemForm from "./PoemForm";
+// import PoemForm from "./PoemForm";
+import CreatePoem from "./CreatePoem";
 
 class UpdatePoem extends Component {
   render() {
-    return <PoemForm variant="update" />;
+    let path = this.props.location.pathname
+      .replace("/poems/", "")
+      .replace("/update", "");
+    return <CreatePoem variant="update" id={path} />;
   }
 }
 

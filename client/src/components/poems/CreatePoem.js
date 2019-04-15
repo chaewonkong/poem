@@ -17,8 +17,6 @@ class CreatePoem extends Component {
     align: "left"
   };
 
-  componentDidMount() {}
-
   showModal = () => {
     this.setState({
       visible: true
@@ -49,7 +47,7 @@ class CreatePoem extends Component {
         case "form":
           return (
             <PoemForm
-              variant="create"
+              variant={this.props.variant || "create"}
               handleNext={this.handleNext.bind(this)}
               handlePrev={() => window.history.back()}
               title={this.state.title}
@@ -69,6 +67,8 @@ class CreatePoem extends Component {
         case "publish":
           return (
             <PoemPublish
+              variant={this.props.variant || "create"}
+              id={this.props.id || null}
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
               content={this.state.content}
