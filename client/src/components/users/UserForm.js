@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import UploadProfile from "./UploadProfile";
+import { color } from "../../config/_mixin";
 import * as actions from "../../actions";
 
 class UserForm extends Component {
@@ -209,7 +210,7 @@ const ImageContainer = styled.div`
 `;
 
 const Error = styled.p`
-  color: ${props => props.theme.dangerColor};
+  color: ${color.dangerColor};
 `;
 
 const mapStateToProps = state => state;

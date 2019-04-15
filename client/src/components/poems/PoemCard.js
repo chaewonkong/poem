@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import uuidv1 from "uuid/v1";
 import * as actions from "../../actions";
 import ReactionBtn from "./ReactionBtn";
+import { color } from "../../config/_mixin";
 
 class PoemCard extends Component {
   state = {};
@@ -133,7 +134,7 @@ class PoemCard extends Component {
 
 const StyledCard = styled(Card)`
   margin-bottom: 2vh;
-  background: ${props => props.theme.lightGreyColor} !important;
+  background: ${color.lightGreyColor} !important;
   box-shadow: none !important;
   width: 90%;
 `;
@@ -159,7 +160,7 @@ const ReactionContainer = styled.div`
   flex-direction: row;
   width: 100%;
   padding-top: 2vh;
-  border-top: 1px solid ${props => props.theme.defaultColor};
+  border-top: 1px solid ${color.defaultColor};
   align-items: center;
 `;
 

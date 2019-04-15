@@ -10,7 +10,7 @@ import * as actions from "../actions";
 import CustomHeader from "./CustomHeader";
 import UserMenu from "./users/UserMenu";
 import Search from "./Search";
-import { media } from "../config/_mixin";
+import { media, color } from "../config/_mixin";
 
 class Header extends Component {
   state = {
@@ -67,7 +67,7 @@ class Header extends Component {
 const mapStateToProps = state => state.auth;
 
 const Bar = styled(AppBar)`
-  background: ${props => props.theme.highlightColor};
+  background: ${color.highlightColor};
   box-shadow: none;
   display: flex;
   ${media.desktop`.toolbar {
@@ -83,8 +83,6 @@ const Bar = styled(AppBar)`
 }`}
 `;
 
-const BarContainer = styled.div``;
-
 const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -93,7 +91,7 @@ const SearchContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${props => props.theme.darkGreyColor};
+  color: ${color.darkGreyColor};
   font-size: ${props => (props.size ? props.size : "1.2rem")};
   margin: 0.5rem;
   padding: 0;

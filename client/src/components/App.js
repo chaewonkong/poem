@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { GlobalStyle } from "../global_styles";
 import * as actions from "../actions";
 import LoginForm from "./users/LoginForm";
@@ -12,7 +12,6 @@ import CreateUser from "./users/CreateUser";
 import UpdateUser from "./users/UpdateUser";
 import PoemList from "./poems/PoemList";
 import UserDetail from "./users/UserDetail";
-import theme from "../css/theme";
 import "../favicon.ico";
 
 class App extends Component {
@@ -36,30 +35,28 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Fragment>
-            <GlobalStyle />
-            <Container>
-              <BodyContainer>
-                <Route exact path="/" component={PoemList} />
-                <Route exact path="/poems/new" component={CreatePoem} />
-                <Route exact path="/poems/:id/update" component={UpdatePoem} />
-                <Route path="/users/login" component={LoginForm} />
-                <Route exact path="/users/new" component={CreateUser} />
-                <Route
-                  exact
-                  path="/users/:userId/update"
-                  component={UpdateUser}
-                />
-                <Route
-                  exact
-                  path="/users/:userId/detail"
-                  component={UserDetail}
-                />
-              </BodyContainer>
-            </Container>
-          </Fragment>
-        </ThemeProvider>
+        <Fragment>
+          <GlobalStyle />
+          <Container>
+            <BodyContainer>
+              <Route exact path="/" component={PoemList} />
+              <Route exact path="/poems/new" component={CreatePoem} />
+              <Route exact path="/poems/:id/update" component={UpdatePoem} />
+              <Route path="/users/login" component={LoginForm} />
+              <Route exact path="/users/new" component={CreateUser} />
+              <Route
+                exact
+                path="/users/:userId/update"
+                component={UpdateUser}
+              />
+              <Route
+                exact
+                path="/users/:userId/detail"
+                component={UserDetail}
+              />
+            </BodyContainer>
+          </Container>
+        </Fragment>
       </BrowserRouter>
     );
   }

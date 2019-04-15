@@ -9,7 +9,7 @@ export const color = {
 };
 
 export const fontFamily = {
-  fontFamily: "'Jeju Myeongjo', serif !important"
+  default: "'Jeju Myeongjo', serif !important"
 };
 
 export const sizes = {

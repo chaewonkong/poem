@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import styled, { css } from "styled-components";
 import * as actions from "../../actions";
+import { color, fontFamily } from "../../config/_mixin";
 
 class ReactionBtn extends Component {
   state = {};
@@ -89,7 +90,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   &:first-child {
-    border-right: 1px solid ${props => props.theme.defaultColor};
+    border-right: 1px solid ${color.defaultColor};
   }
 `;
 
@@ -120,7 +121,8 @@ const Button = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  color: ${props => props.theme.darkGreyColor};
+  color: ${color.darkGreyColor};
+  font-family: ${fontFamily.default};
 `;
 
 export default connect(

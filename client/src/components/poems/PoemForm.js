@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Input, Tabs } from "antd";
 import CustomHeader from "../CustomHeader";
 import * as actions from "../../actions";
+import { color } from "../../config/_mixin";
 
 class PoemForm extends Component {
   state = {
@@ -123,13 +124,13 @@ const TabPane = styled(Tabs.TabPane)`
 `;
 
 const StyledInput = styled(Input)`
-  background-color: ${props => props.theme.lightGreyColor} !important;
+  background-color: ${color.lightGreyColor} !important;
   border: none;
   outline: none;
 `;
 
 const TextArea = styled(Input.TextArea)`
-  background-color: ${props => props.theme.lightGreyColor} !important;
+  background-color: ${color.lightGreyColor} !important;
   border: none;
   outline: none;
 `;

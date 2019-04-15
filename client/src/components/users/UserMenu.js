@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
+import { color, fontFamily } from "../../config/_mixin";
 
 class UserMenu extends Component {
   state = { visible: false, placement: "left" };
@@ -136,7 +137,7 @@ const ListItem = styled.div`
 `;
 
 const Menu = styled(MenuIcon)`
-  color: ${props => props.theme.defaultColor};
+  color: ${color.defaultColor};
 `;
 
 const UserContainer = styled.div`
@@ -150,13 +151,13 @@ const LogoutButton = styled.button`
   border-radius: 0.1rem;
   font-size: 1rem;
   cursor: pointer;
-  font-family: ${props => props.theme.fontFamily};
-  border: 1px solid ${props => props.theme.defaultColor};
-  color: ${props => props.theme.defaultColor};
+  font-family: ${fontFamily.default};
+  border: 1px solid ${color.defaultColor};
+  color: ${color.defaultColor};
 `;
 
 const NicknameText = styled(Typography)`
-  color: ${props => props.theme.defaultColor} !important;
+  color: ${color.defaultColor} !important;
 `;
 
 const mapStateToProps = state => state;

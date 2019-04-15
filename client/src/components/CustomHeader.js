@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { color, fontFamily } from "../config/_mixin";
 
 class CustomHeader extends Component {
   render() {
@@ -35,7 +36,7 @@ const NavButton = styled.img`
 `;
 
 const Title = styled.h1`
-  color: ${props => props.theme.darkGreyColor};
+  color: ${color.darkGreyColor};
   font-size: ${props => (props.size ? props.size : "1.2rem")};
   margin: 0.5rem;
   padding: 0;
@@ -50,7 +51,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   background: #b9f9f9;
-  font-family: ${props => props.theme.fontFamily};
+  font-family: ${fontFamily.default};
   z-index: 10;
 `;
 
