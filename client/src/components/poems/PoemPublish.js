@@ -13,7 +13,7 @@ const handleSubmit = async props => {
     { content, title, align },
     { headers: { Authorization: token } }
   );
-  if (res.status == 201) {
+  if (res.status === 201) {
     window.location.href = "/";
   }
 };

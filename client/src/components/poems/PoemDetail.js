@@ -48,9 +48,21 @@ export default class PoemDetail extends Component {
           ))}
         </Poem>
         <Footer>
-          <img src={alignLeft} onClick={() => this.handleAlign("left")} />
-          <img src={alignCenter} onClick={() => this.handleAlign("center")} />
-          <img src={alignRight} onClick={() => this.handleAlign("right")} />
+          <img
+            alt="left-align"
+            src={alignLeft}
+            onClick={() => this.handleAlign("left")}
+          />
+          <img
+            alt="center-align"
+            src={alignCenter}
+            onClick={() => this.handleAlign("center")}
+          />
+          <img
+            alt="right-align"
+            src={alignRight}
+            onClick={() => this.handleAlign("right")}
+          />
         </Footer>
       </Container>
     );

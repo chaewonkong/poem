@@ -105,7 +105,7 @@ class PoemList extends Component {
         <Fragment>
           <DefaultHeader />
 
-          <InfiniteList
+          <InfiniteScroll
             pageStart={0}
             loadMore={() => this.fetchMoreData(token, next)}
             loader={
@@ -114,7 +114,6 @@ class PoemList extends Component {
               </div>
             }
             hasMore={this.state.hasMore}
-            // useWindow={false}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -122,12 +121,8 @@ class PoemList extends Component {
             }}
           >
             {this.renderPoems()}
-          </InfiniteList>
-          <CreateLink
-            to="/poems/new"
-            onClick={this.fetchToday}
-            // style={{ zIndex: 10 }}
-          >
+          </InfiniteScroll>
+          <CreateLink to="/poems/new" onClick={this.fetchToday}>
             <div>
               <CreateButton hover={this.state.btnHover} />
             </div>
@@ -137,7 +132,6 @@ class PoemList extends Component {
   }
 
   render() {
-    console.log(this.props.poems);
     return <Fragment>{this.renderView()}</Fragment>;
   }
 }
@@ -153,12 +147,6 @@ const CreateButton = styled.div`
     transition: 0.3s ease-in-out;
     background: url("https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8A%E1%85%B3%E1%84%80%E1%85%B5+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB+%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC_%E1%84%8B%E1%85%A9%E1%84%87%E1%85%A5%E1%84%89%E1%85%B5.svg");
   }
-`;
-
-const InfiniteList = styled(InfiniteScroll)`
-  display: flex;
-  flexdirection: column;
-  alignitems: center;
 `;
 
 const CreateLink = styled(Link)`
