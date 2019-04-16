@@ -13,10 +13,13 @@ import Search from "./Search";
 import { media, color } from "../config/_mixin";
 
 class Header extends Component {
-  state = {
-    isLoading: this.props.isLoading,
-    open: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: props.isLoading,
+      open: false
+    };
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
