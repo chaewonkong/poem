@@ -15,7 +15,7 @@ const PoemPublish = props => {
     <Container>
       <CustomHeader
         title="완성된 시"
-        rightIcon={rightIcon}
+        rightIcon={<RightIcon />}
         handleLeft={() =>
           props.handlePrev({
             type: "detail",
@@ -38,7 +38,9 @@ const PoemPublish = props => {
   );
 };
 
-const rightIcon =
+const RightIcon = () => <img alt="right-triple-dots" src={rightIconImage} />;
+
+const rightIconImage =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8C%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB_%E1%84%89%E1%85%A6%E1%84%85%E1%85%A9.svg";
 
 const Poem = styled.div`

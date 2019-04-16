@@ -6,7 +6,7 @@ import { color, fontFamily } from "../config/_mixin";
 class CustomHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = { leftIcon, rightIcon };
+    this.state = { leftIcon: <LeftIcon />, rightIcon: <RightIcon /> };
   }
 
   componentDidMount() {
@@ -24,11 +24,15 @@ class CustomHeader extends Component {
             this.props.children
           ) : (
             <Fragment>
-              <NavButton src={leftIcon} onClick={this.props.handleLeft} />
+              <NavButton onClick={this.props.handleLeft}>
+                {leftIcon ? leftIcon : <LeftIcon />}
+              </NavButton>
               <Link to="">
                 <Title>{this.props.title}</Title>
               </Link>
-              <NavButton src={rightIcon} onClick={this.props.handleRight} />
+              <NavButton onClick={this.props.handleRight}>
+                {rightIcon ? rightIcon : <RightIcon />}
+              </NavButton>
             </Fragment>
           )}
         </Header>
@@ -37,12 +41,15 @@ class CustomHeader extends Component {
   }
 }
 
-const leftIcon =
+const leftIconImage =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg";
-const rightIcon =
+const rightIconImage =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B3%E1%86%B7%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg";
 
-const NavButton = styled.img`
+const LeftIcon = () => <img alt="left-icon" src={leftIconImage} />;
+const RightIcon = () => <img alt="right-icon" src={rightIconImage} />;
+
+const NavButton = styled.div`
   cursor: pointer;
 `;
 

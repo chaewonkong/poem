@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
-import { GlobalStyle } from "../global_styles";
 import * as actions from "../actions";
 import LoginForm from "./users/LoginForm";
 import CreatePoem from "./poems/CreatePoem";
@@ -18,7 +17,6 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("TOKEN");
     if (token && token.length) this.fetchUser(token);
-    // if (token) localStorage.setItem("TOKEN", "");
   }
 
   async fetchUser(token) {
@@ -36,7 +34,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Fragment>
-          <GlobalStyle />
           <Container>
             <BodyContainer>
               <Route exact path="/" component={PoemList} />
