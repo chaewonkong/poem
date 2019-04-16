@@ -12,6 +12,12 @@ export const GlobalStyle = createGlobalStyle`
 
     html, body {
         background: #F7F7F7;
+
+    }
+
+    div {
+        overflow-x : hidden;
+        overflow-y: hidden;
     }
 
     .ant-drawer-wrapper-body {
