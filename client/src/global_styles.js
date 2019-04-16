@@ -15,11 +15,6 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
-    div {
-        overflow-x : hidden;
-        overflow-y: hidden;
-    }
-
     .ant-drawer-wrapper-body {
         background: #F7F7F7
     }
