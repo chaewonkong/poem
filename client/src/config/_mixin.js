@@ -5,7 +5,8 @@ export const color = {
   darkGreyColor: "#707070",
   defaultColor: "#ABABAB",
   lightGreyColor: "#E7E7E7",
-  dangerColor: "#f50057"
+  dangerColor: "#f50057",
+  backgroundColor: "#F7F7F7"
 };
 
 export const fontFamily = {

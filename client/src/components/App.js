@@ -65,7 +65,6 @@ const Container = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  padding-top: 10vh;
   width: 100%;
   margin: 0 auto;
 

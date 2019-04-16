@@ -115,6 +115,7 @@ class PoemList extends Component {
             }
             hasMore={this.state.hasMore}
             style={{
+              paddingTop: "10vh",
               display: "flex",
               flexDirection: "column",
               alignItems: "center"

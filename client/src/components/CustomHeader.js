@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { color, fontFamily } from "../config/_mixin";
+import { color, fontFamily, media } from "../config/_mixin";
 
 class CustomHeader extends Component {
   constructor(props) {
@@ -77,10 +77,8 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  @media (orientation: landscape) {
-    width: 30vw;
-  }
+  ${media.desktop`width: 30vw`}
+  ${media.mobile`width: 90vw`}
 `;
 
 export default CustomHeader;

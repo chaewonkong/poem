@@ -3,7 +3,8 @@ import CustomHeader from "../CustomHeader";
 import axios from "axios";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Container, Footer } from "../common";
+import { Container } from "../common";
+import { color, media } from "../../config/_mixin";
 
 class PoemDetail extends Component {
   constructor(props) {
@@ -87,17 +88,17 @@ class PoemDetail extends Component {
           </PoemContent>
         </Poem>
         <Footer>
-          <img
+          <AlignIcon
             alt="left-align"
             src={alignLeft}
             onClick={() => this.handleAlign("left")}
           />
-          <img
+          <AlignIcon
             alt="center-align"
             src={alignCenter}
             onClick={() => this.handleAlign("center")}
           />
-          <img
+          <AlignIcon
             alt="right-align"
             src={alignRight}
             onClick={() => this.handleAlign("right")}
@@ -122,6 +123,19 @@ const PoemContent = styled.div`
   display: flex;
   flex-direction: column;
   text-align: ${props => props.align};
+`;
+
+const Footer = styled.div`
+  ${media.desktop`width: 30vw`}
+  ${media.mobile`width: 100vw`}
+  background: ${color.backgroundColor};
+  position: fixed;
+  bottom: 0;
+  cursor: pointer;
+`;
+
+const AlignIcon = styled.img`
+  cursor: pointer;
 `;
 
 const alignCenter =

@@ -6,6 +6,7 @@ import ModalView from "../common/ModalView";
 import PoemForm from "./PoemForm";
 import PoemDetail from "./PoemDetail";
 import PoemPublish from "./PoemPublish";
+import { color, media } from "../../config/_mixin";
 
 class CreatePoem extends Component {
   state = {
@@ -87,15 +88,19 @@ class CreatePoem extends Component {
   };
 
   render() {
-    const guide = this.props.today.guide_format;
-    return <Container>{this.renderForm()}</Container>;
+    return <Container type={this.state.type}>{this.renderForm()}</Container>;
   }
 }
 
 const Container = styled.div`
+  ${media.desktop`width: 30vw`}
+  ${media.mobile`width: 100vw`}
+  padding-top: 10vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background: ${props =>
+    props.type === "form" ? color.backgroundColor : color.lightGreyColor};
 `;
 
 const mapStateToProps = state => {
