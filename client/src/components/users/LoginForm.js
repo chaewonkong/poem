@@ -93,7 +93,7 @@ class LoginForm extends Component {
 }
 
 const InputContainer = styled.div`
-  margin-top: 5vh;
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
