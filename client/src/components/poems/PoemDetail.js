@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import CustomHeader from "../CustomHeader";
+import axios from "axios";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import { Container, Footer } from "../common";
 
-export default class PoemDetail extends Component {
+class PoemDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +18,41 @@ export default class PoemDetail extends Component {
   handleAlign(align) {
     this.setState({ align });
   }
+
+  handleSubmit = async ({ type, content, title, align }) => {
+    const { token } = this.props.auth;
+    const { id } = this.props;
+    if (this.props.variant === "update") {
+      const res = await axios.put(
+        `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
+        { content, title, align },
+        { headers: { Authorization: token } }
+      );
+      if (res.status === 200) {
+        //
+        this.props.handlePrev({
+          type,
+          content,
+          title,
+          align
+        });
+      }
+    } else {
+      const res = await axios.post(
+        "https://mighty-chamber-86168.herokuapp.com/poems/",
+        { content, title, align },
+        { headers: { Authorization: token } }
+      );
+      if (res.status === 201) {
+        this.props.handlePrev({
+          type,
+          content,
+          title,
+          align
+        });
+      }
+    }
+  };
 
   render() {
     const { title, content } = this.props;
@@ -33,7 +70,7 @@ export default class PoemDetail extends Component {
             })
           }
           handleRight={() =>
-            this.props.handlePrev({
+            this.handleSubmit({
               type: "publish",
               content,
               title,
@@ -41,11 +78,13 @@ export default class PoemDetail extends Component {
             })
           }
         />
-        <h3>{title}</h3>
-        <Poem align={this.state.align}>
-          {content.split("\n").map(line => (
-            <p key={line}>{line}</p>
-          ))}
+        <Poem>
+          <h3>{title}</h3>
+          <PoemContent align={this.state.align}>
+            {content.split("\n").map(line => (
+              <p key={line}>{line}</p>
+            ))}
+          </PoemContent>
         </Poem>
         <Footer>
           <img
@@ -70,6 +109,15 @@ export default class PoemDetail extends Component {
 }
 
 const Poem = styled.div`
+  margin-top: 5vh;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PoemContent = styled.div`
+  margin-top: 5vh;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -82,3 +130,6 @@ const alignLeft =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%EA%B8%80%EC%A0%95%EB%A0%AC_L.svg";
 const alignRight =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/글정렬_R.svg";
+
+const mapStateToProps = state => state;
+export default connect(mapStateToProps)(PoemDetail);

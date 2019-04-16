@@ -4,7 +4,19 @@ import styled from "styled-components";
 import { color, fontFamily } from "../config/_mixin";
 
 class CustomHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { leftIcon, rightIcon };
+  }
+
+  componentDidMount() {
+    if (this.props.leftIcon) this.setState({ leftIcon: this.props.leftIcon });
+    if (this.props.rightIcon)
+      this.setState({ rightIcon: this.props.rightIcon });
+  }
+
   render() {
+    const { leftIcon, rightIcon } = this.state;
     return (
       <HeaderContainer>
         <Header>
@@ -12,17 +24,11 @@ class CustomHeader extends Component {
             this.props.children
           ) : (
             <Fragment>
-              <NavButton
-                src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
-                onClick={this.props.handleLeft}
-              />
+              <NavButton src={leftIcon} onClick={this.props.handleLeft} />
               <Link to="">
                 <Title>{this.props.title}</Title>
               </Link>
-              <NavButton
-                src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B3%E1%86%B7%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
-                onClick={this.props.handleRight}
-              />
+              <NavButton src={rightIcon} onClick={this.props.handleRight} />
             </Fragment>
           )}
         </Header>
@@ -30,6 +36,11 @@ class CustomHeader extends Component {
     );
   }
 }
+
+const leftIcon =
+  "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg";
+const rightIcon =
+  "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B3%E1%86%B7%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg";
 
 const NavButton = styled.img`
   cursor: pointer;

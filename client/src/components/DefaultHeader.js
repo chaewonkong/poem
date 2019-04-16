@@ -42,10 +42,7 @@ class Header extends Component {
               <Title>하루시작</Title>
             </Link>
             <Button variant="text" onClick={this.handleOpen}>
-              <img
-                alt="search"
-                src="https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg"
-              />
+              <img alt="search" src={search} />
             </Button>
             <Modal
               aria-labelledby="simple-modal-title"
@@ -63,6 +60,9 @@ class Header extends Component {
     );
   }
 }
+
+const search =
+  "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8+%E1%84%87%E1%85%A5%E1%84%90%E1%85%B3%E1%86%AB.svg";
 
 const mapStateToProps = state => state.auth;
 
