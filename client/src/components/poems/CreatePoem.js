@@ -87,6 +87,7 @@ class CreatePoem extends Component {
   };
 
   render() {
+    const guide = this.props.today.guide_format;
     return <Container>{this.renderForm()}</Container>;
   }
 }

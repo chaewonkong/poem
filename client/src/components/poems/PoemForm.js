@@ -92,7 +92,13 @@ class PoemForm extends Component {
       >
         <TabPane tab="길라잡이 모드" key="1">
           <h3>{subject}</h3>
-          <p style={{ fontSize: 20, color: "#ABABAB" }}>{guide_format}</p>
+          {guide_format
+            ? guide_format.split("\n").map(line => (
+                <p key={line} style={{ fontSize: 20, color: "#ABABAB" }}>
+                  {line}
+                </p>
+              ))
+            : null}
           {this.renderForm()}
         </TabPane>
         <TabPane tab="자유창작 모드" key="2" className="tabStyle">
