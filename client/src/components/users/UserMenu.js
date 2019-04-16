@@ -49,15 +49,17 @@ class UserMenu extends Component {
   handleDeleteUser = async () => {
     const { pk, token } = this.props.auth;
     const userId = pk;
-    const res = await axios.delete(
-      `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
-      {
-        headers: { Authorization: token }
+    if (window.confirm("삭제하시겠습니까?")) {
+      const res = await axios.delete(
+        `https://mighty-chamber-86168.herokuapp.com/users/${userId}/`,
+        {
+          headers: { Authorization: token }
+        }
+      );
+      if (res.status === 204) {
+        localStorage.setItem("TOKEN", "");
+        this.props.fetchUser({});
       }
-    );
-    if (res.status === 204) {
-      localStorage.setItem("TOKEN", "");
-      this.props.fetchUser({});
     }
   };
 
@@ -123,7 +125,9 @@ class UserMenu extends Component {
             />
             <p>설정</p>
           </ListItem>
-          <p onClick={this.handleDeleteUser}>회원탈퇴</p>
+          <p style={{ cursor: "pointer" }} onClick={this.handleDeleteUser}>
+            회원탈퇴
+          </p>
         </Drawer>
       </div>
     );
