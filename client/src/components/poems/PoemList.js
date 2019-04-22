@@ -152,10 +152,13 @@ const CreateButton = styled.div`
 
 const CreateLink = styled(Link)`
   position: fixed;
-  right: 10vw;
+  ${media.mobile`
+    right: 10vw;
+    bottom: 8vh;
+  `}
+  right: 38vw;
   bottom: 10vh;
   z-index: 10;
-  ${media.desktop`right: 38vw;`}
 `;
 
 const mapStateToProps = state => {
