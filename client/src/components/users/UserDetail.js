@@ -81,7 +81,10 @@ class UserDetail extends Component {
 }
 
 const DetailContainer = styled.div`
-  margin: 5vw 2vw;
+  margin: 0 auto;
+  padding-top: 12vh;
+  padding-bottom: 3vh;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,6 +95,7 @@ const PoemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3vh;
 `;
 
 const AvatarContainer = styled.div`
