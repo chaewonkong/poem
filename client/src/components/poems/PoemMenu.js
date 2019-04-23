@@ -37,7 +37,6 @@ class PoemMenu extends Component {
       `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`
     );
     if (res.status) {
-      console.log(res);
       this.props.getPoem({ ...poems, poem: res.data });
     }
   };

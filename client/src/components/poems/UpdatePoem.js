@@ -4,10 +4,8 @@ import CreatePoem from "./CreatePoem";
 
 class UpdatePoem extends Component {
   render() {
-    let path = this.props.location.pathname
-      .replace("/poems/", "")
-      .replace("/update", "");
-    return <CreatePoem variant="update" id={path} />;
+    const poemId = this.props.match.params.id;
+    return <CreatePoem variant="update" id={poemId} />;
   }
 }
 

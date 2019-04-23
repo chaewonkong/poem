@@ -10,7 +10,6 @@ const handleSubmit = () => {
 };
 
 const PoemPublish = props => {
-  console.log(props);
   return (
     <Container>
       <CustomHeader
@@ -30,7 +29,7 @@ const PoemPublish = props => {
         <h3>{props.title}</h3>
         <PoemContent align={props.align}>
           {props.content.split("\n").map(line => (
-            <p key={line}>{line}</p>
+            <p key={Math.floor(1000000 * Math.random())}>{line}</p>
           ))}
         </PoemContent>
       </Poem>

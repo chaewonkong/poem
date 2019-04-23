@@ -58,6 +58,8 @@ class CreatePoem extends Component {
         case "detail":
           return (
             <PoemDetail
+              variant={this.props.variant || "create"}
+              id={this.props.id || null}
               handleNext={this.handleNext.bind(this)}
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}

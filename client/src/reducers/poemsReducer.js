@@ -17,8 +17,6 @@ export default function(state = INITIAL_STATE, action) {
         ...action.payload,
         results: newResults
       };
-    // return action.payload;
-    // return action.payload || INITIAL_STATE;
     case FETCH_POEM:
       return action.payload;
     case REACT_POEM:

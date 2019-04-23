@@ -12,7 +12,8 @@ class PoemDetail extends Component {
     this.state = {
       title: props.title,
       content: props.content,
-      align: props.align
+      align: props.align,
+      id: props.id
     };
   }
 
@@ -22,8 +23,8 @@ class PoemDetail extends Component {
 
   handleSubmit = async ({ type, content, title, align }) => {
     const { token } = this.props.auth;
-    const { id } = this.props;
     if (this.props.variant === "update") {
+      const { id } = this.state;
       const res = await axios.put(
         `https://mighty-chamber-86168.herokuapp.com/poems/${id}/`,
         { content, title, align },
@@ -83,7 +84,7 @@ class PoemDetail extends Component {
           <h3>{title}</h3>
           <PoemContent align={this.state.align}>
             {content.split("\n").map(line => (
-              <p key={line}>{line}</p>
+              <p key={Math.floor(1000000 * Math.random())}>{line}</p>
             ))}
           </PoemContent>
         </Poem>
