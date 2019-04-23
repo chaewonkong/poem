@@ -3,6 +3,7 @@ import CustomHeader from "../CustomHeader";
 import axios from "axios";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { Typography } from "@material-ui/core";
 import { Container } from "../common";
 import { color, media } from "../../config/_mixin";
 
@@ -84,7 +85,13 @@ class PoemDetail extends Component {
           <h3>{title}</h3>
           <PoemContent align={this.state.align}>
             {content.split("\n").map(line => (
-              <p key={Math.floor(1000000 * Math.random())}>{line}</p>
+              <Typography
+                style={{ color: "#ABABAB" }}
+                component="p"
+                key={Math.floor(1000000 * Math.random())}
+              >
+                {line}
+              </Typography>
             ))}
           </PoemContent>
         </Poem>
