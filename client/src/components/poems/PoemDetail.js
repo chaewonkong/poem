@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import CustomHeader from "../CustomHeader";
 import axios from "axios";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
-import { Container } from "../common";
 import { color, media } from "../../config/_mixin";
+import { CustomHeader, Container } from "../common";
 
 class PoemDetail extends Component {
   constructor(props) {

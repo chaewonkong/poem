@@ -6,7 +6,7 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import DefaultHeader from "../DefaultHeader";
+import { DefaultHeader } from "../common";
 import * as actions from "../../actions";
 
 class LoginForm extends Component {

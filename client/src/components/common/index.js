@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import CustomHeader from "./CustomHeader";
+import DefaultHeader from "./DefaultHeader";
+import Loading from "./Loading";
+import Search from "./Search";
+import * as Modal from "./ModalView";
+
+export { CustomHeader, DefaultHeader, Loading, Search, Modal };
 
 export const Container = styled.div`
   width: 100%;

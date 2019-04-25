@@ -6,10 +6,9 @@ import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroller";
 import { Icon } from "antd";
 import * as actions from "../../actions";
-import DefaultHeader from "../DefaultHeader";
+import { DefaultHeader, Loading } from "../common";
 import { media } from "../../config/_mixin";
 import PoemCard from "./PoemCard";
-import Loading from "../Loading";
 
 class PoemList extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import * as actions from "../../actions";
-import ModalView from "../common/ModalView";
+import { Modal } from "../common";
 import PoemForm from "./PoemForm";
 import PoemDetail from "./PoemDetail";
 import PoemPublish from "./PoemPublish";
@@ -31,7 +31,7 @@ class CreatePoem extends Component {
   renderForm = () => {
     if (this.props.auth.token === undefined) {
       return (
-        <ModalView
+        <Modal
           width="240px"
           centered
           cancelText="아니요"

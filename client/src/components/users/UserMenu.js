@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import { Drawer, Avatar, Dropdown } from "antd";
-import IconButton from "@material-ui/core/IconButton";
+import { IconButton, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Typography from "@material-ui/core/Typography";
 import * as actions from "../../actions";
 import { color, fontFamily } from "../../config/_mixin";
 

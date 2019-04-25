@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { color, fontFamily, media } from "../config/_mixin";
+import { color, fontFamily, media } from "../../config/_mixin";
 
 class CustomHeader extends Component {
   constructor(props) {

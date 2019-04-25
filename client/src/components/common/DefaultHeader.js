@@ -6,11 +6,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import styled from "styled-components";
-import * as actions from "../actions";
-import CustomHeader from "./CustomHeader";
-import UserMenu from "./users/UserMenu";
-import Search from "./Search";
-import { media, color } from "../config/_mixin";
+import * as actions from "../../actions";
+import UserMenu from "../users/UserMenu";
+import { Search, CustomHeader } from "./";
+import { media, color } from "../../config/_mixin";
 
 class Header extends Component {
   constructor(props) {

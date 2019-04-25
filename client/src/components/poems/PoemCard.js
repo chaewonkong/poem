@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import CardHeader from "@material-ui/core/CardHeader";
-import Avatar from "@material-ui/core/Avatar";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+  CardHeader,
+  Avatar,
+  IconButton
+} from "@material-ui/core";
 import PoemMenu from "./PoemMenu";
-import IconButton from "@material-ui/core/IconButton";
 import uuidv1 from "uuid/v1";
 import * as actions from "../../actions";
 import ReactionBtn from "./ReactionBtn";

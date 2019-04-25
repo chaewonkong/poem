@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import DefaultHeader from "../DefaultHeader";
+import { DefaultHeader } from "../common";
 import UserForm from "./UserForm";
 
 class UpdateUser extends Component {

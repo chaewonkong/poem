@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Input, Tabs } from "antd";
-import CustomHeader from "../CustomHeader";
+import { CustomHeader } from "../common";
 import * as actions from "../../actions";
 import { color } from "../../config/_mixin";
 

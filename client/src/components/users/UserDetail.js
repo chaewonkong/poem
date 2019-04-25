@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { Avatar } from "antd";
 import Typography from "@material-ui/core/Typography";
-import DefaultHeader from "../DefaultHeader";
+import { DefaultHeader } from "../common";
 import PoemCard from "../poems/PoemCard";
 
 class UserDetail extends Component {

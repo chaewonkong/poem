@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import CustomHeader from "../CustomHeader";
-import { Container } from "../common";
+import { Container, CustomHeader } from "../common";
 
 const handleSubmit = () => {
   window.location.href = "/";
