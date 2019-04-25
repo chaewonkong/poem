@@ -1,4 +1,16 @@
 # 매일 시 쓰기 프로젝트
+## 설계
+**프론트엔드** 
+- firebase를 활용한 react bundle 배포
+- Redux를 사용한 상태관리
+- React Router Dom을 사용한 라우팅
+- Styled Components를 사용한 컴포넌트 스타일링
+- AntD, Material-UI 활용
+**백엔드** heroku를 활용한 Django/PostgreDB API Server
+
+**설계의도**
+클라이언트에서 AJAX request를 이용해 데이터를 주고받음으로써 데이터를 질서정연하게 관리할 수 있다.
+
 ## 기획의도
 시 라는 것이 어려운 것도 아니고, 의미도 있는데 사람들이 멀리 하는 것이 아쉽다. 사람들이 시를 익숙하게 받아들이고 쉽게 접할 수 있었으면 좋겠다.
 
