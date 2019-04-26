@@ -1,16 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
-import * as actions from "../actions";
-import LoginForm from "./auth/LoginForm";
-import CreateUser from "./auth/CreateUser";
-import UpdateUser from "./auth/UpdateUser";
-import PoemList from "./poems/List/";
-import UserDetail from "./users/UserDetail";
-import PostPoem from "./poems/PostPoem";
-import "../favicon.ico";
+import LoginForm from "../auth/LoginForm";
+import CreateUser from "../auth/CreateUser";
+import UpdateUser from "../auth/UpdateUser";
+import PoemList from "../poems/List";
+import UserDetail from "../users/UserDetail";
+import PostPoem from "../poems/PostPoem";
+import "../../favicon.ico";
 
 class App extends Component {
   componentDidMount() {
@@ -72,10 +70,4 @@ const BodyContainer = styled.div`
   }
 `;
 
-const mapStateToProps = state => {
-  return state;
-};
-export default connect(
-  mapStateToProps,
-  actions
-)(App);
+export default App
