@@ -7,8 +7,8 @@ export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_POEMS:
       let newResults = _.unionBy(
-        state.results,
         action.payload.results,
+        state.results,
         poem => {
           return poem.id;
         }
