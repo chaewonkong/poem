@@ -1,13 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
-import { Container, CustomHeader } from "../common";
+import { Container, CustomHeader } from "../../../common";
 
 const handleSubmit = () => {
   window.location.href = "/";
 };
 
-const PoemPublish = props => {
+const PoemView = props => {
   return (
     <Container>
       <CustomHeader
@@ -15,7 +14,7 @@ const PoemPublish = props => {
         rightIcon={<RightIcon />}
         handleLeft={() =>
           props.handlePrev({
-            type: "detail",
+            type: "align",
             content: props.content,
             title: props.title,
             align: props.align
@@ -56,6 +55,4 @@ const PoemContent = styled.div`
   text-align: ${props => props.align};
 `;
 
-const mapStateToProps = state => state;
-
-export default connect(mapStateToProps)(PoemPublish);
+export default PoemView

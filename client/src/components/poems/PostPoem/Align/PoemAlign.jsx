@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
-import { color, media } from "../../config/_mixin";
-import { CustomHeader, Container } from "../common";
+import { color, media } from "../../../../config/_mixin";
+import { CustomHeader, Container } from "../../../common";
 
-class PoemDetail extends Component {
+class PoemAlign extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,7 +72,7 @@ class PoemDetail extends Component {
           }
           handleRight={() =>
             this.handleSubmit({
-              type: "publish",
+              type: "view",
               content,
               title,
               align
@@ -152,5 +151,4 @@ const alignLeft =
 const alignRight =
   "https://s3.ap-northeast-2.amazonaws.com/harusijak-static-manage/static_image/글정렬_R.svg";
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps)(PoemDetail);
+export default PoemAlign;

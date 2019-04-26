@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { Input, Tabs } from "antd";
-import { CustomHeader } from "../common";
-import * as actions from "../../actions";
-import { color } from "../../config/_mixin";
+import { CustomHeader } from "../../../common";
+import { color } from "../../../../config/_mixin";
 
 class PoemForm extends Component {
   state = {
@@ -31,7 +29,7 @@ class PoemForm extends Component {
           handleLeft={this.props.handlePrev}
           handleRight={() =>
             this.props.handleNext({
-              type: "detail",
+              type: "align",
               title: this.state.title,
               content: this.state.content,
               align: this.state.align
@@ -143,9 +141,4 @@ const TextArea = styled(Input.TextArea)`
   outline: none;
 `;
 
-const mapStateToProps = state => state;
-
-export default connect(
-  mapStateToProps,
-  actions
-)(PoemForm);
+export default PoemForm;

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Modal } from "../../common";
-import PoemForm from "../PoemForm";
-import PoemDetail from "../PoemDetail";
-import PoemPublish from "../PoemPublish";
+import PoemForm from "./Form";
+import PoemAlign from "./Align";
+import PoemView from "./View";
 import { color, media } from "../../../config/_mixin";
 
 class PostPoem extends Component {
@@ -66,9 +66,9 @@ class PostPoem extends Component {
               content={this.state.content}
             />
           );
-        case "detail":
+        case "align":
           return (
-            <PoemDetail
+            <PoemAlign
               variant={this.state.variant}
               id={this.state.poemId || null}
               handleNext={this.handleNext.bind(this)}
@@ -78,9 +78,9 @@ class PostPoem extends Component {
               align={this.state.align}
             />
           );
-        case "publish":
+        case "view":
           return (
-            <PoemPublish
+            <PoemView
               variant={this.state.variant}
               id={this.state.poemId || null}
               handlePrev={this.handleNext.bind(this)}
