@@ -5,12 +5,11 @@ import axios from "axios";
 import styled from "styled-components";
 import * as actions from "../actions";
 import LoginForm from "./auth/LoginForm";
-import CreatePoem from "./poems/CreatePoem";
-import UpdatePoem from "./poems/UpdatePoem";
 import CreateUser from "./auth/CreateUser";
 import UpdateUser from "./auth/UpdateUser";
 import PoemList from "./poems/PoemList";
 import UserDetail from "./users/UserDetail";
+import PostPoem from "./poems/PostPoem";
 import "../favicon.ico";
 
 class App extends Component {
@@ -37,8 +36,8 @@ class App extends Component {
           <Container>
             <BodyContainer>
               <Route exact path="/" component={PoemList} />
-              <Route exact path="/poems/new" component={CreatePoem} />
-              <Route exact path="/poems/:id/update" component={UpdatePoem} />
+              <Route exact path="/poems/new" component={PostPoem} />
+              <Route exact path="/poems/:id/update" component={PostPoem} />
               <Route path="/users/login" component={LoginForm} />
               <Route exact path="/users/new" component={CreateUser} />
               <Route

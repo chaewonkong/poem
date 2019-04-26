@@ -1,22 +1,32 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
-import * as actions from "../../actions";
-import { Modal } from "../common";
-import PoemForm from "./PoemForm";
-import PoemDetail from "./PoemDetail";
-import PoemPublish from "./PoemPublish";
-import { color, media } from "../../config/_mixin";
+import { Modal } from "../../common";
+import PoemForm from "../PoemForm";
+import PoemDetail from "../PoemDetail";
+import PoemPublish from "../PoemPublish";
+import { color, media } from "../../../config/_mixin";
 
-class CreatePoem extends Component {
-  state = {
-    user: "",
-    title: "",
-    content: "",
-    value: 0,
-    type: "form",
-    align: "left"
-  };
+class PostPoem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: "",
+      title: "",
+      content: "",
+      variant: "create",
+      type: "form",
+      align: "left"
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname.match("/update") !== null) {
+      this.setState({
+        variant: "update",
+        poemId: this.props.match.params.id
+      });
+    }
+  }
 
   showModal = () => {
     this.setState({
@@ -48,7 +58,8 @@ class CreatePoem extends Component {
         case "form":
           return (
             <PoemForm
-              variant={this.props.variant || "create"}
+              id={this.state.poemId}
+              variant={this.state.variant}
               handleNext={this.handleNext.bind(this)}
               handlePrev={() => window.history.back()}
               title={this.state.title}
@@ -58,8 +69,8 @@ class CreatePoem extends Component {
         case "detail":
           return (
             <PoemDetail
-              variant={this.props.variant || "create"}
-              id={this.props.id || null}
+              variant={this.state.variant}
+              id={this.state.poemId || null}
               handleNext={this.handleNext.bind(this)}
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
@@ -70,8 +81,8 @@ class CreatePoem extends Component {
         case "publish":
           return (
             <PoemPublish
-              variant={this.props.variant || "create"}
-              id={this.props.id || null}
+              variant={this.state.variant}
+              id={this.state.poemId || null}
               handlePrev={this.handleNext.bind(this)}
               title={this.state.title}
               content={this.state.content}
@@ -105,11 +116,4 @@ const Container = styled.div`
     props.type === "form" ? color.backgroundColor : color.lightGreyColor};
 `;
 
-const mapStateToProps = state => {
-  return { poems: state.poems, auth: state.auth, today: state.today };
-};
-
-export default connect(
-  mapStateToProps,
-  actions
-)(CreatePoem);
+export default PostPoem;

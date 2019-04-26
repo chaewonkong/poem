@@ -58,10 +58,12 @@ class PoemForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props && this.props.variant === "update") {
-      const { id, title, content, align } = this.props.poems.poem;
+    if (
+      this.props.variant === "update" &&
+      prevProps.poems !== this.props.poems
+    ) {
+      const { title, content, align } = this.props.poems.poem;
       this.setState({
-        id,
         title,
         content,
         align,
