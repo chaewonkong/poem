@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import axios from "axios";
 import styled, { css } from "styled-components";
-import * as actions from "../../actions";
-import { color, fontFamily } from "../../config/_mixin";
+import { color, fontFamily } from "../../../../config/_mixin";
 
-class ReactionBtn extends Component {
+class Feedcback extends Component {
   state = {};
 
   componentDidMount() {
@@ -79,8 +77,6 @@ class ReactionBtn extends Component {
   }
 }
 
-const mapStateToProps = state => state;
-
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -125,7 +121,4 @@ const Button = styled.button`
   font-family: ${fontFamily.default};
 `;
 
-export default connect(
-  mapStateToProps,
-  actions
-)(ReactionBtn);
+export default Feedcback

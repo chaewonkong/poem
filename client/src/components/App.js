@@ -7,7 +7,7 @@ import * as actions from "../actions";
 import LoginForm from "./auth/LoginForm";
 import CreateUser from "./auth/CreateUser";
 import UpdateUser from "./auth/UpdateUser";
-import PoemList from "./poems/PoemList";
+import PoemList from "./poems/List/";
 import UserDetail from "./users/UserDetail";
 import PostPoem from "./poems/PostPoem";
 import "../favicon.ico";

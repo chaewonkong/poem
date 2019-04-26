@@ -1,26 +1,41 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import { Avatar } from "antd";
 import Typography from "@material-ui/core/Typography";
 import { DefaultHeader } from "../common";
-import PoemCard from "../poems/PoemCard";
+import PoemCard from "../poems/List/PoemCard";
 
 class UserDetail extends Component {
-  state = {
-    poems: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      poems: [],
+      userId: props.match.params.userId,
+      poems_displayed_count: null,
+      poems_all_count: null,
+      subscribed_count: null,
+      likes_count: null,
+      keeped_count: null,
+      nickname: null,
+      description: null,
+      image: null
+    };
+  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.user.pk !== this.props.user.pk) {
-      const userId = this.props.user.pk;
-      axios
-        .get(
-          `https://mighty-chamber-86168.herokuapp.com/users/${userId}/poems/`
-        )
-        .then(res => this.setState({ poems: Array.from(res.data.results) }));
-    }
+  componentDidMount() {
+    const { userId } = this.state;
+    axios
+      .get(`https://mighty-chamber-86168.herokuapp.com/users/${userId}/`)
+      .then(res => {
+        this.setState({ ...this.state, ...res.data });
+      });
+
+    axios
+      .get(`https://mighty-chamber-86168.herokuapp.com/users/${userId}/poems/`)
+      .then(res => {
+        this.setState({ poems: res.data.results });
+      });
   }
 
   renderPoems() {
@@ -52,19 +67,22 @@ class UserDetail extends Component {
       poems_all_count,
       subscribed_count,
       likes_count,
-      keeped_count
-    } = this.props.user;
+      keeped_count,
+      image,
+      nickname,
+      description
+    } = this.state;
     return (
       <div>
         <DefaultHeader />
         <DetailContainer>
           <AvatarContainer>
-            <Avatar src={this.props.user.image} />
+            <Avatar src={image} />
             <Typography variant="h6" style={{ color: "#A4A4A4" }}>
-              {this.props.user.nickname}
+              {nickname}
             </Typography>
           </AvatarContainer>
-          <p>{this.props.user.description}</p>
+          <p>{description}</p>
           <p>
             {poems_displayed_count} 공개 / {poems_all_count} 씀
           </p>
@@ -106,6 +124,4 @@ const AvatarContainer = styled.div`
   }
 `;
 
-const mapStateToProps = state => state;
-
-export default connect(mapStateToProps)(UserDetail);
+export default UserDetail;

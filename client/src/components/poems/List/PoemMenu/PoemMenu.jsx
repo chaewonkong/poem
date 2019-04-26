@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import axios from "axios";
 import _ from "lodash";
 import { Menu, MenuItem } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import * as actions from "../../actions";
 
 class PoemMenu extends Component {
   state = {
@@ -74,9 +72,4 @@ class PoemMenu extends Component {
   }
 }
 
-const mapStateToProps = state => state;
-
-export default connect(
-  mapStateToProps,
-  actions
-)(PoemMenu);
+export default PoemMenu;
