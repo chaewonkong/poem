@@ -1,17 +1,17 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchPoems, getToday } from "../../../actions";
-import PoemList from "./PoemList";
+import { fetchUser } from "../actions";
+import App from "./App";
 
 const mapStateToProps = state => state;
+
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPoems: bindActionCreators(fetchPoems, dispatch),
-    getToday: bindActionCreators(getToday, dispatch)
+    fetchUser: bindActionCreators(fetchUser, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PoemList);
+)(App);

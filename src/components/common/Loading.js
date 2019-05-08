@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DefaultHeader } from "./";
+import { DefaultHeader } from ".";
 
 const Loading = () => {
   return (

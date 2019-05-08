@@ -121,4 +121,4 @@ const Button = styled.button`
   font-family: ${fontFamily.default};
 `;
 
-export default Feedcback
+export default Feedcback;

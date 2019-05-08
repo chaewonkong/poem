@@ -55,4 +55,4 @@ const PoemContent = styled.div`
   text-align: ${props => props.align};
 `;
 
-export default PoemView
+export default PoemView;
