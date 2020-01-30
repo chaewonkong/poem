@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import LoginForm from "../Routes/LoginForm";
-import CreateUser from "../Routes/CreateUser";
-import UpdateUser from "../Routes/UpdateUser";
-import PoemList from "../Routes/PoemList";
-import UserDetail from "../Routes/UserDetail";
-import PostPoem from "../Routes/PostPoem";
-import "../favicon.ico";
+import LoginForm from "../../Routes/LoginForm";
+import CreateUser from "../../Routes/CreateUser";
+import UpdateUser from "../../Routes/UpdateUser";
+import PoemList from "../../Routes/PoemList";
+import UserDetail from "../../Routes/UserDetail";
+import PostPoem from "../../Routes/PostPoem";
+import "../../favicon.ico";
 
 class App extends Component {
   componentDidMount() {
