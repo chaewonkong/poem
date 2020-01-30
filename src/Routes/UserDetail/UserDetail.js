@@ -3,8 +3,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { Avatar } from "antd";
 import Typography from "@material-ui/core/Typography";
-import { DefaultHeader } from "../../Components/common";
-import PoemCard from "../../Components/poems/List/PoemCard";
+import { DefaultHeader } from "../../components/common";
+import PoemCard from "../../components/poems/List/PoemCard";
 
 class UserDetail extends Component {
   constructor(props) {

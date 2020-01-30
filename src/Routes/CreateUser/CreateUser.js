@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import { DefaultHeader } from "../../Components/common";
-import UserForm from "../../Components/auth/UserForm";
+import { DefaultHeader } from "../../components/common";
+import UserForm from "../../components/auth/UserForm";
 
 class CreateUser extends Component {
   render() {
@@ -20,7 +20,4 @@ class CreateUser extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(
-  mapStateToProps,
-  actions
-)(CreateUser);
+export default connect(mapStateToProps, actions)(CreateUser);

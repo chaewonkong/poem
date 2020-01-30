@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Modal } from "../../Components/common";
-import PoemForm from "../../Components/poems/PostPoem/Form";
-import PoemAlign from "../../Components/poems/PostPoem/Align";
-import PoemView from "../../Components/poems/PostPoem/View";
+import { Modal } from "../../components/common";
+import PoemForm from "../../components/poems/PostPoem/Form";
+import PoemAlign from "../../components/poems/PostPoem/Align";
+import PoemView from "../../components/poems/PostPoem/View";
 import { color, media } from "../../config/_mixin";
 
 class PostPoem extends Component {

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { DefaultHeader } from "../../Components/common";
+import { DefaultHeader } from "../../components/common";
 import * as actions from "../../actions";
 
 class LoginForm extends Component {
@@ -107,7 +107,4 @@ const LoginBtnContainer = styled.div`
 
 const mapStateToProps = state => state.auth;
 
-export default connect(
-  mapStateToProps,
-  actions
-)(LoginForm);
+export default connect(mapStateToProps, actions)(LoginForm);

@@ -4,9 +4,9 @@ import axios from "axios";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroller";
 import { Icon } from "antd";
-import { DefaultHeader, Loading } from "../../Components/common";
+import { DefaultHeader, Loading } from "../../components/common";
 import { media } from "../../config/_mixin";
-import PoemCard from "../../Components/poems/List/PoemCard";
+import PoemCard from "../../components/poems/List/PoemCard";
 
 class PoemList extends Component {
   state = {
