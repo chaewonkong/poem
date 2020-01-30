@@ -12,7 +12,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PoemMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(PoemMenu);

@@ -216,7 +216,4 @@ const Error = styled.p`
 
 const mapStateToProps = state => state;
 
-export default connect(
-  mapStateToProps,
-  actions
-)(UserForm);
+export default connect(mapStateToProps, actions)(UserForm);

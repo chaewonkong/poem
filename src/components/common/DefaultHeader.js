@@ -99,7 +99,4 @@ const Title = styled.h1`
   padding: 0;
 `;
 
-export default connect(
-  mapStateToProps,
-  actions
-)(Header);
+export default connect(mapStateToProps, actions)(Header);
